@@ -1,4 +1,9 @@
 
+<%@page import="java.util.Properties"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
@@ -118,6 +123,7 @@
         <%
             }
         %>
+
         <div class="container">
             <div class="Emer">
                 <div class="row">
@@ -125,7 +131,25 @@
                         <h4>EMERGENCY NOTIFY</h4>
                     </div>
                     <div class="col-3">
-                        &nbsp &nbsp <a href="MyEmergency"><button type="button" class="btn btn-info" ><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></button></a>
+                        <a href="MyEmergency"><button type="button" class="btn btn-info" ><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                                <span class="badge badge-light"> 
+                                    <%
+                                        try {
+                                            Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                            Connection con = DriverManager.getConnection("jdbc:mysql://35.240.139.209/TMEApp", "tmepro", "tme123456");
+                                            Statement st = con.createStatement();
+                                            String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE member_id_fk = " + session.getAttribute("member_id");
+                                            ResultSet rs = st.executeQuery(strQuery);
+                                            String Countrow = "";
+                                            while (rs.next()) {
+                                                Countrow = rs.getString(1);
+                                                out.println(Countrow);
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    %>   
+                                </span></button></a>
                     </div>
                 </div>
             </div> 
@@ -134,13 +158,8 @@
             <br>
             <div class="container2">
                 <form action="AddEmergency" method="post">
-                    <div class="row">
-                        <div class="col">
-                            <input name="lat_value" type="text" id="lat_value"  class="form-control" value="0" /> 
-                        </div>
-                        <div class="col">
-                            <input name="lon_value" type="text" id="lon_value" class="form-control" value="0" />
-                        </div>
+                    <div class="row">                       
+
                     </div>
                     <div class="but3">
                         <div class="row">
@@ -178,10 +197,15 @@
                             <div class="col-3"> 
 
                             </div>
+                            
                             <div class="col-9">
-                               <div class="but1">
-                                  &nbsp <button type="submit" name="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
+                                <div class="but1">
+                                    <br>
+                                    
+                                    &nbsp <button type="submit" name="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
                                         <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
+                                        <input name="lat_value"  type="hidden" id="lat_value"  class="form-control" value="0" /> 
+                                        <input name="lon_value" type="hidden" id="lon_value" class="form-control" value="0" />          
                                     </button>
                                 </div>
                             </div>

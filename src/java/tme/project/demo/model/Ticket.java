@@ -31,6 +31,7 @@ public class Ticket {
     private int userId;
     private String lat;
     private String lon;
+    private int countRow;
 
     public Ticket() {
     }
@@ -121,6 +122,14 @@ public class Ticket {
     public void setLon(String lon) {
         this.lon = lon;
     }
+
+    public int getCountRow() {
+        return countRow;
+    }
+
+    public void setCountRow(int countRow) {
+        this.countRow = countRow;
+    }
     
     
     
@@ -199,6 +208,24 @@ public class Ticket {
             Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tickets;
+    }
+    
+    public static int countRow(int userId) {
+        int countRow = 0;
+        Ticket t = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            Statement stmt = conn.createStatement();
+            String sqlCmd = "SELECT count(*) FROM `Emergency_Notify` WHERE member_id_fk = "+userId;
+            ResultSet rs = stmt.executeQuery(sqlCmd);
+            while (rs.next()) {
+                t = new Ticket();
+                ORM(t, rs);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return  countRow;
     }
   
     public boolean addTicket() {
