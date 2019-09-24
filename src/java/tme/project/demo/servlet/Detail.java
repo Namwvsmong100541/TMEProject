@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import tme.project.demo.model.Ticket;
 
 /**
@@ -33,8 +34,14 @@ public class Detail extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/Detail.jsp";
+        HttpSession session = request.getSession(false);
         Ticket t = Ticket.getTicketById(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("ticket", t);
+        
+        System.out.println(t.getId());
+        System.out.println(t.getLat());
+        System.out.println(t.getLon());
+
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 

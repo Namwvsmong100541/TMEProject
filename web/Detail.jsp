@@ -8,6 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Bootstrap -->
@@ -50,26 +51,31 @@
             thead{
                 background: silver;
             }
+            #map {
+                height: 300px;
+                width: 300px;
+
+            }
         </style>
 
     </head>
     <body>
 
         <!-- Fixed navbar -->
-     <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    
+
                     <div class="block2">
                         <a class="navbar-brand" href="MyEmergency"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span> Back </a>
                         <div class="now">
                             <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
                                 <%=session.getAttribute("member_name")%> </font></a>
                         </div>
-                        
-                </div>
 
-            </div>
+                    </div>
+
+                </div>
         </nav>
 
         <div class="now">
@@ -84,12 +90,20 @@
     <div class="page-header">
         <h3><b>Detail of Notification</b></h3>
 
+
+        <center>
+            <div id="map" class="map">
+
+            </div>
+        </center>
+
         <%
             Ticket t = (Ticket) request.getAttribute("ticket");
             Member m = Member.getMember(t.getUserId());
 
         %>
     </div><br>
+
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
@@ -98,6 +112,7 @@
                     <p> Phone no. : <%=t.getDesc()%>  </p>
                     <p> Location : <%=t.getPlace()%> </p>
                     <p> Status : <%=t.getStatusName()%> </p>
+
                 </div>
             </div>
         </div>
@@ -118,5 +133,24 @@
 </div>
 </detail>
 </body>
+<script>
+    var map;
+    var GGM;
+    var my_Marker;
+    function initMap() {
+        var cairo = {lat: <%= t.getLat()%> || 13.6533052, lng: <%= t.getLon()%> || 100.48927819999994};
 
+        var map = new google.maps.Map(document.getElementById('map'), {
+            scaleControl: true,
+            center: cairo,
+            zoom: 18,
+            mapTypeControl: false
+        });
+        var marker = new google.maps.Marker({map: map, position: cairo});
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHmKZ96a7T1gvXwMDRzyyGRQgOfFuEet8&sensor=false&callback=initMap"async defer></script>
 </html>

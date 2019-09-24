@@ -159,6 +159,8 @@ public class Ticket {
             t.setPlace(rs.getString("Event_place"));
             t.setStatus(rs.getInt("Event_status"));
             t.setUserId(rs.getInt("member_id_fk"));
+            t.setLat(rs.getString("Latitude"));
+            t.setLon(rs.getString("Longtitude"));
 
         
         } catch (SQLException ex) {

@@ -25,12 +25,14 @@ function initialize() { // ฟังก์ชันแสดงแผนที�
                  
                 // กำหนด Option ของแผนที่  
                 var myOptions = {  
-                    zoom: 16, // กำหนดขนาดการ zoom  
+                    zoom: 17, // กำหนดขนาดการ zoom  
+                    scaleControl: false,
                     center: pos , // กำหนดจุดกึ่งกลาง  เป็นจุดที่เราอยู่ปัจจุบัน
+                    mapTypeControl: false,
                     mapTypeId:GGM.MapTypeId.ROADMAP, // กำหนดรูปแบบแผนที่  
                     mapTypeControlOptions:{ // การจัดรูปแบบส่วนควบคุมประเภทแผนที่  
                         position:GGM.ControlPosition.RIGHT, // จัดตำแหน่ง  
-                        style:GGM.MapTypeControlStyle.DROPDOWN_MENU // จัดรูปแบบ style   
+                        style:GGM.MapTypeControlStyle.DROPDOWN_MENU // จัดรูปแบบ style       
                     }  
                 };  
           
@@ -96,7 +98,6 @@ $(function(){
     //  callback ให้เรียกใช้ฟังก์ชันแสดง แผนที่ initialize  
     $("<script/>", {  
       "type": "text/javascript",  
-      src: "//maps.google.com/maps/api/js?v=3.2&sensor=false&language=th&callback=initialize" 
+      src: "//maps.google.com/maps/api/js?key=AIzaSyAHmKZ96a7T1gvXwMDRzyyGRQgOfFuEet8&sensor=false&language=th&callback=initialize" 
     }).appendTo("body");      
 });
-
