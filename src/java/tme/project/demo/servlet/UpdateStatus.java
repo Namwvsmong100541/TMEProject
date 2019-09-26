@@ -49,6 +49,7 @@ public class UpdateStatus extends HttpServlet {
                     if (ticket_id != null && ticket_status != null) {
                         if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
                                 Integer.parseInt(request.getParameter("status")))) {
+                            target = "/UpdateStatus.jsp";
                             ticket_message = "Update complete!";
                             code = "success";
                             alert = "Success!";

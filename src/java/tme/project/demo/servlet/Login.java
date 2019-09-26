@@ -59,6 +59,13 @@ public class Login extends HttpServlet {
                         System.err.println(ex);
                     }
                 }
+
+            } else {
+                code = "Error";
+                alert = "The username & password didn't match.";
+                message = "Please Try again.";
+            }
+            if (member_username != null && member_password != null) {
                 if (Member.isOfficer(member_username, member_password)) {
                     try {
                         String memberId = Member.getIdByUsernameOfficer(member_username) + "";
@@ -67,16 +74,11 @@ public class Login extends HttpServlet {
                         session.setAttribute("member_position", memberPos);
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
-                        target = "/Home.jsp";
+                        target = "/UpdateStatus.jsp";
                     } catch (SQLException ex) {
                         System.err.println(ex);
                     }
-                } 
-
-            } else {
-                code = "Error";
-                alert = "The username & password didn't match.";
-                message = "Please Try again.";
+                }
             }
 
         }

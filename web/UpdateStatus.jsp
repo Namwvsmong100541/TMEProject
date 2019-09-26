@@ -1,7 +1,7 @@
 
 <%@page import="tme.project.demo.model.Place"%>
-<%@page import="tme.project.demo.model.Ticket"%>
 <%@page import="java.util.List"%>
+<%@page import="tme.project.demo.model.Ticket"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,10 +9,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Report - Notification List</title>
+        <title>Report - My Notification</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,9 +22,6 @@
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
 
         <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
-        <!-- include a theme, can be included into the core instead of 2 separate files -->
-
-
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,146 +29,251 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <title>TME -  Notification List</title>
+        <title>TME - My Notification</title>
         <style>
             form{
                 display: inline-block;
             }
             html,body{
-                background-color:#E9E8E8;
-            }
-            .header{
-                background-color:#FF852B;
-                padding-top: 40px ;
-                padding-left: 30px;
-                padding-right: 30px;
-                padding-bottom: 40px;
-                color: #000000;
-                font-family:Cordia New;
-            }
-            .navbar-header{
-                background: #FF852B;
-            }
-            .page-header{
-                padding-bottom: 10px;
-                margin: 0px;
+                background-color:#EFEFF4;
             }
 
+            .block2 a{
+                color: black;
+            }
             .table.dataTable{
                 background: whitesmoke;
             }
             thead{
                 background: silver;
             }
+            .event{
+                margin: 10px;
+            }
+            .eventarea{
+                background-color: white;
+                border: 0.25px #707070 solid;
+                border-radius:8px;
+            }
+            .timedate,.emergency,.location,.status{
+                padding-left: 20px;
+            }
+            .button1{
+                margin-left: 215px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+                background-color: #BD4747; 
+                border: none;
+                color: white;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right:  10px;
+            }
+            .button2{
+                margin-left: 215px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+                background-color: #D8AC35; 
+                border: none;
+                color: white;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right:  10px;
+            }
+            .menubar {
+                background: whitesmoke;
+                width: 100%;
+                height: 45px;
+                border:#CECCCC 1px;
+                border-style: solid; 
+                position: fixed; 
+                bottom:  0px;
+                z-index: 8000;
+
+            }
+            .menubar img{
+                float: right;
+                margin-right: 10px;
+                margin-top: 7px;
+                margin-bottom: 5px;
+                padding-right: 40px;
+                height: 30px;
+
+
+            }
+            .logout {
+                background:#BD4747;
+                height: 30px;
+                color: white;
+                width: 100%;
+                padding: 5px;
+                position: fixed; 
+                top: 0;
+                z-index: 9999;
+
+            }
+
+
+            .logout .studentID{
+                background: #BD4747;
+                width: 100px;
+                height: 15px;
+                float: left;
+                margin-top: 0px;
+                margin-right: 5px;
+                margin-left: 5px;
+                text-align: center;
+                padding: 2px;
+            }
+
+            .out {
+                float: right;
+                font-size: 12px;
+                text-align: center;
+                margin-right: 15px;
+                margin-bottom: 20px;
+            }
+            .out button{
+                font-size: 12px;
+                margin-right: 5px;
+                padding: 3px;
+            }
+            .out img{
+                margin-top: 0px;
+            }
+
+            .header {
+                width: 100%;
+                height: 50px;
+                background:#BD4747;
+                color: white ;
+                font-size: 10px;
+                text-align: center;
+                padding:5px;
+                position: fixed; 
+                top: 30px;
+                z-index: 8000;
+
+            }
+
+            .header h2{
+                text-align: center;
+                font-size: 20px;
+                margin-top: 10px;
+                padding-left: 12px;
+
+            }
+            .container{
+                padding: 0px;
+                margin-top: 30px;
+
+            }
+            .notify img{
+                width: 20px;
+                height: 20px;
+                float: right;
+                margin:5px;
+            }
+            .information.a{
+                color: whitesmoke;
+            }
+            .status {
+                color: #BD4747;
+            }
         </style>
     </head>
     <body>
-
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="block2">
-                        <a class="navbar-brand" href="ListAllEmergency.jsp">TME |</a>
-                        <div class="now">
-                            <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
-                                <%=session.getAttribute("member_name")%> </font></a>
-                        </div>
-                        <div class="block1">
-                            <div id="navbar" class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav">                                      
-                                    <li class="active"><a href="UpdateStatus"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> All Notification</a></li>
-                                    <li><a href="StatusAccept"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Accepted </a></li>
-                                    <li><a href="History"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Completed </a></li>
-                                    <li><a href="Logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div><!--/.nav-collapse -->
-                </div>
-
-            </div>
-        </nav>
-
         <!-- Begin page content -->
+        <div class="logout">
+
+
+            <div class="out">
+                <img src="images\logout .png" alt="">
+                <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+
+            </div> 
+            <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
+
+
+
+        </div>
+
+        <div class="header">
+            <h2>Waiting for response</h2> 
+        </div>
         <div class="container">
             <br>
             <br>
-            <div class="page-header">
-
-            </div>
+            <br>
 
             <%
-                if (request.getAttribute("code") != null) {
+                if (request.getAttribute("tickets") != null) {
+                    List<Ticket> tickets = (List) request.getAttribute("tickets");
+                    int count = 1;
+                    for (Ticket t : tickets) {
+                        if (t.getStatusName().equalsIgnoreCase("Waiting for response")) {
             %>
-            <div class="alert alert-<%=(String) request.getAttribute("code")%>">
-                <strong><%=(String) request.getAttribute("alert")%></strong> <%=(String) request.getAttribute("message")%>
+            <div class="event">
+
+                <div class="eventarea">
+
+                    <div class="notify">
+                        <img src="images\alarm.png" alt="">
+
+                    </div>
+
+                    <div class="timedate">
+
+                        <h6>Date : Time : <%=t.getDateTime()%> </h6>
+                    </div>
+
+                    <div class="emergency">
+                        <h6>Emergency : <%= t.getName()%> </h6>
+                    </div>
+                    <div class="location">
+                        <h6>Location : <%= t.getPlace()%> </h6>
+                    </div>
+                    <div class="status">
+                        <h6><b>Status : <%=t.getStatusName()%> </b></h6>
+                    </div>
+                    
+                    <div class="Confirm">
+                        <form action="UpdateStatus" method="post" onsubmit="return confirm('You really want to change status?');">  
+                            <input type="hidden" name="id" value="<%=t.getId()%>">
+                            <input type="hidden" name="status" value="1">                  
+                            <button class="button2">Accept</button></a>
+                        </form>
+                    </div>
+
+                    <div class="information">    
+                    </div>
+                    <a href = "Detail?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
+                </div>
             </div>
-            <%
+
+
+            <% }
                 }
+
+            } else {
+
+
             %>
 
-            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Case</th> 
-                        <th>Place</th>
-                        <th width="200">Update</th> 
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        List<Ticket> tickets = (List) request.getAttribute("tickets");
-                        for (Ticket t : tickets) {
-                            if (t.getStatusName().equalsIgnoreCase("Waiting for response")) {
-                    %>
-                    <tr>
-                        <td><%=t.getId()%></td>
-                        <td><a href = "Detail?id=<%=t.getId()%>" ><%=t.getName()%></a></td>
-                        <td><%=t.getPlace()%></td> 
-                        <td>    
-                <center>
-                    <form action="UpdateStatus" method="post" onsubmit="return confirm('You really want to change status?');">  
-                        <input type="hidden" name="id" value="<%=t.getId()%>">                                          
-                        <select  name="status" id="status" class="form-control">                           
-                            <option value="1" <%=t.getStatus() == 1 ? "selected" : ""%>>Accept</option>
-                        </select>                      
-                        <button type='submit'><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                    </form>
-                </center>
-                </td>
-                </tr>
-                <%
-                        }
-                    }
-                %>
-                </tbody>
-            </table>
+      
+            <%                        }
+            %>
         </div>
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <script src="js/jquery.dataTables.min.js"></script>
-        <script src="js/dataTables.bootstrap.min.js"></script>
+        <div class="menubar">
+            <img src="images\profile (1).png" alt="">
+            <a href="History"><img src="images\first-aid-kit (2).png" alt=""></a>
+            <a href="StatusAccept"><img src="images\checklist (1)_1.png" alt=""></a>
+            <a href="UpdateStatus"><img src="images\turn.png" alt=""></a>
 
-        <script type="text/javascript" class="init">
-                        $(document).ready(function () {
-                            $('#example').DataTable();
-                        });
-        </script>
-
-
+        </div>
     </body>
 </html>
+

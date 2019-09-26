@@ -1,5 +1,4 @@
 
-
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
 <%@page import="tme.project.demo.model.Ticket"%>
@@ -10,6 +9,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -35,24 +35,9 @@
                 display: inline-block;
             }
             html,body{
-                background-color:#E9E8E8;
+                background-color:#EFEFF4;
             }
-            .header{
-                background-color:#FFFFFF;
-                padding-top: 40px ;
-                padding-left: 30px;
-                padding-right: 30px;
-                padding-bottom: 40px;
-                color: red;
-                font-family:Cordia New;
-            }
-        
-          
-            .navbar-header{
-                background: #FF852B;
 
-            }
-            
             .block2 a{
                 color: black;
             }
@@ -62,96 +47,215 @@
             thead{
                 background: silver;
             }
+            .event{
+                margin: 10px;
+            }
+            .eventarea{
+                background-color: white;
+                border: 0.25px #707070 solid;
+                border-radius:8px;
+            }
+            .timedate,.emergency,.location{
+                padding-left: 20px;
+            }
+            .button1{
+                margin-left: 215px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+                background-color: #BD4747; 
+                border: none;
+                color: white;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right:  10px;
+            }
+            .menubar {
+                background: whitesmoke;
+                width: 100%;
+                height: 45px;
+                border:#CECCCC 1px;
+                border-style: solid; 
+                position: fixed; 
+                bottom:  0px;
+                z-index: 8000;
 
-             
+            }
+            .menubar img{
+                float: right;
+                margin-right: 10px;
+                margin-top: 7px;
+                margin-bottom: 5px;
+                padding-right: 40px;
+                height: 30px;
+
+
+            }
+            .logout {
+                background:#BD4747;
+                height: 30px;
+                color: white;
+                width: 100%;
+                padding: 5px;
+                position: fixed; 
+                top: 0;
+                z-index: 9999;
+
+            }
+
+
+            .logout .studentID{
+                background: #BD4747;
+                width: 100px;
+                height: 15px;
+                float: left;
+                margin-top: 0px;
+                margin-right: 5px;
+                margin-left: 5px;
+                text-align: center;
+                padding: 2px;
+            }
+
+            .out {
+                float: right;
+                font-size: 12px;
+                text-align: center;
+                margin-right: 15px;
+                margin-bottom: 20px;
+            }
+            .out button{
+                font-size: 12px;
+                margin-right: 5px;
+                padding: 3px;
+            }
+            .out img{
+                margin-top: 0px;
+            }
+
+
+
+            .header {
+                width: 100%;
+                height: 50px;
+                background:#BD4747;
+                color: white ;
+                font-size: 10px;
+                text-align: center;
+                padding:5px;
+                position: fixed; 
+                top: 30px;
+                z-index: 8000;
+
+            }
+
+            .header h2{
+                text-align: center;
+                font-size: 20px;
+                margin-top: 10px;
+                padding-left: 12px;
+
+            }
+            .container{
+                padding: 0px;
+                margin-top: 30px;
+
+            }
+            .notify img{
+                width: 20px;
+                height: 20px;
+                float: right;
+                margin:5px;
+            }
+            .information.a{
+                color: whitesmoke;
+            }
+
         </style>
     </head>
     <body>
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="block2">
-                        <a class="navbar-brand" href="ListTickets"> TME |</a>
-                        <div class="now">
-                            <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
-                                <%=session.getAttribute("member_name")%> </font></a>
-                        </div>
-                        <div class="block1">
-                            <div id="navbar" class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav">  
-                                    <li><a href="AddEmergency"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Emergency</a></li>                                   
-                                    <li class="active"><a href="MyEmergency"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Emergency Status</a></li>
-                                    <li><a href="Logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
-                                </ul>
-                            </div>
-                        </div><!--/.nav-collapse -->
-                    </div>
-                </div>        
-            </div>
-
-        </nav>
-
         <!-- Begin page content -->
+        <div class="logout">
+
+
+            <div class="out">
+                <img src="images\logout .png" alt="">
+                <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+
+            </div> 
+            <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
+
+
+
+        </div>
+
+        <div class="header">
+            <h2>Response</h2> 
+        </div>
         <div class="container">
             <br>
             <br>
             <br>
-            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Case</th>
-                        <th>Location</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        if (request.getAttribute("tickets") != null) {
-                            List<Ticket> tickets = (List) request.getAttribute("tickets");
-                            int count = 1;
-                            for (Ticket t : tickets) {
-                    %>
-                    <tr>
-                        <td><%=count++%></td>
-                        <td><a href = "Detail?id=<%=t.getId()%>"><%=t.getName()%></a></td>
-                        <td><%=t.getPlace()%></td>
-                        <td><%=t.getStatusName()%> </td>
-                    </tr>
-                    <%
-                        }
-                    } else {
+
+            <%
+                if (request.getAttribute("tickets") != null) {
+                    List<Ticket> tickets = (List) request.getAttribute("tickets");
+                    int count = 1;
+                    for (Ticket t : tickets) {
+            %>
+            <div class="event">
+
+                <div class="eventarea">
+
+                    <div class="notify">
+                        <img src="images\alarm.png" alt="">
+
+                    </div>
+
+                    <div class="timedate">
+
+                        <h6>Date : Time : <%=t.getDateTime()%> </h6>
+                    </div>
+
+                    <div class="emergency">
+                        <h6>Emergency : <%= t.getName()%> </h6>
+                    </div>
+                    <div class="location">
+                        <h6>Location : <%= t.getPlace()%> </h6>
+                    </div>
+                    <div class="information"></div>
+                    <a href = "Detail?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
+                </div>
+            </div>
 
 
-                    %>
-                    <tr>
-                        <td> </td>
-                        <td><a href = "" target="_blank"> </a></td>
-                        <td> </td>
-                        <td> </td>
-                    </tr>
-                    <%                        }
-                    %>
-                </tbody>
-            </table>
+            <%
+                }
+            } else {
+
+
+            %>
+
+            <tr>
+                <td> </td>
+                <td><a href = "" target="_blank"> </a></td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            <%                        }
+            %>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <script src="js/jquery.dataTables.min.js"></script>
-        <script src="js/dataTables.bootstrap.min.js"></script>
+        <div class="menubar">
+            <img src="images\profile (1).png" alt="">
+            <img src="images\first-aid-kit (2).png" alt="">
+            <a href="AddEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
+            <img src="images\turn.png" alt="">
+            
 
-        <script type="text/javascript" class="init">
-            $(document).ready(function () {
-                $('#example').DataTable();
-            });
-        </script>
+
+
+        </div>
     </body>
 </html>
+

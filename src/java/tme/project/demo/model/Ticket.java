@@ -32,6 +32,7 @@ public class Ticket {
     private String lat;
     private String lon;
     private int countRow;
+    private Date dateTime;
 
     public Ticket() {
     }
@@ -130,6 +131,14 @@ public class Ticket {
     public void setCountRow(int countRow) {
         this.countRow = countRow;
     }
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
     
     
     
@@ -161,6 +170,7 @@ public class Ticket {
             t.setUserId(rs.getInt("member_id_fk"));
             t.setLat(rs.getString("Latitude"));
             t.setLon(rs.getString("Longtitude"));
+            t.setDateTime(rs.getTimestamp("Date_Time"));
 
         
         } catch (SQLException ex) {

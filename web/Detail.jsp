@@ -28,26 +28,6 @@
             html,body{
                 background-color:#E9E8E8;
             }
-            .header{
-                background-color:#FF852B;
-                padding-top: 40px ;
-                padding-left: 30px;
-                padding-right: 30px;
-                padding-bottom: 40px;
-                color: #000000;
-                font-family:Cordia New;
-            }
-            .navbar-header{
-                background: #FF852B;
-            }
-            .page-header{
-                padding-bottom: 10px;
-                margin: 0px;
-            }
-
-            .table.dataTable{
-                background: whitesmoke;
-            }
             thead{
                 background: silver;
             }
@@ -56,81 +36,145 @@
                 width: 300px;
 
             }
+                        .logout {
+                background:#BD4747;
+                height: 30px;
+                color: white;
+                width: 100%;
+                padding: 5px;
+                position: fixed; 
+                top: 0;
+                z-index: 9999;
+
+            }
+
+
+            .logout .studentID{
+                background: #BD4747;
+                width: 100px;
+                height: 15px;
+                float: left;
+                margin-top: 0px;
+                margin-right: 5px;
+                margin-left: 5px;
+                text-align: center;
+                padding: 2px;
+            }
+
+            .out {
+                float: right;
+                font-size: 12px;
+                text-align: center;
+                margin-right: 15px;
+                margin-bottom: 20px;
+            }
+            .out button{
+                font-size: 12px;
+                margin-right: 5px;
+                padding: 3px;
+            }
+            .out img{
+                margin-top: 0px;
+            }
+
+            .header {
+                width: 100%;
+                height: 50px;
+                background:#BD4747;
+                color: white ;
+                font-size: 10px;
+                text-align: center;
+                padding:5px;
+                position: fixed; 
+                top: 30px;
+                z-index: 8000;
+
+            }
+
+            .header h2{
+                text-align: center;
+                font-size: 20px;
+                margin-top: 10px;
+                padding-left: 12px;
+
+            }
+            .header a {
+                color: whitesmoke;
+                margin-bottom : 15px;
+            }
         </style>
 
     </head>
     <body>
 
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
+    </head>
+<body>
+    <!-- Begin page content -->
+    <div class="logout">
 
-                    <div class="block2">
-                        <a class="navbar-brand" href="MyEmergency"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span> Back </a>
-                        <div class="now">
-                            <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
-                                <%=session.getAttribute("member_name")%> </font></a>
-                        </div>
+
+        <div class="out">
+            <img src="images\logout .png" alt="">
+            <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+
+        </div> 
+        <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
+
+
+
+    </div>
+
+    <div class="header">
+        <a class="navbar-brand" href="MyEmergency"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span> Back </a>
+        <h2>More detail</h2> 
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="page-header">
+            <h3><b>Detail of Notification</b></h3>
+
+
+            <center>
+                <div id="map" class="map">
+
+                </div>
+            </center>
+
+            <%
+                Ticket t = (Ticket) request.getAttribute("ticket");
+                Member m = Member.getMember(t.getUserId());
+
+            %>
+        </div><br>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> <h3> <%=t.getName()%> </h3></div>                               
+                    <div class="panel-body">              
+                        <p> Phone no. : <%=t.getDesc()%>  </p>
+                        <p> Location : <%=t.getPlace()%> </p>
+                        <p> Status : <%=t.getStatusName()%> </p>
 
                     </div>
-
                 </div>
-        </nav>
+            </div>
 
-        <div class="now">
-            <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
-                <%=session.getAttribute("member_name")%> Login Now</font></a>
+            <div class="col-md-4"><div class="panel panel-default">
+                    <div class="panel-heading"> <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User Info. </h3></div>                               
+                    <div class="panel-body"> 
+                        <p> Name : <%=m.getName()%></p>
+                        <p> Surname : <%=m.getSurname()%></p>
+                        <p> Student ID : <%=m.getStdId()%></p>
+                        <p> Faculty : <%=m.getFaculty()%></p>
+                        <p> Email : <%=m.getEmail()%></p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-</nav>
-<br>
-<br>
-<div class="container">
-    <div class="page-header">
-        <h3><b>Detail of Notification</b></h3>
-
-
-        <center>
-            <div id="map" class="map">
-
-            </div>
-        </center>
-
-        <%
-            Ticket t = (Ticket) request.getAttribute("ticket");
-            Member m = Member.getMember(t.getUserId());
-
-        %>
-    </div><br>
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading"> <h3> <%=t.getName()%> </h3></div>                               
-                <div class="panel-body">              
-                    <p> Phone no. : <%=t.getDesc()%>  </p>
-                    <p> Location : <%=t.getPlace()%> </p>
-                    <p> Status : <%=t.getStatusName()%> </p>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4"><div class="panel panel-default">
-                <div class="panel-heading"> <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User Info. </h3></div>                               
-                <div class="panel-body"> 
-                    <p> Name : <%=m.getName()%></p>
-                    <p> Surname : <%=m.getSurname()%></p>
-                    <p> Student ID : <%=m.getStdId()%></p>
-                    <p> Faculty : <%=m.getFaculty()%></p>
-                    <p> Email : <%=m.getEmail()%></p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 </detail>
 </body>
 <script>

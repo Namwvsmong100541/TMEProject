@@ -48,6 +48,7 @@ public class StatusAccept extends HttpServlet {
                     if (ticket_id != null && ticket_status != null) {
                         if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
                                 Integer.parseInt(request.getParameter("status")))) {
+                            target = "/StatusAccept.jsp";
                             ticket_message = "Update complete!";
                             code = "success";
                             alert = "Success!";
