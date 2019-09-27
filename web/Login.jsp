@@ -38,7 +38,7 @@
     <body background="images\bg1.jpg" align="center">
         <div class="login">
             <div class="container">
-                <img src="images\alarm.png" alt=""><br><br>
+                <img src="images\alarmlogin.png" alt=""><br><br>
                 <form action="Login" method="post">                       
                     <input type="username"  class="form-control" id="exampleUsername" name="username" placeholder="Student ID Or Username">
                     <input type="password" class="form-control" id="examplePassword" name="password" placeholder="Password"><br>

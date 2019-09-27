@@ -99,7 +99,7 @@
                 position: fixed; 
                 top: 0;
                 z-index: 9999;
-
+                  
             }
 
 
@@ -121,6 +121,7 @@
                 text-align: center;
                 margin-right: 15px;
                 margin-bottom: 20px;
+                color: white;
             }
             .out button{
                 font-size: 12px;
@@ -129,6 +130,10 @@
             }
             .out img{
                 margin-top: 0px;
+            }
+            .out a{
+                color: white;
+            
             }
 
 
@@ -178,7 +183,7 @@
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+                <label><a href="Logout"> Log out</a></label> 
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
@@ -206,7 +211,7 @@
                 <div class="eventarea">
 
                     <div class="notify">
-                        <img src="images\alarm.png" alt="">
+                        <img src="images\alarm (1).png" alt="">
 
                     </div>
 
@@ -247,11 +252,10 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
-            <img src="images\profile (1).png" alt="">
             <img src="images\first-aid-kit (2).png" alt="">
-            <a href="AddEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
+            <img src="images\checklist (1)_1.png" alt="">
             <img src="images\turn.png" alt="">
-            
+            <img src="images\profile (1).png" alt="">
 
 
 

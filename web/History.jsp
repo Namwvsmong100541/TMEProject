@@ -91,7 +91,7 @@
 
             }
             .logout {
-                background:#BD4747;
+                background:#F47735;
                 height: 30px;
                 color: white;
                 width: 100%;
@@ -104,7 +104,7 @@
 
 
             .logout .studentID{
-                background: #BD4747;
+                background: #F47735;
                 width: 100px;
                 height: 15px;
                 float: left;
@@ -112,7 +112,7 @@
                 margin-right: 5px;
                 margin-left: 5px;
                 text-align: center;
-                padding: 2px;
+                padding: 0px;
             }
 
             .out {
@@ -120,7 +120,8 @@
                 font-size: 12px;
                 text-align: center;
                 margin-right: 15px;
-                margin-bottom: 20px;
+                
+                
             }
             .out button{
                 font-size: 12px;
@@ -129,6 +130,11 @@
             }
             .out img{
                 margin-top: 0px;
+                width: 15px;
+            }
+            .out a{
+                color: white;
+                margin-top: 5px;
             }
 
 
@@ -136,8 +142,8 @@
             .header {
                 width: 100%;
                 height: 50px;
-                background:#BD4747;
-                color: white ;
+                background:#f47735;
+                color: white;
                 font-size: 10px;
                 text-align: center;
                 padding:5px;
@@ -171,6 +177,9 @@
             .status {
                 color: green ;
             }
+            .button1{
+                background: #F58F5A;
+            }
         </style>
     </head>
     <body>
@@ -180,7 +189,7 @@
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+                <label><a href="Logout">Log out</a></label> 
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
@@ -209,7 +218,7 @@
                 <div class="eventarea">
 
                     <div class="notify">
-                        <img src="images\alarm.png" alt="">
+                        <img src="images\alarm (1).png" alt="">
 
                     </div>
 
@@ -253,12 +262,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
+        
         <div class="menubar">
-            <img src="images\profile (1).png" alt="">
-            <a href="History"><img src="images\first-aid-kit (2).png" alt=""></a>
-            <a href="StatusAccept"><img src="images\checklist (1)_1.png" alt=""></a>
-            <a href="UpdateStatus"><img src="images\turn.png" alt=""></a>
-            
+            <a href="History"><img src="images\history (4).png" alt="">
+            <a href="StatusAccept"><img src="images\list2.png" alt="">
+            <a href="UpdateStatus"><img src="images\alarm.png" alt="">
+            <img src="images\man-user.png" alt="">
+
         </div>
     </body>
 </html>
