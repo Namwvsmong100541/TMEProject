@@ -26,18 +26,21 @@
                 display: inline-block;
             }
             html,body{
-                background-color:#E9E8E8;
+                background-color:#EFEFF4;
             }
             thead{
                 background: silver;
+            }
+            .container{
+                width: 360px;
             }
             #map {
                 height: 300px;
                 width: 300px;
 
             }
-                        .logout {
-                background:#BD4747;
+            .logout {
+                background:#f47735;
                 height: 30px;
                 color: white;
                 width: 100%;
@@ -50,7 +53,7 @@
 
 
             .logout .studentID{
-                background: #BD4747;
+                background: #f47735;
                 width: 100px;
                 height: 15px;
                 float: left;
@@ -75,12 +78,14 @@
             }
             .out img{
                 margin-top: 0px;
+                width: 15px;
             }
+
 
             .header {
                 width: 100%;
                 height: 50px;
-                background:#BD4747;
+                background:#f47735;
                 color: white ;
                 font-size: 10px;
                 text-align: center;
@@ -95,13 +100,33 @@
                 text-align: center;
                 font-size: 20px;
                 margin-top: 10px;
-                padding-left: 12px;
+                margin-right: 35px;
 
             }
             .header a {
                 color: whitesmoke;
                 margin-bottom : 15px;
             }
+            .navbar-brand{
+                padding: 0px;
+                margin-left: 15px;
+                height: 10px;
+            }
+            .navbar-brand img{
+                width: 20px;
+                margin-top: 10px;
+            }
+            .page-header{
+                color: #707070;
+                margin-top: 60px;
+            }
+            .col-md-8{
+                color: #707070;
+            }
+            .panel-heading{
+                height: 50px;
+            }
+            
         </style>
 
     </head>
@@ -125,14 +150,14 @@
     </div>
 
     <div class="header">
-        <a class="navbar-brand" href="MyEmergency"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span> Back </a>
+        <a class="navbar-brand" href="MyEmergency"> <img src="images\left-arrow.png" alt=""></a>
         <h2>More detail</h2> 
     </div>
     <br>
     <br>
     <div class="container">
         <div class="page-header">
-            <h3><b>Detail of Notification</b></h3>
+            <h4><b>Detail of Notification</b></h4>
 
 
             <center>
@@ -151,7 +176,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> <h3> <%=t.getName()%> </h3></div>                               
+                    <div class="panel-heading"> <h4> <%=t.getName()%> </h4></div>                               
                     <div class="panel-body">              
                         <p> Phone no. : <%=t.getDesc()%>  </p>
                         <p> Location : <%=t.getPlace()%> </p>
@@ -162,7 +187,7 @@
             </div>
 
             <div class="col-md-4"><div class="panel panel-default">
-                    <div class="panel-heading"> <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User Info. </h3></div>                               
+                    <div class="panel-heading"> <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User Info. </h4></div>                               
                     <div class="panel-body"> 
                         <p> Name : <%=m.getName()%></p>
                         <p> Surname : <%=m.getSurname()%></p>

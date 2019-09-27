@@ -54,6 +54,7 @@
                 background-color: white;
                 border: 0.25px #707070 solid;
                 border-radius:8px;
+                height: 150px;
             }
             .timedate,.emergency,.location,.status{
                 padding-left: 20px;
@@ -62,7 +63,7 @@
                 margin-left: 215px;
                 margin-bottom: 15px;
                 border-radius: 8px;
-                background-color: #BD4747; 
+                background-color: #F58F5A; 
                 border: none;
                 color: white;
                 padding: 5px;
@@ -102,7 +103,7 @@
 
             }
             .logout {
-                background:#BD4747;
+                background:#F47735;
                 height: 30px;
                 color: white;
                 width: 100%;
@@ -115,7 +116,7 @@
 
 
             .logout .studentID{
-                background: #BD4747;
+                background: #F47735;
                 width: 100px;
                 height: 15px;
                 float: left;
@@ -123,7 +124,7 @@
                 margin-right: 5px;
                 margin-left: 5px;
                 text-align: center;
-                padding: 2px;
+                padding: 0px;
             }
 
             .out {
@@ -131,7 +132,8 @@
                 font-size: 12px;
                 text-align: center;
                 margin-right: 15px;
-                margin-bottom: 20px;
+                
+                
             }
             .out button{
                 font-size: 12px;
@@ -140,12 +142,17 @@
             }
             .out img{
                 margin-top: 0px;
+                width: 15px;
+            }
+            .out a{
+                color: white;
+                margin-top: 5px;
             }
 
             .header {
                 width: 100%;
                 height: 50px;
-                background:#BD4747;
+                background:#F47735;
                 color: white ;
                 font-size: 10px;
                 text-align: center;
@@ -180,6 +187,21 @@
             .status {
                 color: #BD4747;
             }
+            
+            .button2{
+                margin-left: 250px;
+                float: left;
+                margin-top: 10px;
+               
+            }
+            .button1{
+                float: left;
+                margin-left: 150px;
+                margin-top: 10px;
+            }
+            .Confirm{
+                height: 0px;
+            }
         </style>
     </head>
     <body>
@@ -189,7 +211,7 @@
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+                <label><a href="Logout">Log out</a></label> 
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
@@ -218,7 +240,7 @@
                 <div class="eventarea">
 
                     <div class="notify">
-                        <img src="images\alarm.png" alt="">
+                        <img src="images\alarm (1).png" alt="">
 
                     </div>
 
@@ -268,10 +290,10 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
-            <img src="images\profile (1).png" alt="">
-            <a href="History"><img src="images\first-aid-kit (2).png" alt=""></a>
-            <a href="StatusAccept"><img src="images\checklist (1)_1.png" alt=""></a>
-            <a href="UpdateStatus"><img src="images\turn.png" alt=""></a>
+            <a href="History"><img src="images\history (3).png" alt="">
+            <a href="StatusAccept"><img src="images\list2.png" alt="">
+            <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
+            <img src="images\man-user.png" alt="">
 
         </div>
     </body>
