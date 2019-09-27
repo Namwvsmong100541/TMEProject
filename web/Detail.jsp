@@ -1,4 +1,5 @@
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="tme.project.demo.model.Member"%>
 <%@page import="tme.project.demo.model.Ticket"%>
@@ -127,10 +128,12 @@
                 height: 50px;
             }
             
+            .mb-1 {
+                margin-bottom: 0.5em;
+            }
         </style>
 
     </head>
-    <body>
 
     </head>
 <body>
@@ -178,9 +181,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"> <h4> <%=t.getName()%> </h4></div>                               
                     <div class="panel-body">              
-                        <p> Phone no. : <%=t.getDesc()%>  </p>
-                        <p> Location : <%=t.getPlace()%> </p>
-                        <p> Status : <%=t.getStatusName()%> </p>
+                        <p> Phone no. : ${ticket.desc}</p>
+                        <p> Location : ${ticket.place}</p>
+                        <p> Status : ${ticket.statusName}</p>
 
                     </div>
                 </div>
@@ -196,7 +199,23 @@
                         <p> Email : <%=m.getEmail()%></p>
                     </div>
                 </div>
-
+            </div>
+                    
+            <div class="col-md-4"><div class="panel panel-default">
+                    <div class="panel-heading"> <h4><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> รูปภาพ </h4></div>
+                    <div class="panel-body">
+                        <c:choose>
+                            <c:when test="${empty ticket.image}">
+                                <p class="text-muted text-center">ไม่มีรูปภาพ</p>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="mb-1">
+                                    <img src="${ticket.image}" class="img-responsive" />
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -28,6 +28,7 @@ public class Ticket {
     private String desc;
     private String place;
     private int status;
+    private String image;
     private int userId;
     private String lat;
     private String lon;
@@ -56,6 +57,17 @@ public class Ticket {
         this.userId = userId;
         this.lat = lat;
         this.lon = lon;
+    }
+    
+    public Ticket(String name, String desc, String place, int userId,String lat,String lon, String image) {
+        this.name = name;
+        this.desc = desc;
+        this.place = place;
+        this.status = 0;
+        this.userId = userId;
+        this.lat = lat;
+        this.lon = lon;
+        this.image = image;
     }
 
     public Ticket(int id, String name, String desc, String place, int status, Date dateTime,String lat,String lon ) {
@@ -98,6 +110,14 @@ public class Ticket {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getDesc() {
@@ -167,6 +187,7 @@ public class Ticket {
             t.setDesc(rs.getString("Event_desc"));
             t.setPlace(rs.getString("Event_place"));
             t.setStatus(rs.getInt("Event_status"));
+            t.setImage(rs.getString("Event_image"));
             t.setUserId(rs.getInt("member_id_fk"));
             t.setLat(rs.getString("Latitude"));
             t.setLon(rs.getString("Longtitude"));
@@ -246,7 +267,7 @@ public class Ticket {
                 Connection conn = ConnectionBuilder.getConnection();
                 java.sql.Timestamp  sqlDate = new java.sql.Timestamp(new java.util.Date().getTime());
                 String sqlCmd = "INSERT INTO `Emergency_Notify`(Event_name, Event_desc, Event_place,Event_status,member_id_fk,"
-                                   + "Date_Time, Latitude, Longtitude) VALUES(?,?,?,0,?,?,?,?)";
+                                   + "Date_Time, Latitude, Longtitude, Event_image) VALUES(?,?,?,0,?,?,?,?,?)";
                 PreparedStatement pstm = conn.prepareStatement(sqlCmd);
                 pstm.setString(1, name);
                 pstm.setString(2, desc);
@@ -255,6 +276,7 @@ public class Ticket {
                 pstm.setTimestamp(5, sqlDate);
                 pstm.setString(6, lat);
                 pstm.setString(7, lon);
+                pstm.setString(8, image);
                 int result = pstm.executeUpdate();
                 if (result != 0) {
                     return true;
