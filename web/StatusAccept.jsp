@@ -213,7 +213,7 @@
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout"> Log out</label> 
+                <label><a href="Logout">Log out</a></label> 
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
@@ -229,7 +229,6 @@
             <br>
             <br>
             <br>
-
             <%
                 if (request.getAttribute("tickets") != null) {
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
