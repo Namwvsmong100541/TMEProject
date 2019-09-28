@@ -59,10 +59,10 @@
                 padding-left: 20px;
             }
             .button1{
-                margin-left: 215px;
+                margin-left: 220px;
                 margin-bottom: 15px;
                 border-radius: 8px;
-                background-color: #BD4747; 
+                background-color: #F58F5A; 
                 border: none;
                 color: white;
                 padding: 5px;
@@ -150,6 +150,7 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
+                border-top:  1.5px white solid;
 
             }
 
@@ -169,7 +170,10 @@
                 width: 20px;
                 height: 20px;
                 float: right;
-                margin:5px;
+                margin:10px;
+            }
+            .timedate{
+                margin-top: 20px;
             }
             .information.a{
                 color: whitesmoke;
@@ -177,9 +181,7 @@
             .status {
                 color: green ;
             }
-            .button1{
-                background: #F58F5A;
-            }
+           
         </style>
     </head>
     <body>
@@ -264,11 +266,11 @@
 
         
         <div class="menubar">
-            <img src="images\man-user.png" alt="">
-            <a href="History"><img src="images\history (3).png" alt="">
+            
+            <a href="History"><img src="images\history (4).png" alt="">
             <a href="StatusAccept"><img src="images\list2.png" alt="">
-            <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
-
+            <a href="UpdateStatus"><img src="images\alarm.png" alt="">
+            <img src="images\home.png" alt="">
         </div>
     </body>
 </html>

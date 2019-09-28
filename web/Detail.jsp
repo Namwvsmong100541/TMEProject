@@ -41,7 +41,7 @@
 
             }
             .logout {
-                background:#f47735;
+                background:#F47735;
                 height: 30px;
                 color: white;
                 width: 100%;
@@ -54,7 +54,7 @@
 
 
             .logout .studentID{
-                background: #f47735;
+                background: #F47735;
                 width: 100px;
                 height: 15px;
                 float: left;
@@ -62,7 +62,8 @@
                 margin-right: 5px;
                 margin-left: 5px;
                 text-align: center;
-                padding: 2px;
+                padding: 0px;
+                color: white;
             }
 
             .out {
@@ -70,7 +71,8 @@
                 font-size: 12px;
                 text-align: center;
                 margin-right: 15px;
-                margin-bottom: 20px;
+
+
             }
             .out button{
                 font-size: 12px;
@@ -81,8 +83,10 @@
                 margin-top: 0px;
                 width: 15px;
             }
-
-
+            .out a{
+                color: white;
+                margin-top: 5px;
+            }
             .header {
                 width: 100%;
                 height: 50px;
@@ -94,6 +98,7 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
+                border-top:  1.5px white solid;
 
             }
 
@@ -143,7 +148,7 @@
 
         <div class="out">
             <img src="images\logout .png" alt="">
-            <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+            <label><a href="Logout"> Log out</a></label> 
 
         </div> 
         <div class="studentID"> <%=session.getAttribute("member_name")%> </div>

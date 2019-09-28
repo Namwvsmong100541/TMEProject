@@ -54,13 +54,13 @@
                 background-color: white;
                 border: 0.25px #707070 solid;
                 border-radius:8px;
-                height: 150px;
+                height: 160px;
             }
             .timedate,.emergency,.location,.status{
                 padding-left: 20px;
             }
             .button1{
-                margin-left: 215px;
+                margin-left: 155px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #D8AC35; 
@@ -69,9 +69,11 @@
                 padding: 5px;
                 padding-left: 10px;
                 padding-right:  10px;
+                float: left;
+                margin-top: 10px;
             }
             .button2{
-                margin-left: 215px;
+                margin-left: 225px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #F58F5A; 
@@ -80,6 +82,9 @@
                 padding: 5px;
                 padding-left: 10px;
                 padding-right:  10px;
+                
+                float: left;
+                margin-top: 10px;
             }
             .menubar {
                 background: whitesmoke;
@@ -160,6 +165,7 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
+                border-top:  1.5px white solid;
 
             }
 
@@ -179,7 +185,10 @@
                 width: 20px;
                 height: 20px;
                 float: right;
-                margin:5px;
+                margin:10px;
+            }
+            .timedate{
+                margin-top: 20px;
             }
             .information.a{
                 color: whitesmoke;
@@ -188,20 +197,11 @@
                 color: #BD4747;
             }
             
-            .button2{
-                margin-left: 220px;
-                float: left;
-                margin-top: 10px;
-               
-            }
-            .button1{
-                float: left;
-                margin-left: 150px;
-                margin-top: 10px;
-            }
+            
             .Confirm{
                 height: 0px;
             }
+           
         </style>
     </head>
     <body>
@@ -290,12 +290,11 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
-            <img src="images\man-user.png" alt="">
+            
             <a href="History"><img src="images\history (3).png" alt="">
             <a href="StatusAccept"><img src="images\list2.png" alt="">
             <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
-           
-
+            <img src="images\home.png" alt="">
         </div>
     </body>
 </html>
