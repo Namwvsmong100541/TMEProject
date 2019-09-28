@@ -59,8 +59,8 @@
                 padding-left: 20px;
             }
             .button1{
-                margin-left: 215px;
-                margin-bottom: 15px;
+                margin-left: 225px;
+                margin-bottom: 10px;
                 border-radius: 8px;
                 background-color: #BD4747; 
                 border: none;
@@ -149,6 +149,7 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
+                border-top:  1.5px white solid;
 
             }
 
@@ -168,7 +169,10 @@
                 width: 20px;
                 height: 20px;
                 float: right;
-                margin:5px;
+                margin:10px;
+            }
+            .timedate{
+                margin-top: 20px;
             }
             .information.a{
                 color: whitesmoke;
@@ -183,7 +187,7 @@
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout"> Log out</a></label> 
+                <a href="Logout"> Log out</a>
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
@@ -253,15 +257,15 @@
 
         <div class="menubar">
             <img src="images\first-aid-kit (2).png" alt="">
-<<<<<<< HEAD
+
             <img src="images\checklist (1)_1.png" alt="">
             <img src="images\turn.png" alt="">
             <img src="images\profile (1).png" alt="">
-=======
+
             <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
             <a href="AddEmergency"><img src="images\turn.png" alt=""></a>
             
->>>>>>> master
+
 
 
 
