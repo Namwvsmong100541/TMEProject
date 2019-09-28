@@ -41,7 +41,8 @@
         <!-- Begin page content -->
         <style>
             body{
-                color: white;
+                background-color: #EFEFF4;
+                color: #707070;
             }
             .studentID{
                 float: left;
@@ -50,21 +51,28 @@
                 padding: 5px 15px 0;
             }
             .page-header{
-                margin: 10px 0 10px;
+                margin: 0px;
+                background-color: #BD4747;
+                width: 100%;
+                color: white;
+                height: 30px;
             }
-            .content .Emer{
+            .content .header{
                 margin-bottom: 15px;
             }
             .studentID{
-                margin-top: 5px;
+                margin-top: 0px;
+                margin-left: 15px;
             }
-            .out button{
-                font-size: 12px;
-                margin-right: 5px;
-                padding: 4px;
+            
+            
+            
+            .out a{
+                color: white;
+                
             }
-            .container .out{
-                margin-right: 1px;
+            .out label{
+                margin-top: 0px;
             }
             .but3 .but1 button{
                 background: orange;
@@ -93,20 +101,99 @@
                 color: black;
                 border: 1px black ;
             }
+            .menubar {
+                background: whitesmoke;
+                width: 100%;
+                height: 45px;
+                border:#CECCCC 1px;
+                border-style: solid; 
+                position: fixed; 
+                bottom:  0px;
+                z-index: 8000;
+
+            }
+            .menubar img{
+                float: right;
+                margin-right: 10px;
+                margin-top: 7px;
+                margin-bottom: 5px;
+                padding-right: 40px;
+                height: 30px;
+
+
+            }
+             .header {
+                width: 100%;
+                height: 50px;
+                background:#BD4747;
+                color: white ;
+                font-size: 10px;
+                text-align: center;
+                padding:5px;
+                position: fixed; 
+                top: 30px;
+                z-index: 8000;
+                border-top:  1px white solid;
+
+            }
+
+            .header h4{
+                text-align: center;
+                font-size: 20px;
+                margin-top: 5px;
+                padding-left: 12px;
+
+            }
+            .container1 .out{
+                margin-right: 10px;
+                margin-top: 5px;
+                z-index: 9999;
+            }
+            .container{
+                margin-top: 40px;
+                height: 460px;
+            }
+            .container .col-3{
+                margin: 5px;
+                float: right;
+                margin-left: 270px;
+                
+            }
+            .but1 button{
+                background: red;
+                margin-left: 120px;
+                margin-bottom: 1000px;
+            }
+            .but1{
+                margin: 0px;
+                width: 0px;
+                height: 0px;
+            }
+            .container2{
+                height: 170px;
+            }
+            .row1{
+                margin-left: 130px;
+                height: 10px;
+            }
+            .col-8{
+                height: 160px;
+            }
+            
         </style>
-    <div class="containerA">
+        
         <div class="page-header">
             <title>Emergency Notify</title>
             <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
             <link rel="stylesheet" href="css\Notify.css">
-            <body background="images\bg1.jpg" align="center"> 
-                <div class="container">
+            <body> 
+                <div class="container1">
                     <div class="out">
                         <img src="images\logout .png" alt=""> 
-                        <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
+                        <label><a href="Logout"> Log out</a></label> 
                     </div> 
                     <div class="studentID">
-                        <h6> Student ID :  <%=session.getAttribute("member_name")%>
+                        <h6><%=session.getAttribute("member_name")%>
                     </div>
                 </div>
         </div>
@@ -120,12 +207,14 @@
         <%
             }
         %>
-
+    <div class="header">
+        <h4>EMERGENCY NOTIFY</h4>
+    </div>
         <div class="container">
-            <div class="Emer">
+            
                 <div class="row">
                     <div class="col-9">
-                        <h4>EMERGENCY NOTIFY</h4>
+                        
                     </div>
                     <div class="col-3">
                         <a href="MyEmergency"><button type="button" class="btn btn-info" ><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
@@ -149,7 +238,7 @@
                                 </span></button></a>
                     </div>
                 </div>
-            </div> 
+            
             <div id="map" class="map">
             </div>
             <br>
@@ -190,28 +279,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-3"> 
-
-                            </div>
-
-                            <div class="col-9">
-                                <div class="but1">
+                        <div class="row1">
+                            
+                                
                                     <br>
-
-                                    &nbsp <button type="submit" name="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
+                                    <button type="submit" name="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
                                         <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
                                         <input name="lat_value"  type="hidden" id="lat_value"  class="form-control" value="0" /> 
                                         <input name="lon_value" type="hidden" id="lon_value" class="form-control" value="0" />          
                                     </button>
-                                </div>
-                            </div>
+                                
+                            
                         </div>
                     </div>
                 </form>
             </div>
             <br>
         </div>
+    </div>
+    <div class="menubar">
+        <img src="images\first-aid-kit (2).png" alt="">
+
+        <a href="MyEmergency"><img src="images\checklist (2).png" alt=""></a>
+        <a href="AddEmergency"><img src="images\bell (1).png" alt=""></a>
+        <img src="images\profile (1).png" alt="">
+
     </div>
 </body>
 <!-- Bootstrap core JavaScript
@@ -223,27 +315,27 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHmKZ96a7T1gvXwMDRzyyGRQgOfFuEet8&callback=initMap" type="text/javascript"></script>
 
 <script>
-    function openImageUpload() {
-        var imageInput = document.getElementById("image-input");
-        imageInput.click()
-    }
-    
-    function previewFile() {
-        var previewBox = document.getElementById("image-preview");
+                                        function openImageUpload() {
+                                            var imageInput = document.getElementById("image-input");
+                                            imageInput.click()
+                                        }
 
-        var file    = document.getElementById("image-input").files[0];
-        var reader  = new FileReader();
+                                        function previewFile() {
+                                            var previewBox = document.getElementById("image-preview");
 
-        reader.onloadend = function () {
-          previewBox.innerHTML = '<img src="' + reader.result + '" class="img-responsive" />'
-        }
+                                            var file = document.getElementById("image-input").files[0];
+                                            var reader = new FileReader();
 
-        if (file) {
-          reader.readAsDataURL(file);
-        } else {
-          previewBox.innerHTML = "";
-        }
-    }
+                                            reader.onloadend = function () {
+                                                previewBox.innerHTML = '<img src="' + reader.result + '" class="img-responsive" />'
+                                            }
+
+                                            if (file) {
+                                                reader.readAsDataURL(file);
+                                            } else {
+                                                previewBox.innerHTML = "";
+                                            }
+                                        }
 </script>
 
 <script>

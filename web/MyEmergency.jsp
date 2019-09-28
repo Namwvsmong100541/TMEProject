@@ -258,12 +258,11 @@
         <div class="menubar">
             <img src="images\first-aid-kit (2).png" alt="">
 
-            <img src="images\checklist (1)_1.png" alt="">
-            <img src="images\turn.png" alt="">
+            <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
+            <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
             <img src="images\profile (1).png" alt="">
 
-            <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
-            <a href="AddEmergency"><img src="images\turn.png" alt=""></a>
+           
             
 
 
