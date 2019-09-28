@@ -222,7 +222,7 @@
         </div>
 
         <div class="header">
-            <h2>Accepted</h2> 
+            <h2>In Progress</h2> 
         </div>
         <div class="container">
             <br>
@@ -233,7 +233,7 @@
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
                     int count = 1;
                     for (Ticket t : tickets) {
-                        if (t.getStatusName().equalsIgnoreCase("Accepted")) {
+                        if (t.getStatusName().equalsIgnoreCase("In progess")) {
             %>
             <div class="event">
 
@@ -294,7 +294,7 @@
             <a href="History"><img src="images\history (3).png" alt="">
             <a href="StatusAccept"><img src="images\list23.png" alt="">
             <a href="UpdateStatus"><img src="images\alarm.png" alt="">
-            <img src="images\home.png" alt="">
+             <a href="Home"><img src="images\home.png" alt="">
         </div>
     </body>
 </html>

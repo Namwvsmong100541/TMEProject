@@ -156,19 +156,19 @@
             <div class="container">
                 <div class="cardhome">
                     <div class="menuhome">
-                        <img src="images\alarm (8).png" alt="">
+                        <a href="UpdateStatus"><img src="images\alarm (8).png" alt=""></a>
                         <h5>Notification</h5>
                     </div> 
                 </div>  
                 <div class="cardhome">
                     <div class="menuhome">
-                        <img src="images\list233.png" alt="">
-                        <h5>Accept</h5>
+                        <a href="StatusAccept"><img src="images\list233.png" alt=""></a>
+                        <h5>In progress</h5>
                     </div> 
                 </div>
                 <div class="cardhome">
                     <div class="menuhome">
-                        <img src="images\history (5).png" alt="">
+                        <a href="History"><img src="images\history (5).png" alt=""></a>
                         <h5>History</h5>
                     </div> 
                 </div>

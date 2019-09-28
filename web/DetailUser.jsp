@@ -41,7 +41,7 @@
 
             }
             .logout {
-                background:#BD4747s;
+                background:#BD4747;
                 height: 30px;
                 color: white;
                 width: 100%;

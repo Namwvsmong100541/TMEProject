@@ -7,7 +7,6 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +16,9 @@ import tme.project.demo.model.Ticket;
 
 /**
  *
- * @author Antonymz
+ * @author LENOVO
  */
-public class Detail extends HttpServlet {
+public class DetailUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +32,7 @@ public class Detail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/Detail.jsp";
+        String target = "/DetailUser.jsp";
         HttpSession session = request.getSession(false);
         Ticket t = Ticket.getTicketById(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("ticket", t);

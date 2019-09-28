@@ -74,7 +74,7 @@ public class Login extends HttpServlet {
                         session.setAttribute("member_position", memberPos);
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
-                        target = "/UpdateStatus.jsp";
+                        target = "/Home.jsp";
                     } catch (SQLException ex) {
                         System.err.println(ex);
                     }

@@ -354,7 +354,7 @@ public class Ticket {
         if (status == 0) {
             return "Waiting for response";
         } else if (status == 1) {
-            return "Accepted";
+            return "In progess";
         } else if (status == 2) {
             return "Completed";
         }

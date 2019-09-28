@@ -82,7 +82,7 @@
                 padding: 5px;
                 padding-left: 10px;
                 padding-right:  10px;
-                
+
                 float: left;
                 margin-top: 10px;
             }
@@ -137,8 +137,8 @@
                 font-size: 12px;
                 text-align: center;
                 margin-right: 15px;
-                
-                
+
+
             }
             .out button{
                 font-size: 12px;
@@ -196,12 +196,12 @@
             .status {
                 color: #BD4747;
             }
-            
-            
+
+
             .Confirm{
                 height: 0px;
             }
-           
+
         </style>
     </head>
     <body>
@@ -258,7 +258,7 @@
                     <div class="status">
                         <h6><b>Status : <%=t.getStatusName()%> </b></h6>
                     </div>
-                    
+
                     <div class="Confirm">
                         <form action="UpdateStatus" method="post" onsubmit="return confirm('You really want to change status?');">  
                             <input type="hidden" name="id" value="<%=t.getId()%>">
@@ -282,7 +282,7 @@
 
             %>
 
-      
+
             <%                        }
             %>
         </div>
@@ -290,12 +290,12 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
-            
+
             <a href="History"><img src="images\history (3).png" alt="">
-            <a href="StatusAccept"><img src="images\list2.png" alt="">
-            <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
-            <img src="images\home.png" alt="">
-        </div>
-    </body>
+                <a href="StatusAccept"><img src="images\list2.png" alt="">
+                    <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
+                        <a href="Home"><img src="images\home.png" alt="">
+       </div>
+</body>
 </html>
 

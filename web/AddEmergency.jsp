@@ -150,7 +150,7 @@
                 z-index: 9999;
             }
             .container{
-                margin-top: 40px;
+                margin-top: 30px;
                 height: 460px;
             }
             .container .col-3{
@@ -179,6 +179,10 @@
             .col-8{
                 height: 160px;
             }
+            .alert.alert-success{
+                margin-bottom: 0px;
+                padding: 5px;
+            }
 
         </style>
 
@@ -200,6 +204,8 @@
     <%
         if (request.getAttribute("code") != null) {
     %>
+    <br>
+    <br>
     <div class="alert alert-<%=(String) request.getAttribute("code")%>">
         <strong><%=(String) request.getAttribute("alert")%></strong> 
         <%=(String) request.getAttribute("message")%>
