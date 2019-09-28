@@ -291,10 +291,10 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
-            <a href="History"><img src="images\history (3).png" alt=""></a>
-            <a href="StatusAccept"><img src="images\list23.png" alt=""></a>
-            <a href="UpdateStatus"><img src="images\alarm.png" alt=""></a>
             <img src="images\man-user.png" alt="">
+            <a href="History"><img src="images\history (3).png" alt="">
+            <a href="StatusAccept"><img src="images\list2.png" alt="">
+            <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
 
         </div>
     </body>

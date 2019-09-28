@@ -264,10 +264,10 @@
 
         
         <div class="menubar">
-            <a href="History"><img src="images\history (4).png" alt="">
-            <a href="StatusAccept"><img src="images\list2.png" alt="">
-            <a href="UpdateStatus"><img src="images\alarm.png" alt="">
             <img src="images\man-user.png" alt="">
+            <a href="History"><img src="images\history (3).png" alt="">
+            <a href="StatusAccept"><img src="images\list2.png" alt="">
+            <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
 
         </div>
     </body>

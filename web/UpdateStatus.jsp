@@ -63,7 +63,7 @@
                 margin-left: 215px;
                 margin-bottom: 15px;
                 border-radius: 8px;
-                background-color: #F58F5A; 
+                background-color: #D8AC35; 
                 border: none;
                 color: white;
                 padding: 5px;
@@ -74,7 +74,7 @@
                 margin-left: 215px;
                 margin-bottom: 15px;
                 border-radius: 8px;
-                background-color: #D8AC35; 
+                background-color: #F58F5A; 
                 border: none;
                 color: white;
                 padding: 5px;
@@ -189,7 +189,7 @@
             }
             
             .button2{
-                margin-left: 250px;
+                margin-left: 220px;
                 float: left;
                 margin-top: 10px;
                
@@ -263,13 +263,13 @@
                         <form action="UpdateStatus" method="post" onsubmit="return confirm('You really want to change status?');">  
                             <input type="hidden" name="id" value="<%=t.getId()%>">
                             <input type="hidden" name="status" value="1">                  
-                            <button class="button2">Accept</button></a>
+                            <button class="button1">Accept</button></a>
                         </form>
                     </div>
 
                     <div class="information">    
                     </div>
-                    <a href = "Detail?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
+                    <a href = "Detail?id=<%=t.getId()%>"><button class="button2">More detail</button></a>
                 </div>
             </div>
 
@@ -290,10 +290,11 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
+            <img src="images\man-user.png" alt="">
             <a href="History"><img src="images\history (3).png" alt="">
             <a href="StatusAccept"><img src="images\list2.png" alt="">
             <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
-            <img src="images\man-user.png" alt="">
+           
 
         </div>
     </body>
