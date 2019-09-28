@@ -41,7 +41,8 @@
         <!-- Begin page content -->
         <style>
             body{
-                color: white;
+                background-color: #EFEFF4;
+                color: #707070;
             }
             .studentID{
                 float: left;
@@ -50,21 +51,28 @@
                 padding: 5px 15px 0;
             }
             .page-header{
-                margin: 10px 0 10px;
+                margin: 0px;
+                background-color: #BD4747;
+                width: 100%;
+                color: white;
+                height: 30px;
             }
-            .content .Emer{
+            .content .header{
                 margin-bottom: 15px;
             }
             .studentID{
-                margin-top: 5px;
+                margin-top: 0px;
+                margin-left: 15px;
             }
-            .out button{
-                font-size: 12px;
-                margin-right: 5px;
-                padding: 4px;
+
+
+
+            .out a{
+                color: white;
+
             }
-            .container .out{
-                margin-right: 1px;
+            .out label{
+                margin-top: 0px;
             }
             .but3 .but1 button{
                 background: orange;
@@ -93,126 +101,210 @@
                 color: black;
                 border: 1px black ;
             }
-        </style>
-    <div class="containerA">
-        <div class="page-header">
-            <title>Emergency Notify</title>
-            <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-            <link rel="stylesheet" href="css\Notify.css">
-            <body background="images\bg1.jpg" align="center"> 
-                <div class="container">
-                    <div class="out">
-                        <img src="images\logout .png" alt=""> 
-                        <label><a href="Logout"><button type="button" class="btn btn-default"> Log out</button></a></label> 
-                    </div> 
-                    <div class="studentID">
-                        <h6> Student ID :  <%=session.getAttribute("member_name")%>
-                    </div>
-                </div>
-        </div>
-        <%
-            if (request.getAttribute("code") != null) {
-        %>
-        <div class="alert alert-<%=(String) request.getAttribute("code")%>">
-            <strong><%=(String) request.getAttribute("alert")%></strong> 
-            <%=(String) request.getAttribute("message")%>
-        </div>
-        <%
+            .menubar {
+                background: whitesmoke;
+                width: 100%;
+                height: 45px;
+                border:#CECCCC 1px;
+                border-style: solid; 
+                position: fixed; 
+                bottom:  0px;
+                z-index: 8000;
+
             }
-        %>
+            .menubar img{
+                float: right;
+                margin-right: 10px;
+                margin-top: 7px;
+                margin-bottom: 5px;
+                padding-right: 40px;
+                height: 30px;
 
-        <div class="container">
-            <div class="Emer">
+
+            }
+            .header {
+                width: 100%;
+                height: 50px;
+                background:#BD4747;
+                color: white ;
+                font-size: 10px;
+                text-align: center;
+                padding:5px;
+                position: fixed; 
+                top: 30px;
+                z-index: 8000;
+                border-top:  1px white solid;
+
+            }
+
+            .header h4{
+                text-align: center;
+                font-size: 20px;
+                margin-top: 5px;
+                padding-left: 12px;
+
+            }
+            .container1 .out{
+                margin-right: 10px;
+                margin-top: 5px;
+                z-index: 9999;
+            }
+            .container{
+                margin-top: 40px;
+                height: 460px;
+            }
+            .container .col-3{
+                margin: 5px;
+                float: right;
+                margin-left: 270px;
+
+            }
+            .but1 button{
+                background: red;
+                margin-left: 120px;
+                margin-bottom: 1000px;
+            }
+            .but1{
+                margin: 0px;
+                width: 0px;
+                height: 0px;
+            }
+            .container2{
+                height: 170px;
+            }
+            .row1{
+                margin-left: 130px;
+                height: 10px;
+            }
+            .col-8{
+                height: 160px;
+            }
+
+        </style>
+
+    <div class="page-header">
+        <title>Emergency Notify</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="css\Notify.css">
+        <body> 
+            <div class="container1">
+                <div class="out">
+                    <img src="images\logout .png" alt=""> 
+                    <label><a href="Logout"> Log out</a></label> 
+                </div> 
+                <div class="studentID">
+                    <h6><%=session.getAttribute("member_name")%>
+                </div>
+            </div>
+    </div>
+    <%
+        if (request.getAttribute("code") != null) {
+    %>
+    <div class="alert alert-<%=(String) request.getAttribute("code")%>">
+        <strong><%=(String) request.getAttribute("alert")%></strong> 
+        <%=(String) request.getAttribute("message")%>
+    </div>
+    <%
+        }
+    %>
+    <div class="header">
+        <h4>EMERGENCY NOTIFY</h4>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-9">
+
+            </div>
+            <div class="col-3">
+                <a href="MyEmergency"><button type="button" class="btn btn-info" ><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        <span class="badge badge-light"> 
+                            <%
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://35.240.139.209/TMEApp", "tmepro", "tme123456");
+                                    Statement st = con.createStatement();
+                                    String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE member_id_fk = " + session.getAttribute("member_id");
+                                    ResultSet rs = st.executeQuery(strQuery);
+                                    String Countrow = "";
+                                    while (rs.next()) {
+                                        Countrow = rs.getString(1);
+                                        out.println(Countrow);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>   
+                        </span></button></a>
+            </div>
+        </div>
+
+        <div id="map" class="map">
+        </div>
+        <br>
+        <div class="container2">
+            <form action="AddEmergency" method="post" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="col-9">
-                        <h4>EMERGENCY NOTIFY</h4>
+
+                </div>
+                <div class="but3">
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="title">SPECIFY EMERGENCY</label>                 
+                            <textarea name="name" class="form-control" id="desc" rows="3" placeholder="Description" required=""></textarea>
+
+                            <label for="desc">PHONE NUMBER</label>
+                            <input name="desc" type="text" class="form-control" id="title" rows="2" placeholder="Phone number" required="">
+                            <br>
+                        </div>
+                        <div class="col-4">
+                            <label for="place">LOCATION</label>
+                            <select id="exampleFaculty" name="place" class="form-control" required="">
+                                <%
+                                    ArrayList<Place> places = Place.getAllPlaces();
+                                    for (Place p : places) {
+                                %>
+                                <option value="<%= p.getPlace_name()%>"><%= p.getPlace_name()%></option>
+                                <%
+                                    }
+                                %>
+                            </select> 
+                            <br>
+                            &nbsp&nbsp&nbsp
+                            <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                                <button onClick="openImageUpload()" id="upload-image-button" type="button" class="btn btn-secondary btn-lg" ><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
+                                <input onChange="previewFile()" id="image-input" name="image" type="file" accept="image/*" style="visibility: hidden; width: 0; height: 0;">
+                            </div>
+                            <div style="width: 60px; height: 40px; display: inline-block; vertical-align: top;" id="image-preview">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-3">
-                        <a href="MyEmergency"><button type="button" class="btn btn-info" ><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                                <span class="badge badge-light"> 
-                                    <%
-                                        try {
-                                            Class.forName("com.mysql.jdbc.Driver").newInstance();
-                                            Connection con = DriverManager.getConnection("jdbc:mysql://35.240.139.209/TMEApp", "tmepro", "tme123456");
-                                            Statement st = con.createStatement();
-                                            String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE member_id_fk = " + session.getAttribute("member_id");
-                                            ResultSet rs = st.executeQuery(strQuery);
-                                            String Countrow = "";
-                                            while (rs.next()) {
-                                                Countrow = rs.getString(1);
-                                                out.println(Countrow);
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    %>   
-                                </span></button></a>
+                    <div class="row1">
+
+
+                        <br>
+                        <button type="submit" name="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
+                            <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
+                            <input name="lat_value"  type="hidden" id="lat_value"  class="form-control" value="0" /> 
+                            <input name="lon_value" type="hidden" id="lon_value" class="form-control" value="0" />          
+                        </button>
+
+
                     </div>
                 </div>
-            </div> 
-            <div id="map" class="map">
-            </div>
-            <br>
-            <div class="container2">
-                <form action="AddEmergency" method="post" enctype="multipart/form-data">
-                    <div class="row">
-
-                    </div>
-                    <div class="but3">
-                        <div class="row">
-                            <div class="col-8">
-                                <label for="title">SPECIFY EMERGENCY</label>                 
-                                <textarea name="name" class="form-control" id="desc" rows="3" placeholder="Description" required=""></textarea>
-
-                                <label for="desc">PHONE NUMBER</label>
-                                <input name="desc" type="text" class="form-control" id="title" rows="2" placeholder="Phone number" required="">
-                                <br>
-                            </div>
-                            <div class="col-4">
-                                <label for="place">LOCATION</label>
-                                <select id="exampleFaculty" name="place" class="form-control" required="">
-                                    <%
-                                        ArrayList<Place> places = Place.getAllPlaces();
-                                        for (Place p : places) {
-                                    %>
-                                    <option value="<%= p.getPlace_name()%>"><%= p.getPlace_name()%></option>
-                                    <%
-                                        }
-                                    %>
-                                </select> 
-                                <br>
-                                &nbsp&nbsp&nbsp
-                                <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                                    <button onClick="openImageUpload()" id="upload-image-button" type="button" class="btn btn-secondary btn-lg" ><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
-                                    <input onChange="previewFile()" id="image-input" name="image" type="file" accept="image/*" style="visibility: hidden; width: 0; height: 0;">
-                                </div>
-                                <div style="width: 60px; height: 40px; display: inline-block; vertical-align: top;" id="image-preview">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3"> 
-
-                            </div>
-
-                            <div class="col-9">
-                                <div class="but1">
-                                    <br>
-
-                                    &nbsp <button type="submit" name="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
-                                        <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
-                                        <input name="lat_value"  type="hidden" id="lat_value"  class="form-control" value="0" /> 
-                                        <input name="lon_value" type="hidden" id="lon_value" class="form-control" value="0" />          
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <br>
+            </form>
         </div>
+        <br>
     </div>
+</div>
+<div class="menubar">
+    <img src="images\first-aid-kit (2).png" alt="">
+
+    <a href="MyEmergency"><img src="images\checklist (2).png" alt=""></a>
+    <a href="AddEmergency"><img src="images\bell (1).png" alt=""></a>
+    <img src="images\profile (1).png" alt="">
+
+</div>
 </body>
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -223,29 +315,24 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHmKZ96a7T1gvXwMDRzyyGRQgOfFuEet8&callback=initMap" type="text/javascript"></script>
 
 <script>
-    function openImageUpload() {
-        var imageInput = document.getElementById("image-input");
-        imageInput.click();
-    }
-    
-    function previewFile() {
-        var previewBox = document.getElementById("image-preview");
-
-        var file    = document.getElementById("image-input").files[0];
-        var reader  = new FileReader();
-
-        reader.onloadend = function () {
-          previewBox.innerHTML = '<img src="' + reader.result + '" class="img-responsive" />';
-        };
-
-        if (file) {
-          reader.readAsDataURL(file);
-        } else {
-          previewBox.innerHTML = "";
-        }
-    }
+                                    function openImageUpload() {
+                                        var imageInput = document.getElementById("image-input");
+                                        imageInput.click()
+                                    }
+                                    function previewFile() {
+                                        var previewBox = document.getElementById("image-preview");
+                                        var file = document.getElementById("image-input").files[0];
+                                        var reader = new FileReader();
+                                        reader.onloadend = function () {
+                                            previewBox.innerHTML = '<img src="' + reader.result + '" class="img-responsive" />'
+                                        }
+                                        if (file) {
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            previewBox.innerHTML = "";
+                                        }
+                                    }
 </script>
-
 <script>
     var lat, lng = 0.1;
     var marker, map = null;
