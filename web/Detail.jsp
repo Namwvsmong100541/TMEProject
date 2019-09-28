@@ -127,13 +127,10 @@
             .panel-heading{
                 height: 50px;
             }
-            
-<<<<<<< HEAD
-=======
+           
             .mb-1 {
                 margin-bottom: 0.5em;
             }
->>>>>>> master
         </style>
 
     </head>
