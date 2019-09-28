@@ -154,8 +154,8 @@
             </div>
             <br>
             <div class="container2">
-                <form action="AddEmergency" method="post">
-                    <div class="row">                       
+                <form action="AddEmergency" method="post" enctype="multipart/form-data">
+                    <div class="row">
 
                     </div>
                     <div class="but3">
@@ -183,10 +183,10 @@
                                 <br>
                                 &nbsp&nbsp&nbsp
                                 <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary btn-lg" ><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-outline-warning"><span class="glyphicon glyphicon-record" aria-hidden="true"></span></button>  
-                                    </div>
+                                    <button onClick="openImageUpload()" id="upload-image-button" type="button" class="btn btn-secondary btn-lg" ><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
+                                    <input onChange="previewFile()" id="image-input" name="image" type="file" accept="image/*" style="visibility: hidden; width: 0; height: 0;">
+                                </div>
+                                <div style="width: 60px; height: 40px; display: inline-block; vertical-align: top;" id="image-preview">
                                 </div>
                             </div>
                         </div>
@@ -221,6 +221,30 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHmKZ96a7T1gvXwMDRzyyGRQgOfFuEet8&callback=initMap" type="text/javascript"></script>
+
+<script>
+    function openImageUpload() {
+        var imageInput = document.getElementById("image-input");
+        imageInput.click()
+    }
+    
+    function previewFile() {
+        var previewBox = document.getElementById("image-preview");
+
+        var file    = document.getElementById("image-input").files[0];
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+          previewBox.innerHTML = '<img src="' + reader.result + '" class="img-responsive" />'
+        }
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          previewBox.innerHTML = "";
+        }
+    }
+</script>
 
 <script>
     var lat, lng = 0.1;

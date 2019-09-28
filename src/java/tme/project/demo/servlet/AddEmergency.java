@@ -5,23 +5,42 @@
  */
 package tme.project.demo.servlet;
 
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.util.IOUtils;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import tme.project.demo.model.Ticket;
+import tme.project.demo.service.S3client;
 
 /**
  *
  *
  */
+@MultipartConfig
 public class AddEmergency extends HttpServlet {
 
+    private ObjectMetadata getMetadata(Part filePart) throws IOException {
+        InputStream is = filePart.getInputStream();
+        OutputStream ops = null;
+        byte[] contentByte = IOUtils.toByteArray(is);
+        Long contentLength = Long.valueOf(contentByte.length);
+
+        ObjectMetadata metadata = new ObjectMetadata();
+        metadata.setContentLength(contentLength);
+        return metadata;
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -49,8 +68,17 @@ public class AddEmergency extends HttpServlet {
                 int id = Integer.parseInt((String)session.getAttribute("member_id"));
                 String lat = request.getParameter("lat_value");
                 String lon = request.getParameter("lon_value");
-                Ticket t = new Ticket(name, desc, place,id,lat,lon);
-                 
+
+                Part filePart = request.getPart("image");
+                String fileName = System.currentTimeMillis() + "-" + filePart.getSubmittedFileName();
+                ObjectMetadata metadata = this.getMetadata(filePart);
+                InputStream fileContent = filePart.getInputStream();
+
+                S3client s3client = new S3client();
+                String url = s3client.upload(fileName, fileContent, metadata);
+
+                Ticket t = new Ticket(name, desc, place, id, lat, lon, url);
+                
                 if (t.addTicket()) {
                     code = "success";
                     alert = "Success!";
@@ -62,8 +90,8 @@ public class AddEmergency extends HttpServlet {
                     message = "เกิดข้อผิดพลาด";
                 }
                 } catch (Exception ex) {
-                    System.out.println("AddTicket.ex: "+ex);
-                    
+                    System.out.println("AddTicket.ex: "+ex.getMessage());
+                    ex.printStackTrace();
                 }
             } else {
                 code = "Error";
