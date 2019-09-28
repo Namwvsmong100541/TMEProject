@@ -251,20 +251,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <div class="menubar">
-            <img src="images\first-aid-kit (2).png" alt="">
-<<<<<<< HEAD
-            <img src="images\checklist (1)_1.png" alt="">
-            <img src="images\turn.png" alt="">
+        <div class="menubar">           
             <img src="images\profile (1).png" alt="">
-=======
+            <img src="images\first-aid-kit (2).png" alt="">
             <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
             <a href="AddEmergency"><img src="images\turn.png" alt=""></a>
-            
->>>>>>> master
-
-
-
         </div>
     </body>
 </html>

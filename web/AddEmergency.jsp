@@ -225,7 +225,7 @@
 <script>
     function openImageUpload() {
         var imageInput = document.getElementById("image-input");
-        imageInput.click()
+        imageInput.click();
     }
     
     function previewFile() {
@@ -235,8 +235,8 @@
         var reader  = new FileReader();
 
         reader.onloadend = function () {
-          previewBox.innerHTML = '<img src="' + reader.result + '" class="img-responsive" />'
-        }
+          previewBox.innerHTML = '<img src="' + reader.result + '" class="img-responsive" />';
+        };
 
         if (file) {
           reader.readAsDataURL(file);
