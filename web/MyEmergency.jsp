@@ -36,6 +36,7 @@
             }
             html,body{
                 background-color:#EFEFF4;
+                font-family: 'Montserrat', sans-serif ;
             }
 
             .block2 a{
@@ -52,14 +53,14 @@
             }
             .eventarea{
                 background-color: white;
-                border: 0.25px #707070 solid;
+                border: 0.20px #707070 solid;
                 border-radius:8px;
             }
             .timedate,.emergency,.location{
                 padding-left: 20px;
             }
             .button1{
-                margin-left: 225px;
+                margin-left: 200px;
                 margin-bottom: 10px;
                 border-radius: 8px;
                 background-color: #BD4747; 

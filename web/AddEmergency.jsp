@@ -43,20 +43,23 @@
             body{
                 background-color: #EFEFF4;
                 color: #707070;
+                height: 550px;
             }
-            .studentID{
-                float: left;
-            }
+           
             .containerA{
                 padding: 5px 15px 0;
             }
             .page-header{
-                margin: 0px;
-                background-color: #BD4747;
-                width: 100%;
-                color: white;
+                background:#bd4747;
                 height: 30px;
+                color: white;
+                width: 100%;
+                padding: 5px;
+                position: fixed; 
+                top: 0;
                 z-index: 9999;
+                margin-bottom: 50px;
+                margin-top: 0px;
             }
             .content .header{
                 margin-bottom: 15px;
@@ -64,9 +67,14 @@
             .studentID{
                 margin-top: 0px;
                 margin-left: 15px;
+                
+                float: left;
+                height: 21px;
+                
             }
-
-
+            .studentID h6{
+                margin-top: 5px;
+            }
 
             .out a{
                 color: white;
@@ -139,19 +147,19 @@
             }
 
             .header h4{
-                text-align: center;
+                margin-left: 30px;
                 font-size: 20px;
-                margin-top: 5px;
+                margin-top: 10px;
                 padding-left: 12px;
 
             }
             .container1 .out{
                 margin-right: 10px;
-                margin-top: 5px;
+                margin-top: 0px;
                 z-index: 9999;
             }
             .container{
-                margin-top: 30px;
+                margin-top: 80px;
                 height: 460px;
                 width: 80%;
             }
@@ -173,14 +181,14 @@
                 height: 0px;
             }
             .container2{
-                height: 170px;
+                height: 150px;
             }
             .row1{
                 margin-left: 130px;
-                height: 10px;
+                height: 0px;
             }
             .col-8{
-                height: 160px;
+                height: 150px;
             }
             .alert.alert-success{
                 margin-bottom: 0px;
@@ -189,6 +197,15 @@
             .btn-warning{
                 background-color: #EFEFF4;
                 border: #EFEFF4;
+            }
+            .col-8 textArea{
+                height: 50px;
+            }
+            .col-4{
+                height: 140px;
+            }
+            .but3{
+                height: 150px;
             }
 
         </style>
@@ -283,7 +300,7 @@
                                 %>
                             </select> 
                             <br>
-                            &nbsp&nbsp&nbsp
+                            
                             <div class="btn btn-warning" role="group" aria-label="Basic example">
                                 <button onClick="openImageUpload()" id="upload-image-button" type="button" class="btn btn-secondary btn-lg" ><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
                                 <input onChange="previewFile()" id="image-input" name="image" type="file" accept="image/*" style="visibility: hidden; width: 0; height: 0;">
