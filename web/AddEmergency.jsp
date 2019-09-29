@@ -56,6 +56,7 @@
                 width: 100%;
                 color: white;
                 height: 30px;
+                z-index: 9999;
             }
             .content .header{
                 margin-bottom: 15px;
@@ -152,11 +153,13 @@
             .container{
                 margin-top: 30px;
                 height: 460px;
+                width: 80%;
             }
             .container .col-3{
                 margin: 5px;
                 float: right;
-                margin-left: 270px;
+                margin-left: 75%;
+                margin-top: 10px;
 
             }
             .but1 button{
@@ -182,6 +185,10 @@
             .alert.alert-success{
                 margin-bottom: 0px;
                 padding: 5px;
+            }
+            .btn-warning{
+                background-color: #EFEFF4;
+                border: #EFEFF4;
             }
 
         </style>
@@ -277,7 +284,7 @@
                             </select> 
                             <br>
                             &nbsp&nbsp&nbsp
-                            <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                            <div class="btn btn-warning" role="group" aria-label="Basic example">
                                 <button onClick="openImageUpload()" id="upload-image-button" type="button" class="btn btn-secondary btn-lg" ><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
                                 <input onChange="previewFile()" id="image-input" name="image" type="file" accept="image/*" style="visibility: hidden; width: 0; height: 0;">
                             </div>
