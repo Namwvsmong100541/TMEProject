@@ -227,7 +227,7 @@ public class Ticket {
         try {
             Connection conn = ConnectionBuilder.getConnection();
             Statement stmt = conn.createStatement();
-            String sqlCmd = "SELECT * FROM `Emergency_Notify` WHERE member_id_fk = "+userId;
+            String sqlCmd = "SELECT * FROM `Emergency_Notify` WHERE member_id_fk = "+userId+" ORDER BY Event_id DESC";
             ResultSet rs = stmt.executeQuery(sqlCmd);
             while (rs.next()) {
                 t = new Ticket();

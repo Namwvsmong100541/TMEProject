@@ -52,6 +52,14 @@
         <servlet-name>DetailUser</servlet-name>
         <servlet-class>tme.project.demo.servlet.DetailUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FirstAid</servlet-name>
+        <servlet-class>tme.project.demo.servlet.FirstAid</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>tme.project.demo.servlet.Profile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateStatus</servlet-name>
         <url-pattern>/UpdateStatus</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>DetailUser</servlet-name>
         <url-pattern>/DetailUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FirstAid</servlet-name>
+        <url-pattern>/FirstAid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/Profile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

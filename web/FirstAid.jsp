@@ -1,3 +1,9 @@
+<%-- 
+    Document   : FirstAid
+    Created on : Oct 27, 2019, 4:36:23 PM
+    Author     : LENOVO
+--%>
+
 
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
@@ -100,7 +106,7 @@
                 position: fixed; 
                 top: 0;
                 z-index: 9999;
-                  
+
             }
 
 
@@ -134,7 +140,7 @@
             }
             .out a{
                 color: white;
-            
+
             }
 
 
@@ -198,7 +204,7 @@
         </div>
 
         <div class="header">
-            <h2>Response</h2> 
+            <h2>First Aid</h2> 
         </div>
         <div class="container">
             <br>
@@ -215,54 +221,37 @@
 
                 <div class="eventarea">
 
-                    <div class="notify">
-                        <img src="images\alarm (1).png" alt="">
 
-                    </div>
-
-                    <div class="timedate">
-
-                        <h6>Date : Time : <%=t.getDateTime()%> </h6>
-                    </div>
-
-                    <div class="emergency">
-                        <h6>Emergency : <%= t.getName()%> </h6>
-                    </div>
-                    <div class="location">
-                        <h6>Location : <%= t.getPlace()%> </h6>
-                    </div>
-                    <div class="information"></div>
-                    <a href = "DetailUser?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
                 </div>
+
+
+                <%
+                    }
+                } else {
+
+
+                %>
+
+                <tr>
+                    <td> </td>
+                    <td><a href = "" target="_blank"> </a></td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <%                        }
+                %>
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
 
+            <div class="menubar">
+                <a href="FirstAid"><img src="images\first-aid-kit (2).png" alt=""></a>
+                <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
+                <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
+                <a href="Profile"><img src="images\profile (1).png" alt=""></a>
 
-            <%
-                }
-            } else {
-
-
-            %>
-
-            <tr>
-                <td> </td>
-                <td><a href = "" target="_blank"> </a></td>
-                <td> </td>
-                <td> </td>
-            </tr>
-            <%                        }
-            %>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-
-        <div class="menubar">
-            <a href="FirstAid"><img src="images\first-aid-kit (2).png" alt=""></a>
-            <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
-            <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
-            <a href="Profile"><img src="images\profile (1).png" alt=""></a>
-        
-        </div>
+            </div>
     </body>
 </html>
+
 

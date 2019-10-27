@@ -59,7 +59,7 @@
                 padding-left: 20px;
             }
             .button1{
-                margin-left: 220px;
+                margin-left: 190px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #F58F5A; 
@@ -185,6 +185,7 @@
         </style>
     </head>
     <body>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <!-- Begin page content -->
         <div class="logout">
 

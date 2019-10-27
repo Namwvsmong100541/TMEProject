@@ -7,19 +7,16 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import tme.project.demo.model.Ticket;
 
 /**
  *
- * @author Antonymz
+ * @author LENOVO
  */
-public class MyEmergency extends HttpServlet {
+public class FirstAid extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,38 +30,12 @@ public class MyEmergency extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/MyEmergency.jsp";
-        String code = null;
-        String alert = null;
-        String message = null;
-        HttpSession session = request.getSession(false);
-        String position = (String) session.getAttribute("member_position");
-        int userId = Integer.parseInt((String) session.getAttribute("member_id"));
+        String target = "/FirstAid.jsp";
         
-        if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("1")||position.equals("3")) {
-                    target = "/UpdateStatus.jsp";        
-                }
-                List<Ticket> tickets = Ticket.getMyTickets(userId);
-                request.setAttribute("tickets", tickets);
-            } else {
-                code = "Error";
-                alert = "Error!";
-                message = "Re-Login Pleased.";
-                target = "/Login.jsp";
-            }
-        } else {
-            code = "Error";
-            alert = "Error!";
-            message = "Re-Login Pleased.";
-        }
-        request.setAttribute("code", code);
-        request.setAttribute("alert", alert);
-        request.setAttribute("message", message);
+
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
