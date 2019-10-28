@@ -6,11 +6,11 @@
 package tme.project.demo.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tme.project.demo.datasource.ConnectionBuilder;
@@ -111,5 +111,22 @@ public class Place {
             Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
+    }
+    public boolean addLocation() {
+        if (place_name!=null) {
+            try {
+                Connection conn = ConnectionBuilder.getConnection();
+                String sqlCmd = "INSERT INTO `Place`(place_name) VALUES(?)";
+                PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+                pstm.setString(1, place_name);
+                int result = pstm.executeUpdate();
+                if (result != 0) {
+                    return true;
+                }
+            } catch (SQLException ex) {
+                System.err.println(ex);
+            }
+        }
+        return false;
     }
 }

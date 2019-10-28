@@ -7,10 +7,13 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import tme.project.demo.model.Firstaid;
+import tme.project.demo.model.Ticket;
 
 /**
  *
@@ -31,7 +34,9 @@ public class FirstAid extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/FirstAid.jsp";
-        
+
+        List<Firstaid> firstAid = Firstaid.getAllFirstAid();
+        request.setAttribute("firstAid", firstAid);
 
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }

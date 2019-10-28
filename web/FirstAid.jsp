@@ -7,7 +7,7 @@
 
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
-<%@page import="tme.project.demo.model.Ticket"%>
+<%@page import="tme.project.demo.model.Firstaid"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -212,16 +212,22 @@
             <br>
 
             <%
-                if (request.getAttribute("tickets") != null) {
-                    List<Ticket> tickets = (List) request.getAttribute("tickets");
-                    int count = 1;
-                    for (Ticket t : tickets) {
+                if (request.getAttribute("firstAid") != null) {
+                    List<Firstaid> firstAid = (List) request.getAttribute("firstAid");
+                    for (Firstaid f : firstAid) {
             %>
             <div class="event">
 
                 <div class="eventarea">
+                    <div class="notify">
+                        <img src="images\alarm (1).png" alt="">
+                    </div>
 
-
+                    <div class="emergency">
+                        <h6>Emergency : <%= f.getName()%> </h6>
+                    </div>
+                    <div class="information"></div>
+                        <h6>Description : <%= f.getDesc()%> </h6>
                 </div>
 
 
@@ -241,6 +247,7 @@
                 <%                        }
                 %>
             </div>
+        </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script src="js/bootstrap.min.js"></script>
 
