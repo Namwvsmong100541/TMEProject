@@ -1,13 +1,8 @@
-<%-- 
-    Document   : FirstAid
-    Created on : Oct 27, 2019, 4:36:23 PM
-    Author     : LENOVO
---%>
 
-
+<%@page import="tme.project.demo.model.Firstaid"%>
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
-<%@page import="tme.project.demo.model.Firstaid"%>
+<%@page import="tme.project.demo.model.Ticket"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -77,7 +72,7 @@
                 padding-right:  10px;
             }
             .menubar {
-                background: whitesmoke;
+                background: white;
                 width: 100%;
                 height: 45px;
                 border:#CECCCC 1px;
@@ -120,6 +115,7 @@
                 margin-left: 5px;
                 text-align: center;
                 padding: 2px;
+                font-size: 12px;
             }
 
             .out {
@@ -156,8 +152,8 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1.5px white solid;
-
+                border-top:  1px white solid;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             }
 
             .header h2{
@@ -175,8 +171,9 @@
             .notify img{
                 width: 20px;
                 height: 20px;
-                float: right;
+                float: left;
                 margin:10px;
+                margin-top: 5px;
             }
             .timedate{
                 margin-top: 20px;
@@ -184,9 +181,14 @@
             .information.a{
                 color: whitesmoke;
             }
+            .container h5{
+                margin-left: 10px;
+                margin-bottom: 15px;
+            }
 
         </style>
     </head>
+
     <body>
         <!-- Begin page content -->
         <div class="logout">
@@ -211,6 +213,9 @@
             <br>
             <br>
 
+            <h5><b>คู่มือปฐมพยาบาลเบื้องต้น</b></h5>
+            
+
             <%
                 if (request.getAttribute("firstAid") != null) {
                     List<Firstaid> firstAid = (List) request.getAttribute("firstAid");
@@ -220,45 +225,44 @@
 
                 <div class="eventarea">
                     <div class="notify">
-                        <img src="images\alarm (1).png" alt="">
+
+                        <img src="images\doctor-bag.png" alt="">
                     </div>
 
                     <div class="emergency">
-                        <h6>Emergency : <%= f.getName()%> </h6>
+                        <h6><%= f.getDesc()%> </h6>
                     </div>
-                    <div class="information"></div>
-                        <h6>Description : <%= f.getDesc()%> </h6>
+
                 </div>
-
-
-                <%
-                    }
-                } else {
-
-
-                %>
-
-                <tr>
-                    <td> </td>
-                    <td><a href = "" target="_blank"> </a></td>
-                    <td> </td>
-                    <td> </td>
-                </tr>
-                <%                        }
-                %>
             </div>
+
+
+        <%
+            }
+        } else {
+
+
+        %>
+
+    <tr>
+        <td> </td>
+        <td><a href = "" target="_blank"> </a></td>
+        <td> </td>
+        <td> </td>
+    </tr>
+    <%                        }
+    %>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<div class="menubar">
+            <a href="FirstAid"><img src="images\first-aid-kit_1.png" alt=""></a>
+            <a href="MyEmergency"><img src="images\checklist (2).png" alt=""></a>
+            <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
+            <a href="Profile"><img src="images\avatar (2).png"alt=""></a>
+
         </div>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-
-            <div class="menubar">
-                <a href="FirstAid"><img src="images\first-aid-kit (2).png" alt=""></a>
-                <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
-                <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
-                <a href="Profile"><img src="images\profile (1).png" alt=""></a>
-
-            </div>
-    </body>
+</body>
 </html>
-
 

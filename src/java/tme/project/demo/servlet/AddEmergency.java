@@ -68,6 +68,7 @@ public class AddEmergency extends HttpServlet {
                 int id = Integer.parseInt((String)session.getAttribute("member_id"));
                 String lat = request.getParameter("lat_value");
                 String lon = request.getParameter("lon_value");
+                String catagory = request.getParameter("catagory");
 
                 Part filePart = request.getPart("image");
                 String fileName = System.currentTimeMillis() + "-" + filePart.getSubmittedFileName();
@@ -77,7 +78,7 @@ public class AddEmergency extends HttpServlet {
                 S3client s3client = new S3client();
                 String url = s3client.upload(fileName, fileContent, metadata);
 
-                Ticket t = new Ticket(name, desc, place, id, lat, lon, url);
+                Ticket t = new Ticket(name, desc, place, id, lat, lon, catagory, url);
                 
                 if (t.addTicket()) {
                     code = "success";

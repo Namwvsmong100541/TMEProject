@@ -71,7 +71,7 @@
                 padding-right:  10px;
             }
             .menubar {
-                background: whitesmoke;
+                background: white;
                 width: 100%;
                 height: 45px;
                 border:#CECCCC 1px;
@@ -114,6 +114,7 @@
                 margin-left: 5px;
                 text-align: center;
                 padding: 2px;
+                font-size: 12px;
             }
 
             .out {
@@ -151,6 +152,7 @@
                 top: 30px;
                 z-index: 8000;
                 border-top:  1.5px white solid;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
             }
 
@@ -178,9 +180,11 @@
             .information.a{
                 color: whitesmoke;
             }
+           
 
         </style>
     </head>
+    
     <body>
         <!-- Begin page content -->
         <div class="logout">
@@ -196,7 +200,7 @@
 
 
         </div>
-
+    
         <div class="header">
             <h2>Response</h2> 
         </div>
@@ -260,7 +264,7 @@
             <a href="FirstAid"><img src="images\first-aid-kit (2).png" alt=""></a>
             <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
             <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
-            <a href="Profile"><img src="images\profile (1).png" alt=""></a>
+            <a href="Profile"><img src="images\avatar (2).png" alt=""></a>
         
         </div>
     </body>

@@ -25,7 +25,7 @@ import java.io.InputStream;
  */
 public class S3client {
     private static String bucketName = "tellmeemergency";
-    private final static AWSCredentials awsCreds = new BasicAWSCredentials("AKIAZ5HT7LDXD5UTLHEO", "UAcaaoE+cmhD/dsiLFr8kqYsU/wsZhmY9460PWro");
+    private final static AWSCredentials awsCreds = new BasicAWSCredentials("AKIAZ5HT7LDXBIFSM3PZ", "c5VQ7neIElyuydPaSdt3EebcRdk4kpce462XCAXM");
     
     public String upload(String keyname, InputStream in, ObjectMetadata om){
         AmazonS3 s3Client = AmazonS3ClientBuilder

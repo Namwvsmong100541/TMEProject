@@ -70,7 +70,7 @@
                 padding-right:  10px;
             }
             .menubar {
-                background: whitesmoke;
+                background: white;
                 width: 100%;
                 height: 45px;
                 border:#CECCCC 1px;
@@ -99,7 +99,7 @@
                 position: fixed; 
                 top: 0;
                 z-index: 9999;
-
+                  
             }
 
 
@@ -113,6 +113,7 @@
                 margin-left: 5px;
                 text-align: center;
                 padding: 2px;
+                font-size: 12px;
             }
 
             .out {
@@ -133,7 +134,7 @@
             }
             .out a{
                 color: white;
-
+            
             }
 
 
@@ -149,8 +150,8 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1.5px white solid;
-
+                border-top:  1px white solid;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             }
 
             .header h2{
@@ -196,7 +197,7 @@
 
         </div>
 
-        <div class="header">
+        <div  class="header">
             <h2>Profile</h2> 
         </div>
         <div class="container">
@@ -231,9 +232,9 @@
 
         <div class="menubar">
             <a href="FirstAid"><img src="images\first-aid-kit (2).png" alt=""></a>
-            <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
+            <a href="MyEmergency"><img src="images\checklist (2).png"alt=""></a>
             <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
-            <a href="Profile"><img src="images\profile (1).png" alt=""></a>
+            <a href="Profile"><img src="images\avatar (3).png" alt=""></a>
 
         </div>
     </body>
