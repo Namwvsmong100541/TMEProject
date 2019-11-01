@@ -60,6 +60,10 @@
         <servlet-name>Profile</servlet-name>
         <servlet-class>tme.project.demo.servlet.Profile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InfoFirstaid</servlet-name>
+        <servlet-class>tme.project.demo.servlet.InfoFirstaid</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateStatus</servlet-name>
         <url-pattern>/UpdateStatus</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>Profile</servlet-name>
         <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InfoFirstaid</servlet-name>
+        <url-pattern>/InfoFirstaid</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

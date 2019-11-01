@@ -223,17 +223,17 @@
             %>
             <div class="event">
 
-                <div class="eventarea">
+                <a href = "InfoFirstaid?<%=f.getFirstaid_id()%>" alt=""><div class="eventarea">
                     <div class="notify">
 
                         <img src="images\doctor-bag.png" alt="">
                     </div>
 
                     <div class="emergency">
-                        <h6><%= f.getDesc()%> </h6>
+                        <h4><%=f.getName()%></h4>
                     </div>
 
-                </div>
+                    </div></a>
             </div>
 
 
@@ -256,6 +256,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
+
+</body>
 <div class="menubar">
             <a href="FirstAid"><img src="images\first-aid-kit_1.png" alt=""></a>
             <a href="MyEmergency"><img src="images\checklist (2).png" alt=""></a>
@@ -263,6 +265,5 @@
             <a href="Profile"><img src="images\avatar (2).png"alt=""></a>
 
         </div>
-</body>
 </html>
 

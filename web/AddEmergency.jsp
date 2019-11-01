@@ -311,6 +311,7 @@
                             <label for="title">SPECIFY EMERGENCY</label> 
                             
                                 <select id="exampleFaculty" name="catagory" class="form-control" required="">
+                                    <option> Choose category </option>
                                     <%
                                         ArrayList<Catagory> catagories = Catagory.getAllCatagory();
                                         for (Catagory c : catagories) {
@@ -331,6 +332,7 @@
                         <div class="col-4">
                             <label for="place">LOCATION</label>
                             <select id="exampleFaculty" name="place" class="form-control" required="">
+                                <option> Where? </option>
                                 <%
                                     ArrayList<Place> places = Place.getAllPlaces();
                                     for (Place p : places) {
