@@ -48,10 +48,12 @@ public class Register extends HttpServlet {
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
                 String rePassword = request.getParameter("repassword");
+                String position = request.getParameter("position");
                 if (password!=null) {
 //                    password = PasswordUtil.getKeepPassword(password);
-                    Member mb = new Member(name, surname, gender, faculty, email, username, password, 0);
+                    Member mb = new Member(name, surname, gender, faculty, email, username, password, position );
                     if (mb.addMember()) {
+                        System.out.println(position);
                      //   EmailUtil.sendRegister(mb);
                         code = "success";
                         alert = "Complete!";

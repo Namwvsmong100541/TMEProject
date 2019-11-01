@@ -76,7 +76,7 @@
                                 <ul class="nav navbar-nav">
 
                                     <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
-                                    <li><a href="ListLocation"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> List all location</a></li>
+                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Transfer Page</a></li>
                                     <li class="active"><a href="Register"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Manage Officer</a></li>
                                     <li><a href="AdminLogout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log out</a></li>
                                 </ul>

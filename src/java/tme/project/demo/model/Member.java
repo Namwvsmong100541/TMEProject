@@ -29,12 +29,12 @@ public class Member {
     private String email;
     private String username;
     private String password;
-    private int position = 0;
+    private String position ;
 
     public Member() {
     }
 
-    public Member(String name, String surname,String gender, String faculty, String email, String username, String password, int position) {
+    public Member(String name, String surname,String gender, String faculty, String email, String username, String password, String position) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
@@ -42,10 +42,10 @@ public class Member {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.position = 0;
+        this.position = position;
     }
 
-    public Member(int id, String name, String surname,String gender, String faculty, String email, String username, String password, int position) {
+    public Member(int id, String name, String surname,String gender, String faculty, String email, String username, String password, String position) {
         this.id = id;
         this.name = name;
         this.surname = surname; 
@@ -54,7 +54,7 @@ public class Member {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.position = 0;
+        this.position = position;
     }
 
     public int getId() {
@@ -129,11 +129,11 @@ public class Member {
         this.password = password;
     }
 
-    public int getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 
@@ -150,7 +150,7 @@ public class Member {
             pstm.setString(5, email);
             pstm.setString(6, username);
             pstm.setString(7, password);
-            pstm.setInt(8, position);
+            pstm.setString(8, position);
             int result = pstm.executeUpdate();
             if (result != 0) {
                 return true;
@@ -172,7 +172,7 @@ public class Member {
             m.setPassword(rs.getString("member_password"));
             m.setStdId(rs.getLong("member_stdid"));
             m.setGender(rs.getString("member_gender"));
-            m.setPosition(rs.getInt("member_position"));
+            m.setPosition(rs.getString("member_position"));
         } catch (SQLException ex) {
             Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
         }

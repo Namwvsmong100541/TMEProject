@@ -282,10 +282,10 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
-            <a href="FirstAid"><img src="images\first-aid-kit (2).png" alt=""></a>
-            <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
-            <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
-            <a href="Profile"><img src="images\avatar (2).png" alt=""></a>
+            <a href="ManageLocation"><img src="images\first-aid-kit (2).png" alt=""></a>
+            <a href="TransferPage"><img src="images\checklist (1)_1.png" alt=""></a>
+            <a href="ManageUser"><img src="images\bell (4).png" alt=""></a>
+            <a href=""><img src="images\avatar (2).png" alt=""></a>
 
         </div>
     </body>
