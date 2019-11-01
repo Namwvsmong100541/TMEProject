@@ -34,7 +34,7 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/Register.jsp";
+        String target = "/ManageUser.jsp";
         String code = null;
         String alert = null;
         String message = null;
@@ -42,27 +42,26 @@ public class Register extends HttpServlet {
             try {
                 String name = request.getParameter("name");
                 String surname = request.getParameter("surname");
-                long student_ID = Long.parseLong(request.getParameter("student_ID"));
                 String gender = request.getParameter("gender");
                 String faculty = request.getParameter("faculty");
                 String email = request.getParameter("email");
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
                 String rePassword = request.getParameter("repassword");
-                if (password.equals(rePassword)) {
-                    password = PasswordUtil.getKeepPassword(password);
-                    Member mb = new Member(name, surname, student_ID, gender, faculty, email, username, password, 0);
+                if (password!=null) {
+//                    password = PasswordUtil.getKeepPassword(password);
+                    Member mb = new Member(name, surname, gender, faculty, email, username, password, 0);
                     if (mb.addMember()) {
                      //   EmailUtil.sendRegister(mb);
                         code = "success";
-                        alert = "Register complete!";
-                        message = "Please log in now...";
+                        alert = "Complete!";
+                        message = "Add new officer successed";
                     } else {
-                        code = "success";
-                        alert = "Success!";
+                        code = "warning";
+                        alert = "Warning!";
                         message = "Username , StudentId or e-mail is USED!.";
                     }
-                    target = "/login.jsp";
+                    
                 } else {
                     code = "warning";
                     alert = "Warning!";

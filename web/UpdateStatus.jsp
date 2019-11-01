@@ -228,7 +228,6 @@
             <br>
             <br>
             <br>
-
             <%
                 if (request.getAttribute("tickets") != null) {
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
@@ -236,6 +235,7 @@
                     for (Ticket t : tickets) {
                         if (t.getStatusName().equalsIgnoreCase("Waiting for response")) {
             %>
+            
             <div class="event">
 
                 <div class="eventarea">

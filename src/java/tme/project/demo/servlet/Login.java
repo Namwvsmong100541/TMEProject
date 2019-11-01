@@ -41,6 +41,7 @@ public class Login extends HttpServlet {
         String code = null;
         String alert = null;
         String message = null;
+        String position = (String) session.getAttribute("member_position");
 
         if (request.getParameter("submit") != null) {
             String member_username = request.getParameter("username");
@@ -75,11 +76,17 @@ public class Login extends HttpServlet {
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
                         target = "/Home.jsp";
+
                     } catch (SQLException ex) {
                         System.err.println(ex);
                     }
                 }
+            } else {
+                code = "Error";
+                alert = "The username & password didn't match.";
+                message = "Please Try again.";
             }
+           
 
         }
 

@@ -64,6 +64,26 @@
         <servlet-name>InfoFirstaid</servlet-name>
         <servlet-class>tme.project.demo.servlet.InfoFirstaid</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageLocation</servlet-name>
+        <servlet-class>tme.project.demo.servlet.ManageLocation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SuperHome</servlet-name>
+        <servlet-class>tme.project.demo.servlet.SuperHome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>tme.project.demo.servlet.AdminLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLogout</servlet-name>
+        <servlet-class>tme.project.demo.servlet.AdminLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TransferPage</servlet-name>
+        <servlet-class>tme.project.demo.servlet.TransferPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateStatus</servlet-name>
         <url-pattern>/UpdateStatus</url-pattern>
@@ -127,6 +147,26 @@
     <servlet-mapping>
         <servlet-name>InfoFirstaid</servlet-name>
         <url-pattern>/InfoFirstaid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageLocation</servlet-name>
+        <url-pattern>/ManageLocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SuperHome</servlet-name>
+        <url-pattern>/SuperHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/AdminLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLogout</servlet-name>
+        <url-pattern>/AdminLogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransferPage</servlet-name>
+        <url-pattern>/TransferPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

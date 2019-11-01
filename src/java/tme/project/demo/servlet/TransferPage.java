@@ -12,15 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import tme.project.demo.model.Member;
 import tme.project.demo.model.Ticket;
 
 /**
  *
- * @author Antonymz
+ * @author LENOVO
  */
-public class UpdateStatus extends HttpServlet {
+public class TransferPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,60 +32,10 @@ public class UpdateStatus extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/UpdateStatus.jsp";
-        String code = "";
-        String alert = "";
-        String ticket_message = "";
-        String ticket_status = request.getParameter("status");
-        String ticket_id = request.getParameter("id");
-        HttpSession session = request.getSession(false);
-        String position = (String) session.getAttribute("member_position");
+        String target = "/TransferPage.jsp";
         
-        List<Ticket> tickets = null;
-        if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("2")) {
-                    if (ticket_id != null && ticket_status != null) {
-                        if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
-                                Integer.parseInt(request.getParameter("status")))) {
-                            target = "/UpdateStatus.jsp";
-                            ticket_message = "Update complete!";
-                            code = "success";
-                            alert = "Success!";
-                        } else {
-                            ticket_message = "Update incomplete!";
-                            code = "warning";
-                            alert = "Warning!";
-                        }
-                    }
-                    int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
-                    tickets = Ticket.getTicketsByNotifyMemberId(member_id);
-                } else {
-                    code = "Error";
-                    alert = "Error!";
-                    ticket_message = "Wrong Position.";
-                    target = "/ListTickets.jsp";
-                }
-
-            } else {
-                code = "Error";
-                alert = "Error!";
-                ticket_message = "Re-Login Pleased.";
-                target = "/Login.jsp";
-            }
-        } else {
-            code = "Error";
-            alert = "Error!";
-            ticket_message = "Re-Login Pleased.";
-        }
-
-        request.setAttribute("message", ticket_message);
-        request.setAttribute("code", code);
-        request.setAttribute("alert", alert);
-        System.out.println(tickets.get(0).getName());
-        
+        List<Ticket> tickets = Ticket.getAllTickets();
         request.setAttribute("tickets", tickets);
-
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 

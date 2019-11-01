@@ -7,20 +7,18 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import tme.project.demo.model.Member;
-import tme.project.demo.model.Ticket;
+import tme.project.demo.model.Place;
 
 /**
  *
- * @author Antonymz
+ * @author LENOVO
  */
-public class UpdateStatus extends HttpServlet {
+public class ManageLocation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,60 +32,42 @@ public class UpdateStatus extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/UpdateStatus.jsp";
-        String code = "";
-        String alert = "";
-        String ticket_message = "";
-        String ticket_status = request.getParameter("status");
-        String ticket_id = request.getParameter("id");
+        String target = "/ManageLocation.jsp";
+        String code = null;
+        String alert = null;
+        String message = null;
         HttpSession session = request.getSession(false);
         String position = (String) session.getAttribute("member_position");
-        
-        List<Ticket> tickets = null;
-        if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("2")) {
-                    if (ticket_id != null && ticket_status != null) {
-                        if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
-                                Integer.parseInt(request.getParameter("status")))) {
-                            target = "/UpdateStatus.jsp";
-                            ticket_message = "Update complete!";
-                            code = "success";
-                            alert = "Success!";
-                        } else {
-                            ticket_message = "Update incomplete!";
-                            code = "warning";
-                            alert = "Warning!";
-                        }
+        if (request.getParameter("submit") != null) {
+            try {
+
+                String place_name = request.getParameter("place_name");
+                if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
+                    Place p = new Place(place_name);
+                    if (p.addLocation()) {
+                        code = "success";
+                        alert = "Success!";
+                        message = "Add location complete!";
+                    } else {
+                        code = "warning";
+                        alert = "Warning";
+                        message = "Try again";
                     }
-                    int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
-                    tickets = Ticket.getTicketsByNotifyMemberId(member_id);
+
                 } else {
-                    code = "Error";
-                    alert = "Error!";
-                    ticket_message = "Wrong Position.";
-                    target = "/ListTickets.jsp";
+                    code = "warning";
+                    alert = "Warning!";
+                    message = "Failed";
                 }
-
-            } else {
-                code = "Error";
-                alert = "Error!";
-                ticket_message = "Re-Login Pleased.";
-                target = "/Login.jsp";
+            } catch (Exception ex) {
+                    System.out.println("ManageLocation.ex: "+ex.getMessage());
+                    ex.printStackTrace();
             }
-        } else {
-            code = "Error";
-            alert = "Error!";
-            ticket_message = "Re-Login Pleased.";
+
+            request.setAttribute("code", code);
+            request.setAttribute("alert", alert);
+            request.setAttribute("message", message);
         }
-
-        request.setAttribute("message", ticket_message);
-        request.setAttribute("code", code);
-        request.setAttribute("alert", alert);
-        System.out.println(tickets.get(0).getName());
-        
-        request.setAttribute("tickets", tickets);
-
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 

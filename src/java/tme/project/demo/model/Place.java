@@ -113,7 +113,7 @@ public class Place {
         return p;
     }
     public boolean addLocation() {
-        if (place_name!=null) {
+        if (place_name.length() > 0) {
             try {
                 Connection conn = ConnectionBuilder.getConnection();
                 String sqlCmd = "INSERT INTO `Place`(place_name) VALUES(?)";

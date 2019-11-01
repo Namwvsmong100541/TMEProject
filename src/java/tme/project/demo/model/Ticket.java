@@ -216,7 +216,7 @@ public class Ticket {
         try {
             Connection conn = ConnectionBuilder.getConnection();
             Statement stmt = conn.createStatement();
-            String sqlCmd = "SELECT * FROM Emergency_Notify";
+            String sqlCmd = "SELECT * FROM Emergency_Notify ORDER BY Event_id DESC";
             ResultSet rs = stmt.executeQuery(sqlCmd);
             while (rs.next()) {
                 t = new Ticket();
@@ -253,6 +253,29 @@ public class Ticket {
         }
         return tickets;
     }
+    
+    public static List<Ticket> getTicketsByNotifyMemberId(int member_id) {
+        Ticket t = null;
+        List<Ticket> tickets = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            Statement stmt = conn.createStatement();
+            String sqlCmd = "SELECT * FROM Emergency_Notify WHERE Notify_Member_ID = " + member_id + "  ORDER BY Event_id DESC";
+            ResultSet rs = stmt.executeQuery(sqlCmd);
+            while (rs.next()) {
+                t = new Ticket();
+                ORM(t, rs);
+                if (tickets == null) {
+                    tickets = new ArrayList<Ticket>();
+                }
+                tickets.add(t);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tickets;
+    }
+
     
     public static int countRow(int userId) {
         int countRow = 0;

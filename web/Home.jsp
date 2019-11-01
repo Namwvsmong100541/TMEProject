@@ -174,7 +174,7 @@
                 </div>
                 <div class="cardhome">
                     <div class="menuhome">
-                        <img src="images\man-user (2).png" alt="">
+                        <a href="Profile"><img src="images\man-user (2).png" alt=""></a>
                         <h5>Profile</h5>
                     </div> 
                 </div>

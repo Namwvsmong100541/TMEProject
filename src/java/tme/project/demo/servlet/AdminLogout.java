@@ -7,7 +7,6 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +15,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Antonymz
+ * @author LENOVO
  */
-public class Home extends HttpServlet {
+public class AdminLogout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,35 +31,9 @@ public class Home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/Home.jsp";
-        String code = null;
-        String alert = null;
-        String message = null;
-        HttpSession session = request.getSession(false);
-        String position = (String) session.getAttribute("member_position");
-        if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                String member = (String) session.getAttribute("member");
-                code = "Success";
-                alert = "Log In";
-                message = "... Success!!";
-                out.print("Hello, " + member + " Welcome to Profile");
-            } else {
-                code = "Error";
-                alert = "Error!";
-                message = "Re-Login Pleased.";
-                target = "/Login.jsp";
-            }
-        } else {
-            code = "Error";
-            alert = "Error!";
-            message = "Re-Login Pleased.";
-
-        }
-        request.setAttribute("code", code);
-        request.setAttribute("alert", alert);
-        request.setAttribute("message", message);
-        getServletContext().getRequestDispatcher(target).forward(request, response);
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("AdminLogin");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

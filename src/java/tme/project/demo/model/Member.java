@@ -29,34 +29,32 @@ public class Member {
     private String email;
     private String username;
     private String password;
-    private int position;
+    private int position = 0;
 
     public Member() {
     }
 
-    public Member(String name, String surname, long stdId, String gender, String faculty, String email, String username, String password, int position) {
+    public Member(String name, String surname,String gender, String faculty, String email, String username, String password, int position) {
         this.name = name;
         this.surname = surname;
-        this.stdId = stdId;
         this.gender = gender;
         this.faculty = faculty;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.position = position;
+        this.position = 0;
     }
 
-    public Member(int id, String name, String surname, long stdId, String gender, String faculty, String email, String username, String password, int position) {
+    public Member(int id, String name, String surname,String gender, String faculty, String email, String username, String password, int position) {
         this.id = id;
         this.name = name;
-        this.surname = surname;
-        this.stdId = stdId;
+        this.surname = surname; 
         this.gender = gender;
         this.faculty = faculty;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.position = position;
+        this.position = 0;
     }
 
     public int getId() {
@@ -142,18 +140,17 @@ public class Member {
     public boolean addMember() {
         try {
             Connection con = ConnectionBuilder.getConnection();
-            String sqlCmd = "INSERT INTO member(member_name, member_surname, member_stdId, member_gender, member_faculty, member_email,"
-                    + " member_username, member_password, member_position) VALUES(?,?,?,?,?,?,?,?,?)";
+            String sqlCmd = "INSERT INTO member(member_name, member_surname,member_gender, member_faculty, member_email,"
+                    + " member_username, member_password, member_position) VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement pstm = con.prepareStatement(sqlCmd);
             pstm.setString(1, name);
             pstm.setString(2, surname);
-            pstm.setLong(3, stdId);
-            pstm.setString(4, gender);
-            pstm.setString(5, faculty);
-            pstm.setString(6, email);
-            pstm.setString(7, username);
-            pstm.setString(8, password);
-            pstm.setInt(9, position);
+            pstm.setString(3, gender);
+            pstm.setString(4, faculty);
+            pstm.setString(5, email);
+            pstm.setString(6, username);
+            pstm.setString(7, password);
+            pstm.setInt(8, position);
             int result = pstm.executeUpdate();
             if (result != 0) {
                 return true;
@@ -194,7 +191,7 @@ public class Member {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
         }
         return m;
     }
@@ -262,6 +259,23 @@ public class Member {
     }
     
     public static boolean isOfficer(String member_username, String member_password) {
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            String sqlCmd = "SELECT * FROM `member` WHERE `member_username` = '" + member_username + "' AND member_password = '"
+                    + member_password + "'";
+            PreparedStatement ps = con.prepareStatement(sqlCmd);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
+    
+    public static boolean isAdmin(String member_username, String member_password) {
         try {
             Connection con = ConnectionBuilder.getConnection();
             String sqlCmd = "SELECT * FROM `member` WHERE `member_username` = '" + member_username + "' AND member_password = '"
