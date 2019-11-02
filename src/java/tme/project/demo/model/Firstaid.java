@@ -84,7 +84,7 @@ public class Firstaid {
         try {
             Connection conn = ConnectionBuilder.getConnection();
             Statement stmt = conn.createStatement();
-            String sqlCmd = "SELECT * FROM First_Aid";
+            String sqlCmd = "SELECT * FROM FirstAid";
             ResultSet rs = stmt.executeQuery(sqlCmd);
             while (rs.next()) {
                 f = new Firstaid();
@@ -105,7 +105,7 @@ public class Firstaid {
         try {
             Connection conn = ConnectionBuilder.getConnection();
             Statement stmt = conn.createStatement();
-            String sqlCmd = "SELECT * FROM `First_Aid` WHERE FirstAid_ID = "+ firstAid_id;
+            String sqlCmd = "SELECT * FROM `FirstAid` WHERE FirstAid_ID = "+ firstAid_id;
             ResultSet rs = stmt.executeQuery(sqlCmd);
             while (rs.next()) {
                 f = new Firstaid();

@@ -24,7 +24,15 @@
     <style>
         .login input{
             margin-bottom: 10px;
+            width: 300px;
             
+        }
+        .login form{
+           margin-left: 37%;
+        }
+        .butlogin{
+            
+            width: 30px;
         }
         .butlogin input{
             border: 2px gainsboro solid;
@@ -32,10 +40,15 @@
             padding-right: 15px; 
             padding-top: 2px;
             padding-bottom: 2px;
+            margin-left: 90px;
+            width: 120px;
             
         }
+        .login{
+            margin-top: 200px;
+        }
     </style>
-    <body background="images\bg1.jpg" align="center">
+    <body background="images\loginofficer.jpg" align="center">
         <div class="login">
             <div class="container">
                 <img src="images\alarmlogin.png" alt=""><br><br>

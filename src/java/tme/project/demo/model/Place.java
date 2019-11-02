@@ -78,7 +78,7 @@ public class Place {
                 places.add(p);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
         }
         return places;
     }
@@ -108,7 +108,7 @@ public class Place {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Place.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
@@ -128,5 +128,20 @@ public class Place {
             }
         }
         return false;
+    }
+    public static boolean delete(int place_id) {
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            String sqlCmd = "DELETE FROM `Place` WHERE place_id = " + place_id;
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            int result = pstm.executeUpdate();
+            if (result != 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return false;
+
     }
 }

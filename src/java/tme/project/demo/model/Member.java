@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tme.project.demo.datasource.ConnectionBuilder;
@@ -30,11 +32,12 @@ public class Member {
     private String username;
     private String password;
     private String position ;
+    private String phoneNo;
 
     public Member() {
     }
 
-    public Member(String name, String surname,String gender, String faculty, String email, String username, String password, String position) {
+    public Member(String name, String surname,String gender, String faculty, String email, String username, String password, String position,String phoneNo) {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
@@ -43,9 +46,10 @@ public class Member {
         this.username = username;
         this.password = password;
         this.position = position;
+        this.phoneNo = phoneNo;
     }
 
-    public Member(int id, String name, String surname,String gender, String faculty, String email, String username, String password, String position) {
+    public Member(int id, String name, String surname,String gender, String faculty, String email, String username, String password, String position, String phoneNo) {
         this.id = id;
         this.name = name;
         this.surname = surname; 
@@ -55,6 +59,7 @@ public class Member {
         this.username = username;
         this.password = password;
         this.position = position;
+        this.phoneNo = phoneNo;
     }
 
     public int getId() {
@@ -137,11 +142,19 @@ public class Member {
         this.position = position;
     }
 
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+    
     public boolean addMember() {
         try {
             Connection con = ConnectionBuilder.getConnection();
             String sqlCmd = "INSERT INTO member(member_name, member_surname,member_gender, member_faculty, member_email,"
-                    + " member_username, member_password, member_position) VALUES(?,?,?,?,?,?,?,?)";
+                    + " member_username, member_password, member_position,member_phoneno) VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pstm = con.prepareStatement(sqlCmd);
             pstm.setString(1, name);
             pstm.setString(2, surname);
@@ -151,6 +164,7 @@ public class Member {
             pstm.setString(6, username);
             pstm.setString(7, password);
             pstm.setString(8, position);
+            pstm.setString(9, phoneNo);
             int result = pstm.executeUpdate();
             if (result != 0) {
                 return true;
@@ -173,6 +187,8 @@ public class Member {
             m.setStdId(rs.getLong("member_stdid"));
             m.setGender(rs.getString("member_gender"));
             m.setPosition(rs.getString("member_position"));
+            m.setPhoneNo(rs.getString("member_phoneno"));
+            
         } catch (SQLException ex) {
             Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -204,7 +220,28 @@ public class Member {
         }
         return "";
     }
-
+    public static List<Member> getAllOffices() {
+        Member m = null;
+        List<Member> members = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            Statement stmt = conn.createStatement();
+            String sqlCmd = "SELECT * FROM member WHERE member_position = 2";
+            ResultSet rs = stmt.executeQuery(sqlCmd);
+            while (rs.next()) {
+                m = new Member();
+                ORM(m, rs);
+                if (members == null) {
+                    members = new ArrayList<Member>();
+                }
+                members.add(m);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return members;
+    }
+    
     public static int getIdByUsernameStudent(String username) throws SQLException {
         String sqlCmd = "SELECT `member_id` FROM `member` WHERE member_stdId = '" + username + "'";
         Connection con = ConnectionBuilder.getConnection();
@@ -240,6 +277,8 @@ public class Member {
         }
         return id;
     }
+    
+    
 
     public static boolean isStudent(String member_username, String member_password) {
         try {
@@ -292,7 +331,21 @@ public class Member {
         return false;
     }
     
-    
+    public static boolean delete(int id) {
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            String sqlCmd = "DELETE FROM `member` WHERE member_id = " + id;
+            PreparedStatement pstm = conn.prepareStatement(sqlCmd);
+            int result = pstm.executeUpdate();
+            if (result != 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return false;
+
+    }
 
     @Override
     public String toString() {

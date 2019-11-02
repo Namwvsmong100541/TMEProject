@@ -24,7 +24,7 @@
     <style>
         .login input{
             margin-bottom: 10px;
-            
+
         }
         .butlogin input{
             border: 2px gainsboro solid;
@@ -32,10 +32,16 @@
             padding-right: 15px; 
             padding-top: 2px;
             padding-bottom: 2px;
-            
+
         }
+        body{
+            background-repeat: repeat;
+            background-position: center;
+            height: 670px;
+        }
+        
     </style>
-    <body background="images\bg1.jpg" align="center">
+    <body background="images\login.jpg" align="center" >
         <div class="login">
             <div class="container">
                 <img src="images\alarmlogin.png" alt=""><br><br>
@@ -43,7 +49,7 @@
                     <input type="username"  class="form-control" id="exampleUsername" name="username" placeholder="Student ID Or Username">
                     <input type="password" class="form-control" id="examplePassword" name="password" placeholder="Password"><br>
                     <div class="butlogin"><input type="submit" name="submit" class="btn btn-default btn-lg" value="Log in"></input>  </div>
-                     
+
                     <p>   </p>
                 </form>
 

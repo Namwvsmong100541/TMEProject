@@ -51,6 +51,11 @@
             }
             .event{
                 margin: 10px;
+                
+            }
+            .event a{
+                font-size: 5px;
+                color: #707070;
             }
             .eventarea{
                 background-color: white;
@@ -182,14 +187,23 @@
                 color: whitesmoke;
             }
             .container h5{
-                margin-left: 10px;
+                margin-left: 50%;
                 margin-bottom: 15px;
             }
+            body{
+                background-repeat: repeat;
+                background-position: center;
+                height: 700px;
+                width:375px;
+                position: fixed;
+                color: #707070;
+            }
+
 
         </style>
     </head>
 
-    <body>
+    <body background="images\bgprofile.jpg" align="">
         <!-- Begin page content -->
         <div class="logout">
 
@@ -230,7 +244,7 @@
                     </div>
 
                     <div class="emergency">
-                        <h4><%=f.getName()%></h4>
+                        <h6><%=f.getName()%></h6>
                     </div>
 
                     </div></a>

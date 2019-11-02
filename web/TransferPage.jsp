@@ -196,20 +196,38 @@
     </head>
 
     <body>
-        <!-- Begin page content -->
-        <div class="logout">
-
-
-            <div class="out">
-                <img src="images\logout .png" alt="">
-                <a href="Logout"> Log out</a>
-
-            </div> 
-            <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
-
-
-
-        </div>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="block2">
+                        <a class="navbar-brand" href="ListTickets">TME |</a>
+                        <div class="now">
+                            <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
+                                <%=session.getAttribute("member_name")%> </font></a>
+                        </div>
+                        <div class="block1">
+                            <div id="navbar" class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
+                                    <li ><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
+                                    <li class="active"><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Transfer Page</a></li>
+                                    <li><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Officer</a></li>
+                                    <li><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
+                                    <li><a href="AdminLogout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
+                                </ul>
+                            </div>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+        </nav>
 
         <div class="header">
             <h2>Transfer Case</h2> 
@@ -218,6 +236,9 @@
             <br>
             <br>
             <br>
+            <br>
+            <br>
+            
             <%
                 if (request.getAttribute("tickets") != null) {
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
@@ -230,14 +251,14 @@
             <div class="event">
 
                 <div class="eventarea">
-
+                    
                     <div class="notify">
                         <img src="images\alarm (1).png" alt="">
 
                     </div>
 
                     <div class="emergency">
-
+                        <h6>No. <%=count++%> </h6>
                         <h6>Emergency : <%= t.getName()%> </h6>
                     </div>
 
@@ -266,7 +287,7 @@
                 <td> </td>
                 <td> </td>
             </tr>
-<% }
+            <% }
                 }
 
             } else {
@@ -281,13 +302,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-        <div class="menubar">
-            <a href="ManageLocation"><img src="images\first-aid-kit (2).png" alt=""></a>
-            <a href="TransferPage"><img src="images\checklist (1)_1.png" alt=""></a>
-            <a href="ManageUser"><img src="images\bell (4).png" alt=""></a>
-            <a href=""><img src="images\avatar (2).png" alt=""></a>
-
-        </div>
     </body>
 </html>
 

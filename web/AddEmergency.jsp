@@ -1,3 +1,4 @@
+<%@page import="tme.project.demo.model.Member"%>
 <%@page import="java.util.Properties"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -196,7 +197,7 @@
                 padding: 5px;
             }
             .btn-warning{
-                background-color: #EFEFF4;
+                background-color: #f5f5f3;
                 border: #EFEFF4;
             }
             .col-8 textArea{
@@ -233,13 +234,24 @@
                 margin-top: 30px;
 
             }
+            .col-8 .form-control{
+                margin-bottom: 5px;
+            }
+            body{
+                background-repeat: repeat;
+                background-position: center;
+                height: 700px;
+                width:375px;
+                position: fixed;
+                color: #707070;
+            }
         </style>
 
     <div class="page-header">
         <title>Emergency Notify</title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css\Notify.css">
-        <body> 
+        <body background="images\bgprofile.jpg" align=""> 
             <div class="container1">
                 <div class="out">
                     <img src="images\logout .png" alt=""> 
@@ -309,32 +321,34 @@
                     <div class="row">
                         <div class="col-8">
                             <label for="title">SPECIFY EMERGENCY</label> 
-                            
-                                <select id="exampleFaculty" name="catagory" class="form-control" required="">
-                                    <option> Choose category </option>
-                                    <%
-                                        ArrayList<Catagory> catagories = Catagory.getAllCatagory();
-                                        for (Catagory c : catagories) {
-                                    %>
-                                    <option value="<%= c.getCatagory_name()%>"><%= c.getCatagory_name()%></option>
-                                    <%
-                                        }
-                                    %>
-                                </select> 
-                                <br>
-                           
-                            <textarea name="name" class="form-control" id="desc" rows="3" placeholder="Description" required=""></textarea>
 
-                            <label  for="desc">PHONE NUMBER</label>
-                            <input name="desc" type="text" class="form-control" id="title" rows="2" placeholder="Phone number" required="">
+                            <select id="exampleFaculty" name="catagory" class="form-control" required="">
+                                <option> Choose category </option>
+                                <%
+                                    ArrayList<Catagory> catagories = Catagory.getAllCatagory();
+                                    for (Catagory c : catagories) {
+                                %>
+                                <option value="<%= c.getCatagory_name()%>"><%= c.getCatagory_name()%></option>
+                                <%
+                                    }
+                                %>
+                            </select> 
+
+
+                            <textarea name="name" class="form-control" id="desc" rows="3" placeholder="Description" required=""></textarea>
+                            <%
+                                Member m = Member.getMember(Integer.parseInt((String)session.getAttribute("member_id")));
+
+                            %>
+                            <label  for="desc">You're phone no : <%=m.getPhoneNo()%> </label>
+                            <input name="desc" type="text" class="form-control" id="title" rows="2" placeholder="เบอร์อื่น (optional)">
                             <br>
                         </div>
                         <div class="col-4">
                             <label for="place">LOCATION</label>
                             <select id="exampleFaculty" name="place" class="form-control" required="">
                                 <option> Where? </option>
-                                <%
-                                    ArrayList<Place> places = Place.getAllPlaces();
+                                <%                                    ArrayList<Place> places = Place.getAllPlaces();
                                     for (Place p : places) {
                                 %>
                                 <option value="<%= p.getPlace_name()%>"><%= p.getPlace_name()%></option>

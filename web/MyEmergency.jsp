@@ -35,7 +35,8 @@
                 display: inline-block;
             }
             html,body{
-                background-color:#EFEFF4;
+                /*background-color:#EFEFF4;*/
+                background-color: whitesmoke;
                 font-family: 'Montserrat', sans-serif ;
             }
 

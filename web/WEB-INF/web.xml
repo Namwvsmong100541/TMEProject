@@ -17,8 +17,8 @@
         <servlet-class>tme.project.demo.servlet.Detail</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteEmergency</servlet-name>
-        <servlet-class>tme.project.demo.servlet.DeleteEmergency</servlet-class>
+        <servlet-name>DeleteLocation</servlet-name>
+        <servlet-class>tme.project.demo.servlet.DeleteLocation</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -84,6 +84,18 @@
         <servlet-name>TransferPage</servlet-name>
         <servlet-class>tme.project.demo.servlet.TransferPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListAllLocation</servlet-name>
+        <servlet-class>tme.project.demo.servlet.ListAllLocation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllOfficer</servlet-name>
+        <servlet-class>tme.project.demo.servlet.ListAllOfficer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteOfficer</servlet-name>
+        <servlet-class>tme.project.demo.servlet.DeleteOfficer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateStatus</servlet-name>
         <url-pattern>/UpdateStatus</url-pattern>
@@ -115,10 +127,6 @@
     <servlet-mapping>
         <servlet-name>ListAllEmergency</servlet-name>
         <url-pattern>/ListAllEmergency</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteEmergency</servlet-name>
-        <url-pattern>/DeleteEmergency</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MyEmergency</servlet-name>
@@ -167,6 +175,22 @@
     <servlet-mapping>
         <servlet-name>TransferPage</servlet-name>
         <url-pattern>/TransferPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllLocation</servlet-name>
+        <url-pattern>/ListAllLocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteLocation</servlet-name>
+        <url-pattern>/DeleteLocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllOfficer</servlet-name>
+        <url-pattern>/ListAllOfficer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteOfficer</servlet-name>
+        <url-pattern>/DeleteOfficer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

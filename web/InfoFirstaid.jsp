@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
         <!-- Custom styles for this template -->
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
@@ -35,7 +36,8 @@
                 display: inline-block;
             }
             html,body{
-                background-color:#EFEFF4;
+                background-color:whitesmoke;
+                font-family: 'Montserrat', sans-serif ;
             }
             thead{
                 background: silver;
@@ -70,8 +72,8 @@
                 margin-right: 5px;
                 margin-left: 5px;
                 text-align: center;
-                padding: 0px;
-                color: white;
+                padding: 2px;
+                font-size: 12px;
             }
 
             .out {
@@ -79,8 +81,8 @@
                 font-size: 12px;
                 text-align: center;
                 margin-right: 15px;
-
-
+                margin-bottom: 20px;
+                color: white;
             }
             .out button{
                 font-size: 12px;
@@ -89,12 +91,14 @@
             }
             .out img{
                 margin-top: 0px;
-                width: 15px;
             }
             .out a{
                 color: white;
-                margin-top: 5px;
+
             }
+
+
+
             .header {
                 width: 100%;
                 height: 50px;
@@ -106,20 +110,16 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1.5px white solid;
-
+                border-top:  1px white solid;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             }
 
             .header h2{
                 text-align: center;
                 font-size: 20px;
                 margin-top: 10px;
-                margin-right: 35px;
+                padding-left: 12px;
 
-            }
-            .header a {
-                color: whitesmoke;
-                margin-bottom : 15px;
             }
             .navbar-brand{
                 padding: 0px;
@@ -133,6 +133,7 @@
             .page-header{
                 color: #707070;
                 margin-top: 60px;
+                margin-bottom: 0px;
             }
             .col-md-8{
                 color: #707070;
@@ -168,38 +169,38 @@
     </head>
 
 </head>
-<body>
-    <!-- Begin page content -->
-    <div class="logout">
+<body >
+        <!-- Begin page content -->
+        <div class="logout">
 
 
-        <div class="out">
-            <img src="images\logout .png" alt="">
-            <label><a href="Logout"> Log out</a></label> 
+            <div class="out">
+                <img src="images\logout .png" alt="">
+                <a href="Logout"> Log out</a>
 
-        </div> 
-        <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
+            </div> 
+            <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
 
 
 
-    </div>
+        </div>
 
-    <div class="header">
-        <a class="navbar-brand" href="FirstAid"> <img src="images\left-arrow.png" alt=""></a>
-        <h2>More Information</h2> 
-    </div>
+        <div class="header">
+            <a class="navbar-brand" href="FirstAid"> <img src="images\left-arrow.png" alt=""></a>
+            <h2>More First Aid</h2> 
+        </div>
     <br>
     <br>
     <div class="container">
         <div class="page-header">
-            <h4><b>First Aid</b></h4>
+            <h5><b>วิธีการปฐมพยาบาลเบื้องต้น</b></h5>
 
             <%
                 
                 Firstaid f = Firstaid.getFirstaid("FirstAid_ID");
 
             %>
-        </div><br>
+        </div>
 
         <div class="row">
             <div class="col-md-8">

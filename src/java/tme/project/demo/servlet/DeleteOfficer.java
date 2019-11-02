@@ -7,19 +7,20 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import tme.project.demo.model.Ticket;
+import tme.project.demo.model.Member;
 
 /**
  *
- * @author Antonymz
+ * @author LENOVO
  */
-public class DeleteEmergency extends HttpServlet {
+public class DeleteOfficer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,24 +34,24 @@ public class DeleteEmergency extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/UpdateStatus.jsp";
+        String target = "/ListAllOfficer.jsp";
         String code = "";
         String alert = "";
-        String ticket_message = "";
-        String ticket_id = request.getParameter("id");
+        String message = "";
+        String id = request.getParameter("member_id");
         HttpSession session = request.getSession(false);
         String position = (String) session.getAttribute("member_position");
 
         if (session != null) {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
                 if (position.equals("1")) {
-                    if (ticket_id != null) {
-                        if (Ticket.delete(Integer.parseInt(ticket_id))) {
-                            ticket_message = "Delete complete!";
+                    if (id != null) {
+                        if (Member.delete(Integer.parseInt(id))) {
+                            message = "Delete complete!";
                             code = "success";
                             alert = "Success!";
                         } else {
-                            ticket_message = "Delete incomplete!";
+                            message = "Delete incomplete!";
                             code = "warning";
                             alert = "Warning!";
                         }
@@ -58,27 +59,27 @@ public class DeleteEmergency extends HttpServlet {
                 } else {
                     code = "Error";
                     alert = "Error!";
-                    ticket_message = "Wrong Position.";
-                    target = "/ListTickets.jsp";
+                    message = "Wrong Position.";
+                    target = "/ListAllOfficer.jsp";
                 }
 
             } else {
                 code = "Error";
                 alert = "Error!";
-                ticket_message = "Re-Login Pleased.";
-                target = "/login.jsp";
+                message = "Re-Login Pleased.";
+                target = "/AdminLogin.jsp";
             }
         } else {
             code = "Error";
             alert = "Error!";
-            ticket_message = "Re-Login Pleased.";
+            message = "Re-Login Pleased.";
         }
 
-        request.setAttribute("message", ticket_message);
+        request.setAttribute("message", message);
         request.setAttribute("code", code);
         request.setAttribute("alert", alert);
-        List<Ticket> tickets = Ticket.getAllTickets();
-        request.setAttribute("tickets", tickets);
+        List<Member> members = Member.getAllOffices();
+        request.setAttribute("member", members);
 
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }

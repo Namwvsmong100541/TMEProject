@@ -37,6 +37,13 @@
                 background-color:#EFEFF4;
                 font-family: 'Montserrat', sans-serif ;
             }
+            body{
+                background-repeat: repeat;
+                background-position: center;
+                height: 700px;
+                width:375px;
+                position: fixed;
+            }
 
             .block2 a{
                 color: black;
@@ -54,6 +61,7 @@
                 background-color: white;
                 border: 0.20px #707070 solid;
                 border-radius:8px;
+                font-size: 12px;
             }
             .timedate,.emergency,.location{
                 padding-left: 20px;
@@ -143,6 +151,7 @@
                 width: 100%;
                 height: 50px;
                 background:#BD4747;
+                
                 color: white ;
                 font-size: 10px;
                 text-align: center;
@@ -164,6 +173,7 @@
             .container{
                 padding: 0px;
                 margin-top: 30px;
+                width: 90%;
 
             }
             .notify img{
@@ -178,10 +188,27 @@
             .information.a{
                 color: whitesmoke;
             }
+            /*.pic{
+                width: 100px;
+                height: 100px;
+                background: whitesmoke;
+                margin-top: 50px;
+                margin-left: 37%;
+                border-radius: 100px;
+                border: 1px #BD4747 solid;
+            }*/
+            .pic img{
+                width: 100px;
+                height: 100px;
+                background: whitesmoke;
+                margin-top: 50px;
+                border-radius: 100px;
+                border: 3px #BD4747 solid;
+            }
 
         </style>
     </head>
-    <body>
+    <body background="images\bgprofile.jpg" align="">
         <!-- Begin page content -->
         <div class="logout">
 
@@ -197,13 +224,16 @@
 
         </div>
 
-        <div  class="header">
+        <div  class="header" >
             <h2>Profile</h2> 
         </div>
         <div class="container">
             <br>
-            <br>
-            <br>
+            
+            <div class="pic" align="center">
+                <img src="images\neem.jpg" alt="">
+            </div>
+            
 
             <%
                 Member m = Member.getMember(Integer.parseInt((String) session.getAttribute("member_id")));

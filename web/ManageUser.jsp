@@ -76,9 +76,11 @@
                                 <ul class="nav navbar-nav">
 
                                     <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
-                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Transfer Page</a></li>
-                                    <li class="active"><a href="Register"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Manage Officer</a></li>
-                                    <li><a href="AdminLogout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log out</a></li>
+                                    <li><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
+                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Transfer Page</a></li>
+                                    <li class="active"><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Officer</a></li>
+                                    <li><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
+                                    <li><a href="AdminLogout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
                                 </ul>
                             </div><!--/.nav-collapse -->
                         </div>
@@ -86,7 +88,7 @@
                 </div>
                 <div class="now">
                     <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
-                        <%=session.getAttribute("member_name")%> Login Now</font></a>
+                        <%=session.getAttribute("member_name")%></font></a>
                 </div>
             </div>
 
@@ -177,6 +179,13 @@
                                 </font>
                             </div>
                         </div>  
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="examplePhoneNo"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> PHONE NUMBER</label>
+                                <font face="Tahoma">
+                                <input type="phoneNo" class="form-control" id="examplePhoneNo" name="phoneNo" placeholder="XXX-XXXXXXX" required="">
+                            </div>
+                        </div>
                     </div>
                     <div class="row">               
                         <div class="col-md-5">

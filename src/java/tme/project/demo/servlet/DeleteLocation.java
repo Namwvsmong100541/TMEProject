@@ -7,20 +7,21 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import tme.project.demo.datasource.PasswordUtil;
-import tme.project.demo.model.Member;
+import javax.servlet.http.HttpSession;
+import tme.project.demo.model.Place;
 import tme.project.demo.model.Ticket;
 
 /**
  *
  * @author Antonymz
  */
-public class Register extends HttpServlet {
+public class DeleteLocation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,55 +35,57 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/ManageUser.jsp";
-        String code = null;
-        String alert = null;
-        String message = null;
-        if (request.getParameter("submit") != null) {
-            try {
-                String name = request.getParameter("name");
-                String surname = request.getParameter("surname");
-                String gender = request.getParameter("gender");
-                String faculty = request.getParameter("faculty");
-                String email = request.getParameter("email");
-                String username = request.getParameter("username");
-                String password = request.getParameter("password");
-                String rePassword = request.getParameter("repassword");
-                String position = request.getParameter("position");
-                String phoneNo = request.getParameter("phoneNo");
-                if (password!=null) {
-//                    password = PasswordUtil.getKeepPassword(password);
-                    Member mb = new Member(name, surname, gender, faculty, email, username, password, position, phoneNo );
-                    if (mb.addMember()) {
-                        System.out.println(position);
-                     //   EmailUtil.sendRegister(mb);
-                        code = "success";
-                        alert = "Complete!";
-                        message = "Add new officer successed";
-                    } else {
-                        code = "warning";
-                        alert = "Warning!";
-                        message = "Username , StudentId or e-mail is USED!.";
-                    }
-                    
-                } else {
-                    code = "warning";
-                    alert = "Warning!";
-                    message = "Password didn't match...";
-                }
-            } catch (Exception ex) {
-                System.out.println("Catch ex regis: " + ex);
-            }
+        String target = "/ListAllLocation.jsp";
+        String code = "";
+        String alert = "";
+        String message = "";
+        String place_id = request.getParameter("place_id");
+        HttpSession session = request.getSession(false);
+        String position = (String) session.getAttribute("member_position");
 
-            request.setAttribute("code", code);
-            request.setAttribute("alert", alert);
-            request.setAttribute("message", message);
+        if (session != null) {
+            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
+                if (position.equals("1")) {
+                    if (place_id != null) {
+                        if (Place.delete(Integer.parseInt(place_id))) {
+                            message = "Delete complete!";
+                            code = "success";
+                            alert = "Success!";
+                        } else {
+                            message = "Delete incomplete!";
+                            code = "warning";
+                            alert = "Warning!";
+                        }
+                    }
+                } else {
+                    code = "Error";
+                    alert = "Error!";
+                    message = "Wrong Position.";
+                    target = "/ListAllLocation.jsp";
+                }
+
+            } else {
+                code = "Error";
+                alert = "Error!";
+                message = "Re-Login Pleased.";
+                target = "/AdminLogin.jsp";
+            }
+        } else {
+            code = "Error";
+            alert = "Error!";
+            message = "Re-Login Pleased.";
         }
+
+        request.setAttribute("message", message);
+        request.setAttribute("code", code);
+        request.setAttribute("alert", alert);
+        ArrayList<Place> places = Place.getAllPlaces();
+        request.setAttribute("places", places);
 
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
