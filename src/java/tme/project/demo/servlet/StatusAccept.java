@@ -44,7 +44,7 @@ public class StatusAccept extends HttpServlet {
 
         if (session != null) {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("1")) {
+                if (position.equals("2")) {
                     if (ticket_id != null && ticket_status != null) {
                         if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
                                 Integer.parseInt(request.getParameter("status")))) {

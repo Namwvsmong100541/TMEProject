@@ -34,7 +34,7 @@ public class History extends HttpServlet {
 
         if (session != null) {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("1")||position.equals("3")) {
+                if (position.equals("2")||position.equals("3")) {
                     target = "/History.jsp";
                 }
                 List<Ticket> tickets = Ticket.getAllTickets();

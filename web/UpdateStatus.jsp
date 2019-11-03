@@ -36,8 +36,11 @@
             }
             html,body{
                 background-color:#EFEFF4;
+                font-family: 'Montserrat', sans-serif ;
             }
-
+            body{
+                color: #707070;
+            }
             .block2 a{
                 color: black;
             }
@@ -165,7 +168,8 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1.5px white solid;
+                border-top:  1px white solid;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
             }
 
@@ -212,7 +216,7 @@
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout">Log out</a></label> 
+                <a href="Logout">Log out</a>
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
