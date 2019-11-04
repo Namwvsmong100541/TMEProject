@@ -1,3 +1,9 @@
+<%-- 
+    Document   : MyCase
+    Created on : Nov 4, 2019, 4:02:22 PM
+    Author     : LENOVO
+--%>
+
 
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
@@ -54,11 +60,25 @@
                 background-color: white;
                 border: 0.25px #707070 solid;
                 border-radius:8px;
+                height: 160px;
             }
             .timedate,.emergency,.location,.status{
                 padding-left: 20px;
             }
             .button1{
+                margin-left: 120px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+                background-color: #D8AC35; 
+                border: none;
+                color: white;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right:  10px;
+                float: left;
+                margin-top: 10px;
+            }
+            .button2{
                 margin-left: 190px;
                 margin-bottom: 15px;
                 border-radius: 8px;
@@ -68,6 +88,9 @@
                 padding: 5px;
                 padding-left: 10px;
                 padding-right:  10px;
+
+                float: left;
+                margin-top: 10px;
             }
             .menubar {
                 background: whitesmoke;
@@ -137,13 +160,11 @@
                 margin-top: 5px;
             }
 
-
-
             .header {
                 width: 100%;
                 height: 50px;
-                background:#f47735;
-                color: white;
+                background:#F47735;
+                color: white ;
                 font-size: 10px;
                 text-align: center;
                 padding:5px;
@@ -179,7 +200,12 @@
                 color: whitesmoke;
             }
             .status {
-                color: green ;
+                color: #BD4747;
+            }
+
+
+            .Confirm{
+                height: 0px;
             }
 
         </style>
@@ -202,20 +228,20 @@
         </div>
 
         <div class="header">
-            <h2>History</h2> 
+            <h2>Case from transfer case</h2> 
         </div>
         <div class="container">
             <br>
             <br>
             <br>
-
             <%
                 if (request.getAttribute("tickets") != null) {
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
                     int count = 1;
                     for (Ticket t : tickets) {
-                        if (t.getStatusName().equalsIgnoreCase("Completed")) {
+                        if (t.getStatusName().equalsIgnoreCase("Waiting for response")) {
             %>
+
             <div class="event">
 
                 <div class="eventarea">
@@ -239,8 +265,19 @@
                     <div class="status">
                         <h6><b>Status : <%=t.getStatusName()%> </b></h6>
                     </div>
-                    <div class="information"></div>
-                    <a href = "Detail?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
+
+                    <div class="Confirm">
+                        <form action="UpdateStatus" method="post" onsubmit="return confirm('Comfirm?');">  
+                            <input type="hidden" name="id" value="<%=t.getId()%>">
+                            <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
+                            <input type="hidden" name="status" value="1">                  
+                            <button class="button1">Accept</button></a>
+                        </form>
+                    </div>
+
+                    <div class="information">    
+                    </div>
+                    <a href = "Detail?id=<%=t.getId()%>"><button class="button2">More detail</button></a>
                 </div>
             </div>
 
@@ -253,22 +290,16 @@
 
             %>
 
-            <tr>
-                <td> </td>
-                <td><a href = "" target="_blank"> </a></td>
-                <td> </td>
-                <td> </td>
-            </tr>
+
             <%                        }
             %>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
-
         <div class="menubar">
 
-            <a href="History"><img src="images\history (4).png" alt="">
+            <a href="History"><img src="images\history (3).png" alt="">
                 <a href="StatusAccept"><img src="images\list2.png" alt="">
                     <a href="MyCase"><img src="images\alarm (1).png" alt="">
                         <a href="UpdateStatus"><img src="images\alarm.png" alt="">
@@ -276,4 +307,5 @@
                                 </div>
                                 </body>
                                 </html>
+
 

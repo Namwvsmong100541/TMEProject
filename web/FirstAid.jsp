@@ -237,7 +237,7 @@
             %>
             <div class="event">
 
-                <a href = "InfoFirstaid?<%=f.getFirstaid_id()%>" alt=""><div class="eventarea">
+                <a href = "InfoFirstaid?id=<%=f.getFirstaid_id()%>" alt=""><div class="eventarea">
                     <div class="notify">
 
                         <img src="images\doctor-bag.png" alt="">

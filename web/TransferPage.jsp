@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="tme.project.demo.model.Member"%>
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
 <%@page import="tme.project.demo.model.Ticket"%>
@@ -78,6 +80,8 @@
                 padding-left: 10px;
                 padding-right:  10px;
             }
+
+
             .menubar {
                 background: white;
                 width: 100%;
@@ -207,7 +211,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="block2">
-                        <a class="navbar-brand" href="ListTickets">TME |</a>
+                        <a class="navbar-brand" href="">TME |</a>
                         <div class="now">
                             <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
                                 <%=session.getAttribute("member_name")%> </font></a>
@@ -238,8 +242,9 @@
             <br>
             <br>
             <br>
-            
+
             <%
+
                 if (request.getAttribute("tickets") != null) {
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
                     int count = 1;
@@ -251,56 +256,157 @@
             <div class="event">
 
                 <div class="eventarea">
-                    
+
                     <div class="notify">
                         <img src="images\alarm (1).png" alt="">
 
                     </div>
 
                     <div class="emergency">
-                        <h6>No. <%=count++%> </h6>
+
                         <h6>Emergency : <%= t.getName()%> </h6>
                     </div>
 
                     <div class="timedate">
-                        <h6>Date : Time : <%=t.getDateTime()%> </h6>
+                        <h6>Date : Time : <span class="updated"><%=t.getDateTime()%></span></h6>
                     </div>
                     <div class="contact_person">
-                        <h6>Student ID : 59130500088</h6>
+                        <h6>Location : <%=t.getPlace()%>  </h6> 
                     </div>
+                    
+
                     <div class="status_time">
-                        <h6>Status case : Time out</h6>
-                        <h6>Counting time : 00:00:00</h6>
+                        <h6>Counting time : <span id="countdown-<%=count++%>"></span> </h6>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="Confirm">
+                                        <form action="TransferPage" method="post" onsubmit="return confirm('Comfirm transfer this case?');">  
+                                            <select id="exampleFaculty" name="member_id" class="form-control" required="">
+                                                <option> ส่งต่อให้เจ้าหน้าที่ที่ประจำจุดใด ? </option>
+                                                <%
+                                                    List<Member> members = Member.getAllOffices();
+                                                    for (Member m : members) {
+                                                %>
+                                                <option value="<%=m.getId()%>"><%=m.getName()%> ตึก <%=m.getFaculty()%></option>
+                                                <%
+                                                    }
+                                                %>
+                                            </select> 
+                                            <br>
+                                  
+                                            <input type="hidden" name="id" value="<%=t.getId()%>">
+                                            <input type="hidden" name="status" value="0">      
+                                            
+                                            <button class="button1">Transfer Case</button></a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="information"></div>
-                    <button class="button1">Transfer Case</button></a>
                 </div>
+
+
+
+
+                <tr>
+                    <td> </td>
+                    <td><a href = "" target="_blank"> </a></td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <% }
+                    }
+
+                } else {
+
+
+                %>
+
+
+                <%                        }
+                %>
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script>
+                                            const updatedTimes = document.querySelectorAll('.updated')
 
 
+                                            function getTimeout(date) {
+                                                const minuteTimeout = 2
+                                                const timeout = new Date(date.getTime() + minuteTimeout * 60 * 1000)
+                                                return timeout
+                                            }
+                                            function getTimeString(node) {
+                                                return node.innerText
+                                            }
+                                            function getDateFromString(text) {
+                                                return new Date(text)
+                                            }
+                                            const getDifferenceTimeFrom = (current) => (future) => {
+                                                    return future - current
+                                                }
 
+                                            function checkTimeoutPassed(difference) {
+                                                return difference < 0
+                                            }
 
-            <tr>
-                <td> </td>
-                <td><a href = "" target="_blank"> </a></td>
-                <td> </td>
-                <td> </td>
-            </tr>
-            <% }
-                }
+                                            function showTimeOnScreen(text, index) {
+                                                document.getElementById(`countdown-${index + 1}`).innerText = text
+                                            }
 
-            } else {
+                                            function getDisplayCountdown(difference) {
+                                                if (checkTimeoutPassed(difference)) {
+                                                    return "Timeout"
+                                                }
+                                                const time = countdown(difference)
+                                                return `${time.minutes}:${time.seconds}`
+                                                    }
 
+                                                    function countdown(difference) {
+                                                        const _second = 1000
+                                                        const _minute = _second * 60
+                                                        const _hour = _minute * 60
+                                                        const _day = _hour * 24
+                                                        const _month = _day * 30
+                                                        const _year = _month * 12
+                                                        // calculate dates
+                                                        let years = Math.floor(difference / _year)
+                                                        let months = Math.floor((difference % _year) / _month)
+                                                        let days = Math.floor((difference % _month) / _day)
+                                                        let hours = Math.floor((difference % _day) / _hour)
+                                                        let minutes = Math.floor((difference % _hour) / _minute)
+                                                        let seconds = Math.floor((difference % _minute) / _second)
+                                                        // fix dates so that it will show two digets
+                                                        days = String(days).length >= 2 ? days : '0' + days
+                                                        hours = String(hours).length >= 2 ? hours : '0' + hours
+                                                        minutes = String(minutes).length >= 2 ? minutes : '0' + minutes
+                                                        seconds = String(seconds).length >= 2 ? seconds : '0' + seconds
+                                                        return {
+                                                            minutes,
+                                                            seconds
+                                                        }
+                                                    }
 
-            %>
+                                                    function init() {
+                                                        const currentDate = Date.now()
+                                                        const getDifferenceTime = getDifferenceTimeFrom(currentDate)
+                                                        result = Array.from(updatedTimes)
+                                                                .map(getTimeString)
+                                                                .map(getDateFromString)
+                                                                .map(getTimeout)
+                                                                .map(getDifferenceTime)
+                                                                .map(getDisplayCountdown)
+                                                                .map(showTimeOnScreen)
+                                                    }
+                                                    setInterval(() => {
+                                                        init()
+                                                    }, 1000)
 
-
-            <%                        }
-            %>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+            </script>
 
     </body>
 </html>

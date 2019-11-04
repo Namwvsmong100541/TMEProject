@@ -22,6 +22,8 @@ import tme.project.demo.datasource.ConnectionBuilder;
  */
 public class Member {
 
+    
+
     private int id;
     private String name;
     private String surname;
@@ -211,6 +213,24 @@ public class Member {
         }
         return m;
     }
+    
+    public static Member getNotifyMember(int officer_id) {
+        Member m = null;
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            Statement stmt = con.createStatement();
+            String sqlCmd = "SELECT * FROM member WHERE member_id = " + officer_id;
+            ResultSet rs = stmt.executeQuery(sqlCmd);
+            while (rs.next()) {
+                m = new Member();
+                ORM(m, rs);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return m;
+    }
 
     public String getGenderName() {
         if (gender.equals("F")) {
@@ -278,7 +298,17 @@ public class Member {
         return id;
     }
     
-    
+    public static String getLocationByUsername(String username)throws SQLException {
+        String sqlCmd = "SELECT `member_faculty` FROM `member` WHERE member_username = '" + username + "'";
+        Connection con = ConnectionBuilder.getConnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(sqlCmd);
+        String place = "";
+        if(rs.next()){
+            place = rs.getString("member_faculty");
+        }
+        return place;
+    }
 
     public static boolean isStudent(String member_username, String member_password) {
         try {

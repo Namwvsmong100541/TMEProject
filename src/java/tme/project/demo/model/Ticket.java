@@ -35,6 +35,7 @@ public class Ticket {
     private int countRow;
     private Date dateTime;
     private String catagory;
+    private int officer_id;
 
     public Ticket() {
     }
@@ -169,6 +170,14 @@ public class Ticket {
     public void setCatagory(String catagory) {
         this.catagory = catagory;
     }
+
+    public int getOfficer_id() {
+        return officer_id;
+    }
+
+    public void setOfficer_id(int officer_id) {
+        this.officer_id = officer_id;
+    }
     
     
     
@@ -203,6 +212,7 @@ public class Ticket {
             t.setLon(rs.getString("Longtitude"));
             t.setDateTime(rs.getTimestamp("Date_Time"));
             t.setCatagory(rs.getString("Event_catagory"));
+            t.setOfficer_id(rs.getInt("Notify_Member_ID"));
 
         
         } catch (SQLException ex) {
@@ -276,6 +286,27 @@ public class Ticket {
         return tickets;
     }
 
+    public static List<Ticket> getTicketsByLocation(String place) {
+        Ticket t = null;
+        List<Ticket> tickets = null;
+        try {
+            Connection conn = ConnectionBuilder.getConnection();
+            Statement stmt = conn.createStatement();
+            String sqlCmd = "SELECT * FROM Emergency_Notify WHERE Event_place = "+ place +"  ORDER BY Event_id DESC";
+            ResultSet rs = stmt.executeQuery(sqlCmd);
+            while (rs.next()) {
+                t = new Ticket();
+                ORM(t, rs);
+                if (tickets == null) {
+                    tickets = new ArrayList<Ticket>();
+                }
+                tickets.add(t);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tickets;
+    }
     
     public static int countRow(int userId) {
         int countRow = 0;
@@ -301,7 +332,7 @@ public class Ticket {
                 Connection conn = ConnectionBuilder.getConnection();
                 java.sql.Timestamp  sqlDate = new java.sql.Timestamp(new java.util.Date().getTime());
                 String sqlCmd = "INSERT INTO `Emergency_Notify`(Event_name, Event_desc, Event_place,Event_status,member_id_fk,"
-                                   + "Date_Time, Latitude, Longtitude, Event_catagory, Event_image) VALUES(?,?,?,0,?,?,?,?,?,?)";
+                                   + "Date_Time, Latitude, Longtitude, Event_catagory, Event_image ) VALUES(?,?,?,0,?,?,?,?,?,?)";
                 PreparedStatement pstm = conn.prepareStatement(sqlCmd);
                 pstm.setString(1, name);
                 pstm.setString(2, desc);
@@ -312,6 +343,8 @@ public class Ticket {
                 pstm.setString(7, lon);
                 pstm.setString(8, catagory);
                 pstm.setString(9, image);
+
+                
                 
                 int result = pstm.executeUpdate();
                 if (result != 0) {
@@ -337,10 +370,11 @@ public class Ticket {
         this.status = status;
     }
 
-    public static boolean update(int ticket_id, int ticket_status) {
+    public static boolean update(int ticket_id, int ticket_status, int member_id) {
         try {
             Connection conn = ConnectionBuilder.getConnection();
-            String sqlCmd = "UPDATE `Emergency_Notify` SET Event_status = " + ticket_status + " WHERE Event_id = " + ticket_id;
+            java.sql.Timestamp  sqlDate = new java.sql.Timestamp(new java.util.Date().getTime());
+            String sqlCmd = "UPDATE `Emergency_Notify` SET Event_status = " + ticket_status+", Notify_Member_ID="+ member_id +",Progress_Time='"+ sqlDate +"' WHERE Event_id = " + ticket_id;
             PreparedStatement pstm = conn.prepareStatement(sqlCmd);
             int result = pstm.executeUpdate();
             if (result != 0) {

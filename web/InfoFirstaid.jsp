@@ -182,12 +182,17 @@
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
 
 
+            <%
+                
+                Firstaid f = Firstaid.getFirstaid("FirstAid_ID");
+
+            %>
 
         </div>
 
         <div class="header">
             <a class="navbar-brand" href="FirstAid"> <img src="images\left-arrow.png" alt=""></a>
-            <h2>More First Aid</h2> 
+            <h2><%=f.getName()%></h2> 
         </div>
     <br>
     <br>
@@ -195,11 +200,6 @@
         <div class="page-header">
             <h5><b>วิธีการปฐมพยาบาลเบื้องต้น</b></h5>
 
-            <%
-                
-                Firstaid f = Firstaid.getFirstaid("FirstAid_ID");
-
-            %>
         </div>
 
         <div class="row">

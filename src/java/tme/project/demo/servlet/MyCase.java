@@ -19,7 +19,7 @@ import tme.project.demo.model.Ticket;
  *
  * @author LENOVO
  */
-public class StatusAccept extends HttpServlet {
+public class MyCase extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +33,7 @@ public class StatusAccept extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String target = "/StatusAccept.jsp";
+        String target = "/MyCase.jsp";
         String code = "";
         String alert = "";
         String ticket_message = "";
@@ -50,7 +50,7 @@ public class StatusAccept extends HttpServlet {
                         if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
                                 Integer.parseInt(request.getParameter("status")),
                                 Integer.parseInt(request.getParameter("member_id")))) {
-                            target = "/StatusAccept.jsp";
+                            target = "/MyCase.jsp";
                             ticket_message = "Update complete!";
                             code = "success";
                             alert = "Success!";
@@ -66,7 +66,7 @@ public class StatusAccept extends HttpServlet {
                     code = "Error";
                     alert = "Error!";
                     ticket_message = "Wrong Position.";
-                    target = "/StatusAccept.jsp";
+                    target = "/MyCase.jsp";
                 }
 
             } else {

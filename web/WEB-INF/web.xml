@@ -96,6 +96,10 @@
         <servlet-name>DeleteOfficer</servlet-name>
         <servlet-class>tme.project.demo.servlet.DeleteOfficer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MyCase</servlet-name>
+        <servlet-class>tme.project.demo.servlet.MyCase</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateStatus</servlet-name>
         <url-pattern>/UpdateStatus</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>DeleteOfficer</servlet-name>
         <url-pattern>/DeleteOfficer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyCase</servlet-name>
+        <url-pattern>/MyCase</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

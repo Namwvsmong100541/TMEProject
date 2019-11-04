@@ -157,9 +157,15 @@
                 <div class="cardhome">
                     <div class="menuhome">
                         <a href="UpdateStatus"><img src="images\alarm (8).png" alt=""></a>
-                        <h5>Notification</h5>
+                        <h5>All Notification</h5>
                     </div> 
-                </div>  
+                </div> 
+                <div class="cardhome">
+                    <div class="menuhome">
+                        <a href="MyCase"><img src="images\man-user (2).png" alt=""></a>
+                        <h5>My Direct Case</h5>
+                    </div> 
+                </div>
                 <div class="cardhome">
                     <div class="menuhome">
                         <a href="StatusAccept"><img src="images\list233.png" alt=""></a>
@@ -170,12 +176,6 @@
                     <div class="menuhome">
                         <a href="History"><img src="images\history (5).png" alt=""></a>
                         <h5>History</h5>
-                    </div> 
-                </div>
-                <div class="cardhome">
-                    <div class="menuhome">
-                        <a href="Profile"><img src="images\man-user (2).png" alt=""></a>
-                        <h5>Profile</h5>
                     </div> 
                 </div>
                 

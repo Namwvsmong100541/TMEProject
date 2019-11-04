@@ -69,6 +69,7 @@ public class AddEmergency extends HttpServlet {
                 String lat = request.getParameter("lat_value");
                 String lon = request.getParameter("lon_value");
                 String catagory = request.getParameter("catagory");
+//                int officer_id = Integer.parseInt((String)session.getAttribute("officer_id"));
 
                 Part filePart = request.getPart("image");
                 String fileName = System.currentTimeMillis() + "-" + filePart.getSubmittedFileName();

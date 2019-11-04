@@ -102,7 +102,7 @@
                 margin-right: 10px;
                 margin-top: 7px;
                 margin-bottom: 5px;
-                padding-right: 40px;
+                padding-right: 30px;
                 height: 30px;
 
 
@@ -235,7 +235,7 @@
                     for (Ticket t : tickets) {
                         if (t.getStatusName().equalsIgnoreCase("Waiting for response")) {
             %>
-            
+
             <div class="event">
 
                 <div class="eventarea">
@@ -261,8 +261,9 @@
                     </div>
 
                     <div class="Confirm">
-                        <form action="UpdateStatus" method="post" onsubmit="return confirm('You really want to change status?');">  
+                        <form action="UpdateStatus" method="post" onsubmit="return confirm('Confirm?');">  
                             <input type="hidden" name="id" value="<%=t.getId()%>">
+                            <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
                             <input type="hidden" name="status" value="1">                  
                             <button class="button1">Accept</button></a>
                         </form>
@@ -294,9 +295,10 @@
 
             <a href="History"><img src="images\history (3).png" alt="">
                 <a href="StatusAccept"><img src="images\list2.png" alt="">
-                    <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
-                        <a href="Home"><img src="images\home.png" alt="">
-       </div>
-</body>
-</html>
+                    <a href="MyCase"><img src="images\alarm (1).png" alt="">
+                        <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
+                            <a href="Home"><img src="images\home.png" alt="">
+                                </div>
+                                </body>
+                                </html>
 

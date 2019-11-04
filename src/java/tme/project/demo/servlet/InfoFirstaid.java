@@ -7,6 +7,7 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,7 @@ public class InfoFirstaid extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String target = "/InfoFirstaid.jsp";
+       
         Firstaid f = Firstaid.getFirstaid(request.getParameter("FirstAid_ID"));
         request.setAttribute("FirstAid_ID",f);
         

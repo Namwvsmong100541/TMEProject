@@ -6,12 +6,12 @@
 package tme.project.demo.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import tme.project.demo.model.Ticket;
 
 /**
@@ -33,9 +33,59 @@ public class TransferPage extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/TransferPage.jsp";
-        
+        String code = "";
+        String alert = "";
+        String ticket_message = "";
+        String ticket_status = request.getParameter("status");
+        String ticket_id = request.getParameter("id");
+        HttpSession session = request.getSession(false);
+        String position = (String) session.getAttribute("member_position");
+
+        if (session != null) {
+            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
+                if (position.equals("1")) {
+                    if (ticket_id != null && ticket_status != null) {
+                        if (Ticket.update(Integer.parseInt(request.getParameter("id")),
+                                Integer.parseInt(request.getParameter("status")),
+                                Integer.parseInt(request.getParameter("member_id")))) {
+                            target = "/TransferPage.jsp";
+                            ticket_message = "Update complete!";
+                            code = "success";
+                            alert = "Success!";
+                        } else {
+                            ticket_message = "Update incomplete!";
+                            code = "warning";
+                            alert = "Warning!";
+                        }
+                    }
+
+                } else {
+                    code = "Error";
+                    alert = "Error!";
+                    ticket_message = "Wrong Position.";
+                    target = "/TransferPage.jsp";
+                }
+
+            } else {
+                code = "Error";
+                alert = "Error!";
+                ticket_message = "Re-Login Pleased.";
+                target = "/Login.jsp";
+            }
+        } else {
+            code = "Error";
+            alert = "Error!";
+            ticket_message = "Re-Login Pleased.";
+        }
+
+        request.setAttribute("message", ticket_message);
+        request.setAttribute("code", code);
+        request.setAttribute("alert", alert);
+//        System.out.println(tickets.get(0).getName());
+
         List<Ticket> tickets = Ticket.getAllTickets();
         request.setAttribute("tickets", tickets);
+
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 

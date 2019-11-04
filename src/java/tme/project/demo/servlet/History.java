@@ -31,14 +31,16 @@ public class History extends HttpServlet {
         HttpSession session = request.getSession(false);
         String position = (String) session.getAttribute("member_position");
         int userId = Integer.parseInt((String) session.getAttribute("member_id"));
+        List<Ticket> tickets = null;
 
         if (session != null) {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("1")||position.equals("3")) {
+                if (position.equals("2")) {
                     target = "/History.jsp";
                 }
-                List<Ticket> tickets = Ticket.getAllTickets();
-                request.setAttribute("tickets", tickets);
+                int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
+                tickets = Ticket.getTicketsByNotifyMemberId(member_id);
+
             } else {
                 code = "Error";
                 alert = "Error!";
@@ -53,6 +55,7 @@ public class History extends HttpServlet {
         request.setAttribute("code", code);
         request.setAttribute("alert", alert);
         request.setAttribute("message", message);
+        request.setAttribute("tickets", tickets);
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 

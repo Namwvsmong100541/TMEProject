@@ -59,7 +59,7 @@
             .timedate,.emergency,.location,.status{
                 padding-left: 20px;
             }
-            
+
             .button2{
                 margin-left: 110px;
                 margin-bottom: 15px;
@@ -102,7 +102,7 @@
                 margin-right: 10px;
                 margin-top: 7px;
                 margin-bottom: 5px;
-                padding-right: 40px;
+                padding-right: 30px;
                 height: 30px;
 
 
@@ -199,7 +199,7 @@
             .status {
                 color: #FF852B ;
             }
-            
+
             .Confirm{
                 height: 0px;
             }
@@ -263,6 +263,7 @@
                     <div class="Confirm">
                         <form action="StatusAccept" method="post" onsubmit="return confirm('You really want to change status?');">  
                             <input type="hidden" name="id" value="<%=t.getId()%>">
+                            <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
                             <input type="hidden" name="status" value="2">                  
                             <button class="button2">Complete</button></a>
                         </form>
@@ -291,13 +292,14 @@
         <script src="js/bootstrap.min.js"></script>
 
         <div class="menubar">
-            
+
             <a href="History"><img src="images\history (3).png" alt="">
-            <a href="StatusAccept"><img src="images\list23.png" alt="">
-            <a href="UpdateStatus"><img src="images\alarm.png" alt="">
-             <a href="Home"><img src="images\home.png" alt="">
-        </div>
-    </body>
-</html>
+                <a href="StatusAccept"><img src="images\list23.png" alt="">
+                    <a href="MyCase"><img src="images\alarm (1).png" alt="">
+                        <a href="UpdateStatus"><img src="images\alarm.png" alt="">
+                            <a href="Home"><img src="images\home.png" alt="">
+                                </div>
+                                </body>
+                                </html>
 
 

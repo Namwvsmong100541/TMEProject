@@ -42,14 +42,15 @@ public class UpdateStatus extends HttpServlet {
         String ticket_id = request.getParameter("id");
         HttpSession session = request.getSession(false);
         String position = (String) session.getAttribute("member_position");
-        
-        List<Ticket> tickets = null;
+
+//        List<Ticket> tickets = null;
         if (session != null) {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
                 if (position.equals("2")) {
                     if (ticket_id != null && ticket_status != null) {
-                        if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
-                                Integer.parseInt(request.getParameter("status")))) {
+                        if (Ticket.update(Integer.parseInt(request.getParameter("id")),
+                                Integer.parseInt(request.getParameter("status")),
+                                Integer.parseInt(request.getParameter("member_id")))) {
                             target = "/UpdateStatus.jsp";
                             ticket_message = "Update complete!";
                             code = "success";
@@ -60,13 +61,12 @@ public class UpdateStatus extends HttpServlet {
                             alert = "Warning!";
                         }
                     }
-                    int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
-                    tickets = Ticket.getTicketsByNotifyMemberId(member_id);
+
                 } else {
                     code = "Error";
                     alert = "Error!";
                     ticket_message = "Wrong Position.";
-                    target = "/ListTickets.jsp";
+                    target = "/UpdateStatus.jsp";
                 }
 
             } else {
@@ -84,8 +84,9 @@ public class UpdateStatus extends HttpServlet {
         request.setAttribute("message", ticket_message);
         request.setAttribute("code", code);
         request.setAttribute("alert", alert);
-        System.out.println(tickets.get(0).getName());
-        
+//        System.out.println(tickets.get(0).getName());
+
+        List<Ticket> tickets = Ticket.getAllTickets();
         request.setAttribute("tickets", tickets);
 
         getServletContext().getRequestDispatcher(target).forward(request, response);

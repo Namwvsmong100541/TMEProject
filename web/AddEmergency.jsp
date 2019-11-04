@@ -340,18 +340,19 @@
                                 Member m = Member.getMember(Integer.parseInt((String)session.getAttribute("member_id")));
 
                             %>
-                            <label  for="desc">You're phone no : <%=m.getPhoneNo()%> </label>
-                            <input name="desc" type="text" class="form-control" id="title" rows="2" placeholder="เบอร์อื่น (optional)">
+                            <label for="desc">You're phone no : <input name="desc" type="hidden" value="<%=m.getPhoneNo()%>"><%=m.getPhoneNo()%></label>
+                           
                             <br>
                         </div>
                         <div class="col-4">
                             <label for="place">LOCATION</label>
                             <select id="exampleFaculty" name="place" class="form-control" required="">
                                 <option> Where? </option>
-                                <%                                    ArrayList<Place> places = Place.getAllPlaces();
+                                <%                                   
+                                    ArrayList<Place> places = Place.getAllPlaces();
                                     for (Place p : places) {
                                 %>
-                                <option value="<%= p.getPlace_name()%>"><%= p.getPlace_name()%></option>
+                                <option value="<%=p.getPlace_name() %>"><%= p.getPlace_name()%></option>
                                 <%
                                     }
                                 %>
