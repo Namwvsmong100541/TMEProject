@@ -16,6 +16,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -35,24 +36,58 @@
         <title>Notification List</title>
         <style>
             html,body{
-                background-color:#F5F5F5;
+                background-color:#efeff4;
                 color: #000000;
+                font-family: 'Montserrat', sans-serif ;
             }
             .page-header{
-                background-color:#FFFFFF;
-                padding-top: 40px ;
+                background-color:#f47735;
+                padding-top: 20px ;
                 padding-left: 30px;
                 padding-right: 30px;
-                padding-bottom: 40px;
-                color: #000000;
+                padding-bottom: 20px;
+                color: white;
                 font-family:Cordia New;
                 text-align:center;
+                border-radius: 5px; 
+            }
+            .container{
+                width:1000px;
+                
             }
             .block1{
                 float:right;
             }
             .now{
                 float:right;
+            }
+            .navbar{
+                background: #f47735;
+                color: white;
+            }
+            .navbar-default .navbar-brand{
+                color: white;
+            }
+            .footer{
+                background: whitesmoke;
+            }
+            .form-group{
+                color: #707070;
+                margin-left: 235px;
+            }
+            .form-control{
+                width: 500px;
+            }
+            .btn-default{
+            margin-left: 420px;
+            }
+            .content{
+                text-align: center;
+                
+            }
+            .content label{
+                margin-right: 560px;
+                margin-left: 0px;
             }
         </style>
     </head>

@@ -30,6 +30,15 @@
         <style>
             html,body{
                 background-color:#EFEFF4;
+                font-family: 'Montserrat', sans-serif ;
+            }
+            body{
+                color: #707070;
+                background-repeat: repeat;
+                background-position: center;
+                height: 700px;
+                width:375px;
+                position: fixed;
             }
             .logout {
                 background:#F47735;
@@ -89,7 +98,8 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1.5px white solid;
+                border-top:  1px white solid;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
             }
             .container{
@@ -134,13 +144,13 @@
             }
         </style>
     </head>
-    <body>
+    <body background="images\bodyofficer.jpg" align="">
         <div class="logout">
 
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout">Log out</a></label> 
+                <a href="Logout">Log out</a>
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>

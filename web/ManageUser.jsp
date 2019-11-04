@@ -14,6 +14,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Report - Add Ticket</title>
 
@@ -32,18 +33,21 @@
         <title>TME - Add new officer</title>
         <style>
             html,body{
-                background-color:#F5F5F5;
+                background-color:#efeff4;
                 color: #000000;
+                font-family: 'Montserrat', sans-serif ;
             }
             .page-header{
-                background-color:#FFFFFF;
-                padding-top: 40px ;
+                 background-color:#f47735;
+                padding-top: 20px ;
                 padding-left: 30px;
                 padding-right: 30px;
-                padding-bottom: 40px;
-                color: #000000;
+                padding-bottom: 20px;
+                color: white;
                 font-family:Cordia New;
                 text-align:center;
+                border-radius: 5px;
+                margin-top: 0px;
             }
             .container{
                 width:1000px;
@@ -54,6 +58,14 @@
             .now{
                 float:right;
             }
+            .navbar{
+                background: #f47735;
+                color: white;
+            }
+            .navbar-default .navbar-brand{
+                color: white;
+            }
+            
         </style>
     </head>
     <body>
@@ -222,11 +234,7 @@
             </div>
 
 
-            <footer class="footer">
-                <div class="container">
-                    <p class="text-muted">Written by TrippleN</p>
-                </div>
-            </footer>
+            
 
             <!-- Bootstrap core JavaScript
     ================================================== -->

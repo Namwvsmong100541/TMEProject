@@ -151,7 +151,6 @@
                 width: 100%;
                 height: 50px;
                 background:#BD4747;
-                
                 color: white ;
                 font-size: 10px;
                 text-align: center;

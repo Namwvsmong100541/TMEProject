@@ -43,13 +43,9 @@
                 display: inline-block;
             }
             html,body{
-                /*background-color:#EFEFF4;*/
-                background-color: whitesmoke;
+               background-color:#efeff4;
+                color: #000000;
                 font-family: 'Montserrat', sans-serif ;
-            }
-
-            .block2 a{
-                color: black;
             }
             .table.dataTable{
                 background: whitesmoke;
@@ -92,94 +88,6 @@
                 bottom:  0px;
                 z-index: 8000;
 
-            }
-            .menubar img{
-                float: right;
-                margin-right: 10px;
-                margin-top: 7px;
-                margin-bottom: 5px;
-                padding-right: 40px;
-                height: 30px;
-
-
-            }
-            .logout {
-                background:#BD4747;
-                height: 30px;
-                color: white;
-                width: 100%;
-                padding: 5px;
-                position: fixed; 
-                top: 0;
-                z-index: 9999;
-
-            }
-
-
-            .logout .studentID{
-                background: #BD4747;
-                width: 100px;
-                height: 15px;
-                float: left;
-                margin-top: 0px;
-                margin-right: 5px;
-                margin-left: 5px;
-                text-align: center;
-                padding: 2px;
-                font-size: 12px;
-            }
-
-            .out {
-                float: right;
-                font-size: 12px;
-                text-align: center;
-                margin-right: 15px;
-                margin-bottom: 20px;
-                color: white;
-            }
-            .out button{
-                font-size: 12px;
-                margin-right: 5px;
-                padding: 3px;
-            }
-            .out img{
-                margin-top: 0px;
-            }
-            .out a{
-                color: white;
-
-            }
-
-
-
-            .header {
-                width: 100%;
-                height: 50px;
-                background:#BD4747;
-                color: white ;
-                font-size: 10px;
-                text-align: center;
-                padding:5px;
-                position: fixed; 
-                top: 30px;
-                z-index: 8000;
-                border-top:  1.5px white solid;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
-            }
-
-            .header h2{
-                text-align: center;
-                font-size: 20px;
-                margin-top: 10px;
-                padding-left: 12px;
-
-            }
-            .container{
-                padding: 0px;
-                margin-top: 30px;
-
-            }
             .notify img{
                 width: 20px;
                 height: 20px;
@@ -195,12 +103,15 @@
             .status_time,.contact_person{
                 padding-left: 20px;
             }
+            
+            .container{
+                width: 1000px;
+            }
 
         </style>
     </head>
 
     <body>
-        <!-- Fixed navbar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -220,8 +131,8 @@
                             <div id="navbar" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
                                     <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
-                                    <li ><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
-                                    <li class="active"><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Transfer Page</a></li>
+                                    <li class="active"><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
+                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Transfer Page</a></li>
                                     <li><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Officer</a></li>
                                     <li><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
                                     <li><a href="AdminLogout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
@@ -233,9 +144,7 @@
             </div>
         </nav>
 
-        <div class="header">
-            <h2>Transfer Case</h2> 
-        </div>
+        
         <div class="container">
             <br>
             <br>
