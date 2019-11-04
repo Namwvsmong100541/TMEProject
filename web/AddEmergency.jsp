@@ -246,7 +246,7 @@
                 color: #707070;
             }
         </style>
-
+        
     <div class="page-header">
         <title>Emergency Notify</title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -337,22 +337,22 @@
 
                             <textarea name="name" class="form-control" id="desc" rows="3" placeholder="Description" required=""></textarea>
                             <%
-                                Member m = Member.getMember(Integer.parseInt((String)session.getAttribute("member_id")));
+                                Member m = Member.getMember(Integer.parseInt((String) session.getAttribute("member_id")));
 
                             %>
                             <label for="desc">You're phone no : <input name="desc" type="hidden" value="<%=m.getPhoneNo()%>"><%=m.getPhoneNo()%></label>
-                           
+
                             <br>
                         </div>
                         <div class="col-4">
                             <label for="place">LOCATION</label>
                             <select id="exampleFaculty" name="place" class="form-control" required="">
                                 <option> Where? </option>
-                                <%                                   
+                                <%
                                     ArrayList<Place> places = Place.getAllPlaces();
                                     for (Place p : places) {
                                 %>
-                                <option value="<%=p.getPlace_name() %>"><%= p.getPlace_name()%></option>
+                                <option value="<%=p.getPlace_name()%>"><%= p.getPlace_name()%></option>
                                 <%
                                     }
                                 %>
@@ -393,7 +393,7 @@
     <a href="Profile"><img src="images\avatar (2).png" alt=""></a>
 
 </div>
-</body>
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -496,5 +496,5 @@
         }
     }
 </script>
-
+</body>
 </html>
