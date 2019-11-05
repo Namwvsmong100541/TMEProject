@@ -53,7 +53,7 @@
             }
             .container{
                 width:1020px;
-                
+
             }
             .block1{
                 float:right;
@@ -73,17 +73,17 @@
             }
             .form-group{
                 color: #707070;
-                
+
             }
             .form-control{
                 width: 500px;
             }
             .btn-default{
-            margin-left: 420px;
+                margin-left: 420px;
             }
             .content{
                 text-align: center;
-                
+
             }
             .content label{
                 margin-right: 560px;
@@ -96,7 +96,7 @@
                 margin-bottom: 10px;
                 padding-left: 30px;
             }
-            
+
             .notify img{
                 width: 20px;
                 height: 20px;
@@ -106,7 +106,7 @@
             .emergency h6{
                 margin-top: 30px;
             }
-            
+
             .status_time{
                 height: 120px;
             }
@@ -149,15 +149,23 @@
 
         <!-- Begin page content -->
         <div class="container">
-           
-        <br>
-            <br>
+
             <br>
             <br>
             <br>
 
             <%
+                if (request.getAttribute("code") != null) {
+            %>
 
+            <div class="alert alert-<%=(String) request.getAttribute("code")%>">
+                <strong><%=(String) request.getAttribute("alert")%></strong> 
+                <%=(String) request.getAttribute("message")%>
+            </div>
+            <%
+                }
+            %>
+            <%
                 if (request.getAttribute("tickets") != null) {
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
                     int count = 1;
@@ -186,7 +194,7 @@
                     <div class="contact_person">
                         <h6>Location : <%=t.getPlace()%>  </h6> 
                     </div>
-                    
+
 
                     <div class="status_time">
                         <h6>Counting time : <span id="countdown-<%=count++%>"></span> </h6>
@@ -207,10 +215,10 @@
                                                 %>
                                             </select> 
                                             <br>
-                                  
+
                                             <input type="hidden" name="id" value="<%=t.getId()%>">
                                             <input type="hidden" name="status" value="0">      
-                                            
+
                                             <button class="button1">Transfer Case</button></a>
                                         </form>
                                     </div>

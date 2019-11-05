@@ -1,3 +1,8 @@
+<%-- 
+    Document   : DetailAcceptCase
+    Created on : Nov 5, 2019, 5:54:44 PM
+    Author     : LENOVO
+--%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="tme.project.demo.model.Place"%>
@@ -134,7 +139,7 @@
             .panel-heading{
                 height: 50px;
             }
-           
+
             .mb-1 {
                 margin-bottom: 0.5em;
             }
@@ -142,7 +147,7 @@
 
     </head>
 
-    </head>
+</head>
 <body>
     <!-- Begin page content -->
     <div class="logout">
@@ -160,7 +165,7 @@
     </div>
 
     <div class="header">
-        <a class="navbar-brand" href="UpdateStatus"> <img src="images\left-arrow.png" alt=""></a>
+        <a class="navbar-brand" href="StatusAccept"> <img src="images\left-arrow.png" alt=""></a>
         <h2>More detail</h2> 
     </div>
     <br>
@@ -207,7 +212,7 @@
                     </div>
                 </div>
             </div>
-                    
+
             <div class="col-md-4"><div class="panel panel-default">
                     <div class="panel-heading"> <h4><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> รูปภาพ </h4></div>
                     <div class="panel-body">
@@ -249,3 +254,4 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHmKZ96a7T1gvXwMDRzyyGRQgOfFuEet8&sensor=false&callback=initMap"async defer></script>
 </html>
+

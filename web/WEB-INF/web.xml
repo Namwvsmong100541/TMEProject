@@ -100,6 +100,18 @@
         <servlet-name>MyCase</servlet-name>
         <servlet-class>tme.project.demo.servlet.MyCase</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailAcceptCase</servlet-name>
+        <servlet-class>tme.project.demo.servlet.DetailAcceptCase</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailCompletedCase</servlet-name>
+        <servlet-class>tme.project.demo.servlet.DetailCompletedCase</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailDirectCase</servlet-name>
+        <servlet-class>tme.project.demo.servlet.DetailDirectCase</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UpdateStatus</servlet-name>
         <url-pattern>/UpdateStatus</url-pattern>
@@ -199,6 +211,18 @@
     <servlet-mapping>
         <servlet-name>MyCase</servlet-name>
         <url-pattern>/MyCase</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailAcceptCase</servlet-name>
+        <url-pattern>/DetailAcceptCase</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailCompletedCase</servlet-name>
+        <url-pattern>/DetailCompletedCase</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailDirectCase</servlet-name>
+        <url-pattern>/DetailDirectCase</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

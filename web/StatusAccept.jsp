@@ -277,7 +277,7 @@
 
                     <div class="information">    
                     </div>
-                    <a href = "Detail?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
+                    <a href = "DetailAcceptCase?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
                 </div>
             </div>
 

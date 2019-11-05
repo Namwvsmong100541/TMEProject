@@ -278,7 +278,7 @@
 
                     <div class="information">    
                     </div>
-                    <a href = "Detail?id=<%=t.getId()%>"><button class="button2">More detail</button></a>
+                    <a href = "DetailDirectCase?id=<%=t.getId()%>"><button class="button2">More detail</button></a>
                 </div>
             </div>
 

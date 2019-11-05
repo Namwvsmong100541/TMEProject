@@ -248,7 +248,7 @@
             }
             .row1 .submit{
                 background: greenyellow;
-                margin-top: 0px;
+                margin-top: 10px;
                 padding: 10px;
                 border-radius: 5px; 
                 text-align: center;
@@ -348,8 +348,9 @@
                                 Member m = Member.getMember(Integer.parseInt((String) session.getAttribute("member_id")));
 
                             %>
-                            <label for="desc">You're phone no : <input name="desc" type="hidden" value="<%=m.getPhoneNo()%>"><%=m.getPhoneNo()%></label>
-
+                            <label for="desc">You're phone no : </label>
+                                <input name="desc" type="name" class="form-control" value="<%=m.getPhoneNo()%>">
+                            
                             <br>
                         </div>
                         <div class="col-4">

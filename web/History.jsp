@@ -244,7 +244,7 @@
                         <h6><b>Status : <%=t.getStatusName()%> </b></h6>
                     </div>
                     <div class="information"></div>
-                    <a href = "Detail?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
+                    <a href = "DetailCompletedCase?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
                 </div>
             </div>
 
