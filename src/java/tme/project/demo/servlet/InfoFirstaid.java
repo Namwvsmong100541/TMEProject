@@ -37,6 +37,7 @@ public class InfoFirstaid extends HttpServlet {
        
         Firstaid f = Firstaid.getFirstaid(request.getParameter("FirstAid_ID"));
         request.setAttribute("FirstAid_ID",f);
+        System.out.println(f);
         
         getServletContext().getRequestDispatcher(target).forward(request, response);
     }

@@ -237,17 +237,22 @@
             %>
             <div class="event">
 
-                <a href = "InfoFirstaid?id=<%=f.getFirstaid_id()%>" alt=""><div class="eventarea">
+                
+                    <div class="eventarea">
                     <div class="notify">
 
                         <img src="images\doctor-bag.png" alt="">
                     </div>
 
                     <div class="emergency">
-                        <h6><%=f.getName()%></h6>
+                        <h6><a href = "InfoFirstaid?id=<%=f.getFirstaid_id()%>" alt="">
+                              <input type="hidden"  name="FirstAid_ID" value="<%=f.getFirstaid_id()%>"> 
+                              <%=f.getName()%>
+                            </a>
+                        </h6>
                     </div>
 
-                    </div></a>
+                    </div>
             </div>
 
 
