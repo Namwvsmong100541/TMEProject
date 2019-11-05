@@ -34,7 +34,7 @@
                 display: inline-block;
             }
             html,body{
-                background-color:#EFEFF4;
+                background-color:whitesmoke;
                 font-family: 'Montserrat', sans-serif ;
             }
             body{
@@ -207,7 +207,7 @@
 
         </style>
     </head>
-    <body background="images\bgprofile.jpg" align="">
+    <body background="images\123333.jpg" align="">
         <!-- Begin page content -->
         <div class="logout">
 

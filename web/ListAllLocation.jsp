@@ -65,7 +65,7 @@
                 color: white;
             }
             .container{
-                width:1000px;
+                width:1020px;
                 
             }
         </style>

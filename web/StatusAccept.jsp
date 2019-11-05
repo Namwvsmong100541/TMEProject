@@ -65,7 +65,7 @@
             }
 
             .button2{
-                margin-left: 110px;
+                margin-left: 100px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #75BF36; 
@@ -301,7 +301,7 @@
 
             <a href="History"><img src="images\history (3).png" alt="">
                 <a href="StatusAccept"><img src="images\list23.png" alt="">
-                    <a href="MyCase"><img src="images\alarm (1).png" alt="">
+                    <a href="MyCase"><img src="images\transfer (3).png" alt="">
                         <a href="UpdateStatus"><img src="images\alarm.png" alt="">
                             <a href="Home"><img src="images\home.png" alt="">
                                 </div>

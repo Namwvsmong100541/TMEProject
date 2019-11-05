@@ -11,6 +11,7 @@
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +28,8 @@
                 display: inline-block;
             }
             html,body{
-                background-color:#EFEFF4;
+                background-color:whitesmoke;
+                font-family: 'Montserrat', sans-serif ;
             }
             thead{
                 background: silver;
@@ -148,8 +150,7 @@
 
         <div class="out">
             <img src="images\logout .png" alt="">
-            <label><a href="Logout"> Log out</a></label> 
-
+            <a href="Logout"> Log out</a>
         </div> 
         <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
 

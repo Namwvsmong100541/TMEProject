@@ -36,7 +36,7 @@
                 display: inline-block;
             }
             html,body{
-                background-color:#EFEFF4;
+                background-color:whitesmoke;
                 font-family: 'Montserrat', sans-serif ;
             }
 
@@ -157,7 +157,7 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1px white solid;
+                border-top:  1.5px white solid;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             }
 
@@ -193,9 +193,9 @@
             body{
                 background-repeat: repeat;
                 background-position: center;
-                height: 700px;
+                height: 820px;
                 width:375px;
-                position: fixed;
+                position: absolute;
                 color: #707070;
             }
 
@@ -203,7 +203,7 @@
         </style>
     </head>
 
-    <body background="images\bgprofile.jpg" align="">
+    <body background="images\123333.jpg" align="">
         <!-- Begin page content -->
         <div class="logout">
 

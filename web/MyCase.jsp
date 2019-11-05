@@ -42,6 +42,7 @@
             }
             html,body{
                 background-color:#EFEFF4;
+                font-family: 'Montserrat', sans-serif ;
             }
 
             .block2 a{
@@ -66,7 +67,7 @@
                 padding-left: 20px;
             }
             .button1{
-                margin-left: 120px;
+                margin-left: 115px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #D8AC35; 
@@ -79,7 +80,7 @@
                 margin-top: 10px;
             }
             .button2{
-                margin-left: 190px;
+                margin-left: 195px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #F58F5A; 
@@ -171,8 +172,8 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1.5px white solid;
-
+                border-top:  1px white solid;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             }
 
             .header h2{
@@ -218,7 +219,7 @@
 
             <div class="out">
                 <img src="images\logout .png" alt="">
-                <label><a href="Logout">Log out</a></label> 
+                <a href="Logout">Log out</a>
 
             </div> 
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
@@ -301,7 +302,7 @@
 
             <a href="History"><img src="images\history (3).png" alt="">
                 <a href="StatusAccept"><img src="images\list2.png" alt="">
-                    <a href="MyCase"><img src="images\alarm (1).png" alt="">
+                    <a href="MyCase"><img src="images\transfer (1).png" alt="">
                         <a href="UpdateStatus"><img src="images\alarm.png" alt="">
                             <a href="Home"><img src="images\home.png" alt="">
                                 </div>

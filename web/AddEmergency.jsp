@@ -43,7 +43,7 @@
         <!-- Begin page content -->
         <style>
             body{
-                background-color: #EFEFF4;
+                background-color: whitesmoke;
                 color: #707070;
                 height: 550px;
             }
@@ -142,7 +142,7 @@
                 position: fixed; 
                 top: 30px;
                 z-index: 8000;
-                border-top:  1px white solid;
+                border-top:  0px white solid;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
             }
@@ -199,6 +199,7 @@
             .btn-warning{
                 background-color: #f5f5f3;
                 border: #EFEFF4;
+               
             }
             .col-8 textArea{
                 height: 40px;
@@ -240,10 +241,17 @@
             body{
                 background-repeat: repeat;
                 background-position: center;
-                height: 700px;
+                height: 720px;
                 width:375px;
-                position: fixed;
+                position: absolute;
                 color: #707070;
+            }
+            .row1 .submit{
+                background: greenyellow;
+                margin-top: 0px;
+                padding: 10px;
+                border-radius: 5px; 
+                text-align: center;
             }
         </style>
         
@@ -251,7 +259,7 @@
         <title>Emergency Notify</title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css\Notify.css">
-        <body background="images\bgprofile.jpg" align=""> 
+        <body background="images\123333.jpg" align=""> 
             <div class="container1">
                 <div class="out">
                     <img src="images\logout .png" alt=""> 
@@ -334,7 +342,7 @@
                                 %>
                             </select> 
 
-
+                            
                             <textarea name="name" class="form-control" id="desc" rows="3" placeholder="Description" required=""></textarea>
                             <%
                                 Member m = Member.getMember(Integer.parseInt((String) session.getAttribute("member_id")));
@@ -371,7 +379,7 @@
 
 
                         <br>
-                        <button type="submit" name="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
+                        <button type="submit" name="submit" class="submit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> SUBMIT &nbsp 
                             <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
                             <input name="lat_value"  type="hidden" id="lat_value"  class="form-control" value="0" /> 
                             <input name="lon_value" type="hidden" id="lon_value" class="form-control" value="0" />          

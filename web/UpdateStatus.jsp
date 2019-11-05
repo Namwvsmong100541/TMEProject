@@ -63,7 +63,7 @@
                 padding-left: 20px;
             }
             .button1{
-                margin-left: 120px;
+                margin-left: 115px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #D8AC35; 
@@ -76,7 +76,7 @@
                 margin-top: 10px;
             }
             .button2{
-                margin-left: 190px;
+                margin-left: 195px;
                 margin-bottom: 15px;
                 border-radius: 8px;
                 background-color: #F58F5A; 
@@ -299,7 +299,7 @@
 
             <a href="History"><img src="images\history (3).png" alt="">
                 <a href="StatusAccept"><img src="images\list2.png" alt="">
-                    <a href="MyCase"><img src="images\alarm (1).png" alt="">
+                    <a href="MyCase"><img src="images\transfer (3).png" alt="">
                         <a href="UpdateStatus"><img src="images\alarm (2).png" alt="">
                             <a href="Home"><img src="images\home.png" alt="">
                                 </div>

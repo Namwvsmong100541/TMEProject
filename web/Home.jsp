@@ -172,7 +172,7 @@
                 </div> 
                 <div class="cardhome">
                     <div class="menuhome">
-                        <a href="MyCase"><img src="images\man-user (2).png" alt=""></a>
+                        <a href="MyCase"><img src="images\transfer.png" alt=""></a>
                         <h5>My Direct Case</h5>
                     </div> 
                 </div>

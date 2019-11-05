@@ -1,33 +1,29 @@
 <%-- 
-    Document   : TransferPage
-    Created on : Oct 28, 2019, 9:48:02 PM
+    Document   : ListAllOfficer
+    Created on : Nov 2, 2019, 11:07:04 PM
     Author     : LENOVO
 --%>
 
-
 <%@page import="java.util.ArrayList"%>
-<%@page import="tme.project.demo.model.Member"%>
 <%@page import="tme.project.demo.model.Place"%>
-<%@page import="java.util.List"%>
 <%@page import="tme.project.demo.model.Ticket"%>
+<%@page import="tme.project.demo.model.Member"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Report - My Notification</title>
+        <title>TME | All Locations</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Custom styles for this template -->
-        <link href="css/sticky-footer-navbar.css" rel="stylesheet">
 
         <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
@@ -37,81 +33,88 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <title>TME - My Notification</title>
+        <title>Notification List</title>
         <style>
-            form{
-                display: inline-block;
-            }
             html,body{
-               background-color:#efeff4;
+                background-color:#efeff4;
                 color: #000000;
                 font-family: 'Montserrat', sans-serif ;
             }
-            .table.dataTable{
+            .page-header{
+                background-color:#f47735;
+                padding-top: 20px ;
+                padding-left: 30px;
+                padding-right: 30px;
+                padding-bottom: 20px;
+                color: white;
+                font-family:Cordia New;
+                text-align:center;
+                border-radius: 5px; 
+            }
+            .container{
+                width:1020px;
+                
+            }
+            .block1{
+                float:right;
+            }
+            .now{
+                float:right;
+            }
+            .navbar{
+                background: #f47735;
+                color: white;
+            }
+            .navbar-default .navbar-brand{
+                color: white;
+            }
+            .footer{
                 background: whitesmoke;
             }
-            thead{
-                background: silver;
+            .form-group{
+                color: #707070;
+                
             }
-            .event{
-                margin: 10px;
-                text-align: left;
+            .form-control{
+                width: 500px;
+            }
+            .btn-default{
+            margin-left: 420px;
+            }
+            .content{
+                text-align: center;
+                
+            }
+            .content label{
+                margin-right: 560px;
+                margin-left: 0px;
             }
             .eventarea{
                 background-color: white;
                 border: 0.20px #707070 solid;
                 border-radius:8px;
-            }
-            .timedate,.emergency,.location{
-                padding-left: 20px;
-            }
-            .button1{
-                margin-left: 80%;
                 margin-bottom: 10px;
-                border-radius: 8px;
-                background-color: #BD4747; 
-                border: none;
-                color: white;
-                padding: 5px;
-                padding-left: 10px;
-                padding-right:  10px;
+                padding-left: 30px;
             }
-
-
-            .menubar {
-                background: white;
-                width: 100%;
-                height: 45px;
-                border:#CECCCC 1px;
-                border-style: solid; 
-                position: fixed; 
-                bottom:  0px;
-                z-index: 8000;
-
+            
             .notify img{
                 width: 20px;
                 height: 20px;
                 float: right;
                 margin:10px;
             }
-            .timedate{
-                margin-top: 0px;
-            }
-            .information.a{
-                color: whitesmoke;
-            }
-            .status_time,.contact_person{
-                padding-left: 20px;
+            .emergency h6{
+                margin-top: 30px;
             }
             
-            .container{
-                width: 1000px;
+            .status_time{
+                height: 120px;
             }
-
         </style>
     </head>
-
     <body>
+
+        <!-- Fixed navbar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -122,7 +125,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="block2">
-                        <a class="navbar-brand" href="">TME |</a>
+                        <a class="navbar-brand" href="ListTickets">TME |</a>
                         <div class="now">
                             <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
                                 <%=session.getAttribute("member_name")%> </font></a>
@@ -131,10 +134,10 @@
                             <div id="navbar" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
                                     <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
-                                    <li class="active"><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
-                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Transfer Page</a></li>
-                                    <li><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Officer</a></li>
-                                    <li><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
+                                    <li><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
+                                    <li class="active"><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Transfer Page</a></li>
+                                    <li><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Officer</a></li>
+                                    <li ><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
                                     <li><a href="AdminLogout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
                                 </ul>
                             </div>
@@ -144,9 +147,10 @@
             </div>
         </nav>
 
-        
+        <!-- Begin page content -->
         <div class="container">
-            <br>
+           
+        <br>
             <br>
             <br>
             <br>
@@ -316,7 +320,6 @@
                                                     }, 1000)
 
             </script>
-
     </body>
 </html>
 

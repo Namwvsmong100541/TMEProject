@@ -49,7 +49,7 @@
                 border-radius: 5px; 
             }
             .container{
-                width:1000px;
+                width:1020px;
                 
             }
             .block1{

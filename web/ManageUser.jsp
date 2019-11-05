@@ -47,10 +47,10 @@
                 font-family:Cordia New;
                 text-align:center;
                 border-radius: 5px;
-                margin-top: 0px;
+                margin-top: 20px;
             }
             .container{
-                width:1000px;
+                width:1020px;
             }
             .block1{
                 float:right;
