@@ -241,7 +241,7 @@
             body{
                 background-repeat: repeat;
                 background-position: center;
-                height: 720px;
+                height: 680px;
                 width:375px;
                 position: absolute;
                 color: #707070;
@@ -252,6 +252,10 @@
                 padding: 10px;
                 border-radius: 5px; 
                 text-align: center;
+            }
+            #map {
+                height: 180px;
+                width: 300px;
             }
         </style>
         
@@ -368,7 +372,7 @@
                             </select> 
                             <br>
 
-                            <div class="btn btn-warning" role="group" aria-label="Basic example">
+                            <div >
                                 <button onClick="openImageUpload()" id="upload-image-button" type="button" class="btn btn-secondary btn-lg" ><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button>
                                 <input onChange="previewFile()" id="image-input" name="image" type="file" accept="image/*" style="visibility: hidden; width: 0; height: 0;">
                             </div>
