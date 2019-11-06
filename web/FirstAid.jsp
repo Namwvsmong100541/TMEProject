@@ -54,7 +54,7 @@
                 
             }
             .event a{
-                font-size: 5px;
+                font-size: 14px;
                 color: #707070;
             }
             .eventarea{
@@ -199,7 +199,6 @@
                 color: #707070;
             }
 
-
         </style>
     </head>
 
@@ -245,11 +244,10 @@
                     </div>
 
                     <div class="emergency">
-                        <h6><a href = "InfoFirstaid?id=<%=f.getFirstaid_id()%>" alt="">
-                              
+                        <h4><a href = "InfoFirstaid?id=<%=f.getFirstaid_id()%>" alt="">
                               <%=f.getName()%>
                             </a>
-                        </h6>
+                        </h4>
                     </div>
 
                     </div>

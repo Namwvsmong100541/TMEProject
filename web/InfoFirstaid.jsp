@@ -202,7 +202,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"> <h4> ${f.name} </h4></div>                               
                     <div class="panel-body">              
-                        <p> Information : ${f.desc} </p>
+                        <p> Information :<br> ${f.desc} </p>
 
                     </div>
                 </div>
