@@ -246,7 +246,7 @@
 
                     <div class="emergency">
                         <h6><a href = "InfoFirstaid?id=<%=f.getFirstaid_id()%>" alt="">
-                              <input type="hidden"  name="FirstAid_ID" value="<%=f.getFirstaid_id()%>"> 
+                              
                               <%=f.getName()%>
                             </a>
                         </h6>

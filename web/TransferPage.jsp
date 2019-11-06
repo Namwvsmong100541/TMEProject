@@ -254,7 +254,7 @@
             <script src="js/bootstrap.min.js"></script>
             <script>
                                             const updatedTimes = document.querySelectorAll('.updated')
-
+                    console.log(updatedTimes)                        
 
                                             function getTimeout(date) {
                                                 const minuteTimeout = 2
@@ -275,8 +275,8 @@
                                                 return difference < 0
                                             }
 
-                                            function showTimeOnScreen(text, index) {
-                                                document.getElementById(`countdown-${index + 1}`).innerText = text
+                                            function showTimeOnScreen(text, index) {                                         
+        document.getElementById('countdown-' + index).innerText = text
                                             }
 
                                             function getDisplayCountdown(difference) {
@@ -284,7 +284,7 @@
                                                     return "Timeout"
                                                 }
                                                 const time = countdown(difference)
-                                                return `${time.minutes}:${time.seconds}`
+                                                return time.minutes + ':' + time.seconds
                                                     }
 
                                                     function countdown(difference) {
@@ -321,7 +321,11 @@
                                                                 .map(getTimeout)
                                                                 .map(getDifferenceTime)
                                                                 .map(getDisplayCountdown)
-                                                                .map(showTimeOnScreen)
+                                                                .map((element, index) => {
+                                                                    const counter = index + 1
+                                                                    console.log(element)
+                                                                    showTimeOnScreen(element, counter)
+                                                                })
                                                     }
                                                     setInterval(() => {
                                                         init()

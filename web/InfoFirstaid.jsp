@@ -182,17 +182,12 @@
             <div class="studentID"> <%=session.getAttribute("member_name")%> </div>
 
 
-            <%
-                
-                Firstaid f = Firstaid.getFirstaid("FirstAid_ID");
-
-            %>
 
         </div>
 
         <div class="header">
             <a class="navbar-brand" href="FirstAid"> <img src="images\left-arrow.png" alt=""></a>
-            <h2><%=f.getName()%></h2> 
+            <h2>${f.name}</h2> 
         </div>
     <br>
     <br>
@@ -205,9 +200,9 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> <h4> <%=f.getName()%> </h4></div>                               
+                    <div class="panel-heading"> <h4> ${f.name} </h4></div>                               
                     <div class="panel-body">              
-                        <p> Information : <%=f.getDesc()%> </p>
+                        <p> Information : ${f.desc} </p>
 
                     </div>
                 </div>
