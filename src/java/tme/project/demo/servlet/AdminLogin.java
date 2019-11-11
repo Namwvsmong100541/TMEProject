@@ -49,7 +49,7 @@ public class AdminLogin extends HttpServlet {
                         session.setAttribute("member_position", memberPos);
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
-                        target = "/ManageLocation.jsp";
+                        target = "/ListAllOfficer.jsp";
                     } catch (SQLException ex) {
                         System.err.println(ex);
                     }

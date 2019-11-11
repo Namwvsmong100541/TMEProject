@@ -268,11 +268,11 @@
                     </div>
 
                     <div class="Confirm">
-                        <form action="UpdateStatus" method="post" onsubmit="return confirm('Comfirm?');">  
+                        <form action="MyCase" method="post" onsubmit="return confirm('Comfirm?');">  
                             <input type="hidden" name="id" value="<%=t.getId()%>">
                             <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
                             <input type="hidden" name="status" value="1">                  
-                            <button class="button1">Accept</button></a>
+                            <button class="button1">Accept</button>
                         </form>
                     </div>
 
