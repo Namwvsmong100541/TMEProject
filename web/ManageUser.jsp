@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Report - Add Ticket</title>
+        <title>TME - Add New Officer</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -71,7 +71,7 @@
     <body>
 
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
+                <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -82,32 +82,33 @@
                     </button>
                     <div class="block2">
                         <a class="navbar-brand" href="ListTickets">TME |</a>
-
+                        <div class="now">
+                            <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
+                                <%=session.getAttribute("member_name")%> </font></a>
+                        </div>
                         <div class="block1">
                             <div id="navbar" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
-
                                     <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
                                     <li><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
-                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Transfer Page</a></li>
-                                    <li class="active"><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Officer</a></li>
+                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>  Transfer Page</a></li>
+                                    <li><a href="TransferedCase"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>  Transfered </a></li>
+                                    <li class="active"><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Officer</a></li>
                                     <li><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
                                     <li><a href="AdminLogout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
                                 </ul>
-                            </div><!--/.nav-collapse -->
-                        </div>
+                            </div>
+                        </div><!--/.nav-collapse -->
                     </div>
                 </div>
-                <div class="now">
-                    <a class="navbar-brand"><font size="3"><font color="#9ACD32"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></font>
-                        <%=session.getAttribute("member_name")%></font></a>
-                </div>
             </div>
-
         </nav>
-
         <!-- Begin page content -->
         <div class="container">
+            
+            <br>
+            <br>
+            <br>
             <div class="page-header">
                 <article>
 

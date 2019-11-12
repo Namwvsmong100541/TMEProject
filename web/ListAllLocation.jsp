@@ -32,7 +32,7 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <title>Notification List</title>
+        <title>TME | All Locations</title>
         <style>
             html,body{
                 background-color:#efeff4;
@@ -73,7 +73,7 @@
     <body>
 
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
+                <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -93,9 +93,10 @@
                                 <ul class="nav navbar-nav">
                                     <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
                                     <li class="active"><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
-                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Transfer Page</a></li>
-                                    <li><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Officer</a></li>
-                                    <li><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
+                                    <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>  Transfer Page</a></li>
+                                    <li><a href="TransferedCase"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>  Transfered </a></li>
+                                    <li><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Officer</a></li>
+                                    <li ><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
                                     <li><a href="AdminLogout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
                                 </ul>
                             </div>
@@ -104,9 +105,10 @@
                 </div>
             </div>
         </nav>
-
         <!-- Begin page content -->
         <div class="container">
+             <br>
+            <br>
             <br>
             <br>
             <br>

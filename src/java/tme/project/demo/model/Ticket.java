@@ -36,6 +36,7 @@ public class Ticket {
     private Date dateTime;
     private String catagory;
     private int officer_id;
+    private Date TimeRespone;
 
     public Ticket() {
     }
@@ -178,6 +179,14 @@ public class Ticket {
     public void setOfficer_id(int officer_id) {
         this.officer_id = officer_id;
     }
+
+    public Date getTimeRespone() {
+        return TimeRespone;
+    }
+
+    public void setTimeRespone(Date TimeRespone) {
+        this.TimeRespone = TimeRespone;
+    }
     
     
     
@@ -213,6 +222,7 @@ public class Ticket {
             t.setDateTime(rs.getTimestamp("Date_Time"));
             t.setCatagory(rs.getString("Event_catagory"));
             t.setOfficer_id(rs.getInt("Notify_Member_ID"));
+            t.setTimeRespone(rs.getTimestamp("Progress_Time"));
 
         
         } catch (SQLException ex) {

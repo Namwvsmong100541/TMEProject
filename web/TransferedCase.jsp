@@ -1,28 +1,31 @@
 <%-- 
-    Document   : ManageLocation
-    Created on : Oct 28, 2019, 9:46:00 PM
+    Document   : TransferedCase
+    Created on : Nov 12, 2019, 12:45:46 PM
     Author     : LENOVO
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
 <%@page import="tme.project.demo.model.Place"%>
+<%@page import="tme.project.demo.model.Ticket"%>
+<%@page import="tme.project.demo.model.Member"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/sticky-footer-navbar.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>TME - Add New Location</title>
+        <title>TME - All Transfered Cases</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+        <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,7 +33,7 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <title>TME - Add new location</title>
+        <title>TME - All Transfered Cases</title>
         <style>
             html,body{
                 background-color:#efeff4;
@@ -50,7 +53,7 @@
             }
             .container{
                 width:1020px;
-                
+
             }
             .block1{
                 float:right;
@@ -76,11 +79,11 @@
                 width: 500px;
             }
             .btn-default{
-            margin-left: 420px;
+                margin-left: 420px;
             }
             .content{
                 text-align: center;
-                
+
             }
             .content label{
                 margin-right: 560px;
@@ -90,7 +93,7 @@
     </head>
     <body>
 
-        <!-- Fixed navbar -->
+                <!-- Fixed navbar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -109,12 +112,12 @@
                         <div class="block1">
                             <div id="navbar" class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
+                                    <li><a href="ManageLocation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Location</a></li>
                                     <li><a href="ListAllLocation"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Locations</a></li>
                                     <li><a href="TransferPage"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>  Transfer Page</a></li>
-                                    <li><a href="TransferedCase"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>  Transfered </a></li>
+                                    <li class="active"><a href="TransferedCase"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>  Transfered </a></li>
                                     <li><a href="Register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Officer</a></li>
-                                    <li ><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
+                                    <li><a href="ListAllOfficer"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> All Officer</a></li>
                                     <li><a href="AdminLogout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
                                 </ul>
                             </div>
@@ -124,53 +127,58 @@
             </div>
         </nav>
 
+
         <!-- Begin page content -->
         <div class="container">
-          
             <br>
             <br>
             <br>
-            <div class="page-header">
-                <article>
+            <br>
+            <br>
+            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Case</th>
+                        <th>Location</th>
+                        <th>Response Time </th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
 
-                    </br><font size=50> Add new location of KMUTT </font></h1>
-                </article>
-            </div>
-
-            <%
-                if (request.getAttribute("code") != null) {
-            %>
-            <div class="alert alert-<%=(String) request.getAttribute("code")%>">
-                <strong><%=(String) request.getAttribute("alert")%></strong> 
-                <%=(String) request.getAttribute("message")%>
-            </div>
-            <%
-                }
-            %>
-            <div class="content">
-                <form action="ManageLocation" method="post">
-                    <div class="form-group">
-                        <label for="title">Add new location name</label>
-                        <input name="place_name" type="text" class="form-control" id="title" placeholder="Input name of location" required="">
-                    </div>
-
-
-                    <input name="member_id" type="hidden" value="<%=session.getAttribute("member_id")%>">
-                    <button type="submit" name="submit" class="btn btn-default">SUBMIT</button>
-                </form>
-            </div>
+                        List<Ticket> tickets = (List) request.getAttribute("tickets");
+                        int count = 1;
+                        for (Ticket t : tickets) {
+                            if (t.getStatusName().equalsIgnoreCase("In progess")) {
+                    %>
+                    <tr>
+                        <td><%=count++%></td>
+                        <td><%=t.getName()%></a></td>   
+                        <td><%=t.getPlace()%></td>
+                        <td><%=t.getTimeRespone()%> </td>
+                        <td><%=t.getStatusName()%> </td>
+                    </tr>
+                    <%
+                            }
+                        }
+                    %>
+                </tbody>
+            </table>
         </div>
-
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted">Written by TrippleN</p>
-            </div>
-        </footer>
-
-        <!-- Bootstrap core JavaScript
-================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
+
+        <script type="text/javascript" class="init">
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+        </script>
     </body>
 </html>
+
+
+
