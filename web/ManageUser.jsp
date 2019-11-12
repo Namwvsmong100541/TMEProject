@@ -50,7 +50,7 @@
                 margin-top: 20px;
             }
             .container{
-                width:1020px;
+                width:1150px;
             }
             .block1{
                 float:right;
@@ -107,8 +107,8 @@
         <div class="container">
             
             <br>
-            <br>
-            <br>
+            
+            
             <div class="page-header">
                 <article>
 

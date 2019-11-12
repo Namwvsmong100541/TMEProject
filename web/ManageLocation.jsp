@@ -49,7 +49,7 @@
                 border-radius: 5px; 
             }
             .container{
-                width:1020px;
+                width:1150px;
                 
             }
             .block1{
@@ -128,8 +128,7 @@
         <div class="container">
           
             <br>
-            <br>
-            <br>
+            
             <div class="page-header">
                 <article>
 

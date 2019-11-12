@@ -52,7 +52,7 @@
                 border-radius: 5px; 
             }
             .container{
-                width:1020px;
+                width:1150px;
 
             }
             .block1{
@@ -154,8 +154,7 @@
             <br>
             <br>
             <br>
-            <br>
-            <br>
+
 
             <%
                 if (request.getAttribute("code") != null) {
