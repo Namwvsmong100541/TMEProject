@@ -39,11 +39,14 @@
             background-position: center;
             height: 670px;
         }
-        
+
     </style>
+
     <body background="images\login.jpg" align="center" >
+
         <div class="login">
             <div class="container">
+                
                 <img src="images\alarmlogin.png" alt=""><br><br>
                 <form action="Login" method="post">                       
                     <input type="username"  class="form-control" id="exampleUsername" name="username" placeholder="Student ID Or Username">
@@ -52,32 +55,20 @@
 
                     <p>   </p>
                 </form>
-
+                
                 <%
                     if (request.getAttribute("code") != null) {
                 %>
-
-
-
-                <div class="alert alert-success alert-<%=(String) request.getAttribute("code")%>">
-
-                    <div class="alert alert-success alert-<%=(String) request.getAttribute("code")%>">                      
-
-                        <strong>
-                            <font color="#000000"><%=(String) request.getAttribute("alert")%>
-                        </strong> <%=(String) request.getAttribute("message")%>
-                        </font>
-                    </div>
-
-                    <%
-                        }
-
-                    %>
-
+                <div class="alert alert-<%=(String) request.getAttribute("code")%>">
+                    <strong><font color="#000000"><%=(String) request.getAttribute("alert")%></strong> <%=(String) request.getAttribute("message")%>
+                    </font>
                 </div>
+                <%
+                    }
+                %>
             </div>
 
-
+        </div>
 
     </body>
 

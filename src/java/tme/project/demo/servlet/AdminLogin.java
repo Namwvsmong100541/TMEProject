@@ -53,13 +53,12 @@ public class AdminLogin extends HttpServlet {
                     } catch (SQLException ex) {
                         System.err.println(ex);
                     }
+                }else {
+                    code = "warning";
+                    alert = "The username & password didn't match.";
+                    message = "Please Try again.";
                 }
-
-            } else {
-                code = "Error";
-                alert = "The username & password didn't match.";
-                message = "Please Try again.";
-            }
+            } 
         }
         request.setAttribute("code", code);
         request.setAttribute("alert", alert);

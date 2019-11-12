@@ -193,7 +193,7 @@
             body{
                 background-repeat: repeat;
                 background-position: center;
-                height: 820px;
+                height: 880px;
                 width:375px;
                 position: absolute;
                 color: #707070;

@@ -58,14 +58,13 @@ public class Login extends HttpServlet {
                     } catch (SQLException ex) {
                         System.err.println(ex);
                     }
+                }else {
+                    code = "warning";
+                    alert = "The username & password didn't match.";
+                    message = "Please Try again.";
                 }
 
-            } else {
-                code = "Error";
-                alert = "The username & password didn't match.";
-                message = "Please Try again.";
-            }
-            if (member_username != null && member_password != null) {
+            } if (member_username != null && member_password != null) {
                 if (Member.isOfficer(member_username, member_password)) {
                     try {
                         String memberId = Member.getIdByUsernameOfficer(member_username) + "";
@@ -79,9 +78,9 @@ public class Login extends HttpServlet {
                         System.err.println(ex);
                     }
                 }
-            }
-
+            } 
         }
+    
 
         request.setAttribute("code", code);
         request.setAttribute("alert", alert);

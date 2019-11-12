@@ -236,7 +236,7 @@ public class Member {
         if (gender.equals("F")) {
             return "Female";
         } else if (gender.equals("M")) {
-            return "Man";
+            return "Male";
         }
         return "";
     }

@@ -196,7 +196,7 @@
                             <div class="form-group">
                                 <label for="examplePhoneNo"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> PHONE NUMBER</label>
                                 <font face="Tahoma">
-                                <input type="phoneNo" class="form-control" id="examplePhoneNo" name="phoneNo" placeholder="XXX-XXXXXXX" required="">
+                                <input type="tel" class="form-control" id="examplePhoneNo" name="phoneNo" pattern="[0-9]{10}" placeholder="เช่น 0812233455" required="">
                             </div>
                         </div>
                     </div>
