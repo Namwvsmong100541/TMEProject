@@ -24,7 +24,7 @@ public class TestConnectionDB {
             property.put("password", "tme123456");
             property.put("useEncoding", "true");
             property.put("characterEncoding", "UTF-8");
-            con = DriverManager.getConnection("jdbc:mysql://35.240.139.209/TMEApp", property);
+            con = DriverManager.getConnection("jdbc:mysql://35.247.189.7/TMEApp", property);
 
             if (con != null) {
                 System.out.println("Database Connected.");
