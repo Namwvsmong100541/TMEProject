@@ -304,7 +304,7 @@
                             <%
                                 try {
                                     Class.forName("com.mysql.jdbc.Driver").newInstance();
-                                    Connection con = DriverManager.getConnection("jdbc:mysql://35.247.189.7/TMEApp", "tmepro", "tme123456");
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", "tmepro", "tme123456");
                                     Statement st = con.createStatement();
                                     String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE member_id_fk = " + session.getAttribute("member_id");
                                     ResultSet rs = st.executeQuery(strQuery);

@@ -24,7 +24,7 @@ public class ConnectionBuilder {
             property.put("password", "tme123456");
             property.put("useEncoding", "true");
             property.put("characterEncoding", "UTF-8");
-            con = DriverManager.getConnection("jdbc:mysql://35.247.189.7/TMEApp", property);
+            con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", property);
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ConnectionBuilder.class.getName()).log(Level.SEVERE, null, ex);
