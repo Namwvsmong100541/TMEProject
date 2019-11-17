@@ -54,6 +54,7 @@ public class Login extends HttpServlet {
                         session.setAttribute("member_position", memberPos);
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
+                        System.out.println(member_username);
                         target = "/AddEmergency.jsp";
                     } catch (SQLException ex) {
                         System.err.println(ex);
@@ -73,6 +74,7 @@ public class Login extends HttpServlet {
                         session.setAttribute("member_position", memberPos);
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
+                        System.out.println(member_username);
                         target = "/Home.jsp";
                     } catch (SQLException ex) {
                         System.err.println(ex);

@@ -3,7 +3,11 @@
     Created on : Sep 28, 2019, 3:11:29 PM
     Author     : wilaw
 --%>
-
+<%@page import="java.util.Properties"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -128,6 +132,12 @@
                 margin-left: 16px;
                 margin-top: 15px;
             }
+            .buttonimg img{
+                width: 50px;
+                height:50px;
+                margin-left: 14px;
+                margin-top: 0px;
+            }
             .cardhome{
                 background: white;
                 width: 140px;
@@ -141,6 +151,10 @@
             .menuhome h5{
                 text-align: center;
                 margin-top: 25px;
+            }
+            .buttonimg h5{
+                text-align: center;
+                margin-top: 20px;
             }
         </style>
     </head>
@@ -166,14 +180,51 @@
             <div class="container">
                 <div class="cardhome">
                     <div class="menuhome">
-                        <a href="UpdateStatus"><img src="images\alarm (8).png" alt=""></a>
-                        <h5>All Notification</h5>
+                        <span class="badge badge-light" style="background-color: #e23535"> 
+                            <%
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", "tmepro", "tme123456");
+                                    Statement st = con.createStatement();
+                                    String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE Event_status = 0";
+                                    ResultSet rs = st.executeQuery(strQuery);
+                                    String Countrow = "";
+                                    while (rs.next()) {
+                                        Countrow = rs.getString(1);
+                                        out.println(Countrow);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>   
+                        </span>
+                        <div class="buttonimg"> <a href="UpdateStatus"><img src="images\alarm (8).png" alt=""></a>
+                        <h5>All Notification</h5></div>
                     </div> 
                 </div> 
                 <div class="cardhome">
                     <div class="menuhome">
-                        <a href="MyCase"><img src="images\transfer.png" alt=""></a>
-                        <h5>My Direct Case</h5>
+                        <span class="badge badge-light" style="background-color: #e23535"> 
+                            <%
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", "tmepro", "tme123456");
+                                    Statement st = con.createStatement();
+                                    String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE Event_status = 0 "
+                                            + "AND Notify_Member_ID = "+session.getAttribute("member_id");
+                                    ResultSet rs = st.executeQuery(strQuery);
+                                    String Countrow = "";
+                                    while (rs.next()) {
+                                        Countrow = rs.getString(1);
+                                        out.println(Countrow);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>   
+                        </span>
+                        <div class="buttonimg"><a href="MyCase"><img src="images\transfer.png" alt=""></a>
+                            <h5>My Direct Case</h5></div>
                     </div> 
                 </div>
                 <div class="cardhome">

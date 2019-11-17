@@ -2,6 +2,11 @@
 <%@page import="tme.project.demo.model.Place"%>
 <%@page import="java.util.List"%>
 <%@page import="tme.project.demo.model.Ticket"%>
+<%@page import="java.util.Properties"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -85,13 +90,14 @@
             }
             .menubar img{
                 float: right;
-                margin-right: 10px;
+                margin-right: 0px;
                 margin-top: 7px;
                 margin-bottom: 5px;
                 padding-right: 30px;
                 height: 30px;
-
-
+            }
+            .menubar .badge{
+                float: right;
             }
             .logout {
                 background:#F47735;
@@ -275,8 +281,43 @@
             <a href="History"><img src="images\history (4).png" alt="">
                 <a href="StatusAccept"><img src="images\list2.png" alt="">
                     <a href="MyCase"><img src="images\transfer (3).png" alt="">
-                        <a href="UpdateStatus"><img src="images\alarm.png" alt="">
-                            <a href="Home"><img src="images\home.png" alt="">
+                        <a href="UpdateStatus"><span class="badge badge-light" style="background-color: #e23535"> 
+                                <%
+                                    try {
+                                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                        Connection con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", "tmepro", "tme123456");
+                                        Statement st = con.createStatement();
+                                        String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE Event_status = 0 "
+                                                + "AND Notify_Member_ID = " + session.getAttribute("member_id");
+                                        ResultSet rs = st.executeQuery(strQuery);
+                                        String Countrow = "";
+                                        while (rs.next()) {
+                                            Countrow = rs.getString(1);
+                                            out.println(Countrow);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>   
+                            </span><img src="images\alarm.png" alt="">
+                            <a href="Home"><span class="badge badge-light" style="background-color: #e23535"> 
+                                    <%
+                                        try {
+                                            Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                            Connection con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", "tmepro", "tme123456");
+                                            Statement st = con.createStatement();
+                                            String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE Event_status = 0";
+                                            ResultSet rs = st.executeQuery(strQuery);
+                                            String Countrow = "";
+                                            while (rs.next()) {
+                                                Countrow = rs.getString(1);
+                                                out.println(Countrow);
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    %>   
+                                </span><img src="images\home.png" alt="">
                                 </div>
                                 </body>
                                 </html>
