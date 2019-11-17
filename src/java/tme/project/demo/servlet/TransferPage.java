@@ -42,54 +42,54 @@ public class TransferPage extends HttpServlet {
         String position = (String) session.getAttribute("member_position");
 
         if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("1")) {
-                    if (ticket_id != null && ticket_status != null) {
-                        if (Ticket.update(Integer.parseInt(request.getParameter("id")),
-                                Integer.parseInt(request.getParameter("status")),
-                                Integer.parseInt(request.getParameter("member_id")))) {
-                            target = "/TransferPage.jsp";
-                            ticket_message = "Update complete!";
-                            code = "success";
-                            alert = "Success!";
-                        } else {
-                            ticket_message = "Update incomplete!";
-                            code = "warning";
-                            alert = "Warning!";
+            try {
+                if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
+                    if (position.equals("1")) {
+                        if (ticket_id != null && ticket_status != null) {
+                            if (Ticket.update(Integer.parseInt(request.getParameter("id")),
+                                    Integer.parseInt(request.getParameter("status")),
+                                    Integer.parseInt(request.getParameter("member_id")))) {
+                                target = "/TransferPage.jsp";
+                                ticket_message = "Update complete!";
+                                code = "success";
+                                alert = "Success!";
+                            } else {
+                                ticket_message = "Update incomplete!";
+                                code = "warning";
+                                alert = "Warning!";
+                            }
                         }
+
+                    } else {
+                        code = "Error";
+                        alert = "Error!";
+                        ticket_message = "Wrong Position.";
+                        target = "/TransferPage.jsp";
                     }
 
                 } else {
                     code = "Error";
                     alert = "Error!";
-                    ticket_message = "Wrong Position.";
-                    target = "/TransferPage.jsp";
+                    ticket_message = "Re-Login Pleased.";
+                    target = "AdminLogin.jsp";
                 }
-
-            } else {
-                code = "Error";
-                alert = "Error!";
-                ticket_message = "Re-Login Pleased.";
-                target = "/Login.jsp";
+                List<Ticket> tickets = Ticket.getAllTickets();
+                request.setAttribute("tickets", tickets);
+                System.out.println(tickets.get(0).getName());
+                
+            } catch (NullPointerException ex) {
+                System.err.println(ex);
             }
-        } else {
-            code = "Error";
-            alert = "Error!";
-            ticket_message = "Re-Login Pleased.";
+
+            request.setAttribute("message", ticket_message);
+            request.setAttribute("code", code);
+            request.setAttribute("alert", alert);
+
+            getServletContext().getRequestDispatcher(target).forward(request, response);
         }
-
-        request.setAttribute("message", ticket_message);
-        request.setAttribute("code", code);
-        request.setAttribute("alert", alert);
-        
-
-        List<Ticket> tickets = Ticket.getAllTickets();
-        request.setAttribute("tickets", tickets);
-        System.out.println(tickets.get(0).getName());
-        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *

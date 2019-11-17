@@ -43,38 +43,38 @@ public class DeleteOfficer extends HttpServlet {
         String position = (String) session.getAttribute("member_position");
 
         if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("1")) {
-                    if (id != null) {
-                        if (Member.delete(Integer.parseInt(id))) {
-                            message = "Delete complete!";
-                            code = "success";
-                            alert = "Success!";
-                        } else {
-                            message = "Delete incomplete!";
-                            code = "warning";
-                            alert = "Warning!";
+            try {
+                if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
+                    if (position.equals("1")) {
+                        if (id != null) {
+                            if (Member.delete(Integer.parseInt(id))) {
+                                message = "Delete complete!";
+                                code = "success";
+                                alert = "Success!";
+                            } else {
+                                message = "Delete incomplete!";
+                                code = "warning";
+                                alert = "Warning!";
+                            }
                         }
+                    } else {
+                        code = "Error";
+                        alert = "Error!";
+                        message = "Wrong Position.";
+                        target = "/ListAllOfficer.jsp";
                     }
+
                 } else {
                     code = "Error";
                     alert = "Error!";
-                    message = "Wrong Position.";
-                    target = "/ListAllOfficer.jsp";
+                    message = "Re-Login Pleased.";
+                    target = "AdminLogin.jsp";
                 }
-
-            } else {
-                code = "Error";
-                alert = "Error!";
-                message = "Re-Login Pleased.";
-                target = "/AdminLogin.jsp";
+            } catch (NullPointerException ex) {
+                System.err.println(ex);
             }
-        } else {
-            code = "Error";
-            alert = "Error!";
-            message = "Re-Login Pleased.";
-        }
 
+        }
         request.setAttribute("message", message);
         request.setAttribute("code", code);
         request.setAttribute("alert", alert);
