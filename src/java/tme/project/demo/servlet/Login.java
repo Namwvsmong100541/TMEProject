@@ -83,8 +83,8 @@ public class Login extends HttpServlet {
             request.setAttribute("code", code);
             request.setAttribute("alert", alert);
             request.setAttribute("message", message);
-            getServletContext().getRequestDispatcher(target).forward(request, response);
         }
+        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
