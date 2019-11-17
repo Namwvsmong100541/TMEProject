@@ -150,7 +150,8 @@
                         List<Ticket> tickets = (List) request.getAttribute("tickets");
                         int count = 1;
                         for (Ticket t : tickets) {
-                            if (t.getStatusName().equalsIgnoreCase("In progess")) {
+                            if (t.getStatusName().equalsIgnoreCase("In progess")
+                                    ||t.getStatusName().equalsIgnoreCase("Completed")) {
                     %>
                     <tr>
                         <td><%=count++%></td>

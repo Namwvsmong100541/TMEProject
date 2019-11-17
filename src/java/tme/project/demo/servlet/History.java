@@ -22,7 +22,7 @@ import tme.project.demo.model.Ticket;
 public class History extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NullPointerException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/History.jsp";
         String code = null;
@@ -34,29 +34,30 @@ public class History extends HttpServlet {
         List<Ticket> tickets = null;
 
         if (session != null) {
+            try {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("2")) {
-                    target = "/History.jsp";
-                }
-                int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
-                tickets = Ticket.getTicketsByNotifyMemberId(member_id);
+                
+                    if (position.equals("2")) {
+                        target = "/History.jsp";
+                    }
+                    int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
+                    tickets = Ticket.getTicketsByNotifyMemberId(member_id);
 
-            } else {
-                code = "Error";
-                alert = "Error!";
-                message = "Re-Login Pleased.";
-                target = "/Login.jsp";
-            }
-        } else {
-            code = "Error";
-            alert = "Error!";
-            message = "Re-Login Pleased.";
+                }else {
+                    code = "Error";
+                    alert = "Error!";
+                    message = "Re-Login Pleased.";
+                    target = "/Login.jsp";
+                } 
+            } catch (NullPointerException ex) {
+                    System.err.println(ex);
+                }
+            request.setAttribute("code", code);
+            request.setAttribute("alert", alert);
+            request.setAttribute("message", message);
+            request.setAttribute("tickets", tickets);
+            getServletContext().getRequestDispatcher(target).forward(request, response);
         }
-        request.setAttribute("code", code);
-        request.setAttribute("alert", alert);
-        request.setAttribute("message", message);
-        request.setAttribute("tickets", tickets);
-        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

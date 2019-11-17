@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
      * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NullPointerException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/Login.jsp";
         HttpSession session = request.getSession();
@@ -43,54 +43,51 @@ public class Login extends HttpServlet {
         String message = null;
 
         if (request.getParameter("submit") != null) {
-            String member_username = request.getParameter("username");
-            String member_password = request.getParameter("password");
-            if (member_username != null && member_password != null) {
-                if (Member.isStudent(member_username, member_password)) {
-                    try {
+            try {
+                String member_username = request.getParameter("username");
+                String member_password = request.getParameter("password");
+                if (member_username != null && member_password != null) {
+                    if (Member.isStudent(member_username, member_password)) {
+
                         String memberId = Member.getIdByUsernameStudent(member_username) + "";
                         String memberPos = Member.getPositionByUsername(member_username) + "";
                         session.setAttribute("member_name", member_username);
                         session.setAttribute("member_position", memberPos);
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
-                        System.out.println(member_username);
                         target = "/AddEmergency.jsp";
-                    } catch (SQLException ex) {
-                        System.err.println(ex);
+                        System.out.println(member_username);
+                    } else {
+                        code = "warning";
+                        alert = "The username & password didn't match.";
+                        message = "Please Try again.";
                     }
-                }else {
-                    code = "warning";
-                    alert = "The username & password didn't match.";
-                    message = "Please Try again.";
-                }
 
-            } if (member_username != null && member_password != null) {
-                if (Member.isOfficer(member_username, member_password)) {
-                    try {
+                }
+                if (member_username != null && member_password != null) {
+                    if (Member.isOfficer(member_username, member_password)) {
                         String memberId = Member.getIdByUsernameOfficer(member_username) + "";
                         String memberPos = Member.getPositionByUsername(member_username) + "";
                         session.setAttribute("member_name", member_username);
                         session.setAttribute("member_position", memberPos);
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
-                        System.out.println(member_username);
                         target = "/Home.jsp";
-                    } catch (SQLException ex) {
-                        System.err.println(ex);
+                        System.out.println(member_username);
                     }
                 }
-            } 
+
+            } catch (SQLException ex) {
+                System.err.println(ex);
+            }
+            request.setAttribute("code", code);
+            request.setAttribute("alert", alert);
+            request.setAttribute("message", message);
+            getServletContext().getRequestDispatcher(target).forward(request, response);
         }
-    
-
-        request.setAttribute("code", code);
-        request.setAttribute("alert", alert);
-        request.setAttribute("message", message);
-        getServletContext().getRequestDispatcher(target).forward(request, response);
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *

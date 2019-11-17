@@ -7,6 +7,7 @@ package tme.project.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ public class UpdateStatus extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NullPointerException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/UpdateStatus.jsp";
         String code = "";
@@ -45,36 +46,35 @@ public class UpdateStatus extends HttpServlet {
 
 //        List<Ticket> tickets = null;
         if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("2")) {
-                    if (ticket_id != null && ticket_status != null) {
-                        if (Ticket.update(Integer.parseInt(request.getParameter("id")),
-                                Integer.parseInt(request.getParameter("status")),
-                                Integer.parseInt(request.getParameter("member_id")))) {
-                            target = "/UpdateStatus.jsp";
-                            ticket_message = "Update complete!";
-                            code = "success";
-                            alert = "Success!";
-                        } else {
-                            ticket_message = "Update incomplete!";
-                            code = "warning";
-                            alert = "Warning!";
+            try {
+                if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
+                    if (position.equals("2")) {
+                        if (ticket_id != null && ticket_status != null) {
+
+                            if (Ticket.update(Integer.parseInt(request.getParameter("id")),
+                                    Integer.parseInt(request.getParameter("status")),
+                                    Integer.parseInt(request.getParameter("member_id")))) {
+                                target = "/UpdateStatus.jsp";
+                                ticket_message = "Update complete!";
+                                code = "success";
+                                alert = "Success!";
+                            } else {
+                                ticket_message = "Update incomplete!";
+                                code = "warning";
+                                alert = "Warning!";
+                            }
                         }
                     }
-
-                } else {
+                }else {
                     code = "Error";
                     alert = "Error!";
-                    ticket_message = "Wrong Position.";
-                    target = "/UpdateStatus.jsp";
+                    ticket_message = "Re-Login Pleased.";
+                    target = "/Login.jsp";
                 }
 
-            } else {
-                code = "Error";
-                alert = "Error!";
-                ticket_message = "Re-Login Pleased.";
-                target = "/Login.jsp";
-            }
+            }catch (NullPointerException ex) {
+                            System.err.println(ex);
+                        }
         } else {
             code = "Error";
             alert = "Error!";

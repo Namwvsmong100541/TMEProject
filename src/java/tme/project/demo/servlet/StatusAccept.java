@@ -31,7 +31,7 @@ public class StatusAccept extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NullPointerException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/StatusAccept.jsp";
         String code = "";
@@ -44,37 +44,37 @@ public class StatusAccept extends HttpServlet {
         String position = (String) session.getAttribute("member_position");
         List<Ticket> tickets = null;
         if (session != null) {
-            if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                if (position.equals("2")) {
-                    if (ticket_id != null && ticket_status != null && officer_id!=null) {
-                        if (Ticket.update(Integer.parseInt(request.getParameter("id")), 
-                                Integer.parseInt(request.getParameter("status")),
-                                Integer.parseInt(request.getParameter("member_id")))) {
-                            target = "/StatusAccept.jsp";
-                            ticket_message = "Update complete!";
-                            code = "success";
-                            alert = "Success!";
-                        } else {
-                            ticket_message = "Update incomplete!";
-                            code = "warning";
-                            alert = "Warning!";
+            try {
+                if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
+
+                    if (position.equals("2")) {
+                        if (ticket_id != null && ticket_status != null && officer_id != null) {
+                            if (Ticket.update(Integer.parseInt(request.getParameter("id")),
+                                    Integer.parseInt(request.getParameter("status")),
+                                    Integer.parseInt(request.getParameter("member_id")))) {
+                                target = "/StatusAccept.jsp";
+                                ticket_message = "Update complete!";
+                                code = "success";
+                                alert = "Success!";
+                            } else {
+                                ticket_message = "Update incomplete!";
+                                code = "warning";
+                                alert = "Warning!";
+                            }
                         }
+                        int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
+                        tickets = Ticket.getTicketsByNotifyMemberId(member_id);
                     }
-                    int member_id = Integer.valueOf((String) session.getAttribute("member_id"));
-                    tickets = Ticket.getTicketsByNotifyMemberId(member_id);
-                } else {
+                }else {
                     code = "Error";
                     alert = "Error!";
-                    ticket_message = "Wrong Position.";
-                    target = "/StatusAccept.jsp";
+                    ticket_message = "Re-Login Pleased.";
+                    target = "/Login.jsp";
                 }
 
-            } else {
-                code = "Error";
-                alert = "Error!";
-                ticket_message = "Re-Login Pleased.";
-                target = "/Login.jsp";
-            }
+            }catch (NullPointerException ex){
+                    System.err.println(ex);
+                }
         } else {
             code = "Error";
             alert = "Error!";

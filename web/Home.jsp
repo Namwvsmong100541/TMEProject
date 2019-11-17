@@ -19,7 +19,7 @@
         <link href="css/sticky-footer-navbar.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Report - My Notification</title>
+        <title>TME | Home Officer</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
         <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Officer</title>
+        <title>TME | Home Officer</title>
         <style>
             html,body{
                 background-color:#EFEFF4;
@@ -135,7 +135,13 @@
             .buttonimg img{
                 width: 50px;
                 height:50px;
-                margin-left: 14px;
+                margin-left: 15px;
+                margin-top: 0px;
+            }
+            .buttonimg2 img{
+                width: 50px;
+                height:50px;
+                margin-left: 18px;
                 margin-top: 0px;
             }
             .cardhome{
@@ -229,8 +235,27 @@
                 </div>
                 <div class="cardhome">
                     <div class="menuhome">
-                        <a href="StatusAccept"><img src="images\list233.png" alt=""></a>
-                        <h5>In progress</h5>
+                        <span class="badge badge-light" style="background-color: #e23535"> 
+                            <%
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", "tmepro", "tme123456");
+                                    Statement st = con.createStatement();
+                                    String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE Event_status = 1 "
+                                            + "AND Notify_Member_ID = "+session.getAttribute("member_id");
+                                    ResultSet rs = st.executeQuery(strQuery);
+                                    String Countrow = "";
+                                    while (rs.next()) {
+                                        Countrow = rs.getString(1);
+                                        out.println(Countrow);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>   
+                        </span>
+                        <div class="buttonimg2"><a href="StatusAccept"><img src="images\list233.png" alt=""></a>
+                            <h5>In progress</h5></div>
                     </div> 
                 </div>
                 <div class="cardhome">

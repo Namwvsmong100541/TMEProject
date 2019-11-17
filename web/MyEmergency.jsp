@@ -101,7 +101,7 @@
                 position: fixed; 
                 top: 0;
                 z-index: 9999;
-                  
+
             }
 
 
@@ -136,7 +136,7 @@
             }
             .out a{
                 color: white;
-            
+
             }
 
 
@@ -181,11 +181,11 @@
             .information.a{
                 color: whitesmoke;
             }
-           
+
 
         </style>
     </head>
-    
+
     <body>
         <!-- Begin page content -->
         <div class="logout">
@@ -201,7 +201,7 @@
 
 
         </div>
-    
+
         <div class="header">
             <h2>Response</h2> 
         </div>
@@ -215,6 +215,7 @@
                     List<Ticket> tickets = (List) request.getAttribute("tickets");
                     int count = 1;
                     for (Ticket t : tickets) {
+
             %>
             <div class="event">
 
@@ -235,6 +236,7 @@
                     </div>
                     <div class="location">
                         <h6>Location : <%= t.getPlace()%> </h6>
+                        <h6>Status : <%= t.getStatusName()%> </h6>
                     </div>
                     <div class="information"></div>
                     <a href = "DetailUser?id=<%=t.getId()%>"><button class="button1">More detail</button></a>
@@ -243,6 +245,7 @@
 
 
             <%
+
                 }
             } else {
 
@@ -266,7 +269,7 @@
             <a href="MyEmergency"><img src="images\checklist (1)_1.png" alt=""></a>
             <a href="AddEmergency"><img src="images\bell (4).png" alt=""></a>
             <a href="Profile"><img src="images\avatar (2).png" alt=""></a>
-        
+
         </div>
     </body>
 </html>

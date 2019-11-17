@@ -50,6 +50,7 @@ public class AdminLogin extends HttpServlet {
                         session.setAttribute("member_id", memberId);
                         session.setAttribute("isLoged", "yes");
                         target = "/ListAllOfficer.jsp";
+                        System.out.println(member_username);
                     } catch (SQLException ex) {
                         System.err.println(ex);
                     }

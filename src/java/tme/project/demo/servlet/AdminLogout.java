@@ -33,7 +33,7 @@ public class AdminLogout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("AdminLogin");
+        response.sendRedirect("AdminLogin.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

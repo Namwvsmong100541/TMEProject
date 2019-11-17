@@ -110,7 +110,7 @@
                 margin-right: 0px;
                 margin-top: 7px;
                 margin-bottom: 5px;
-                padding-right: 30px;
+                padding-right: 27px;
                 height: 30px;
 
 
@@ -310,7 +310,24 @@
 
             <a href="History"><img src="images\history (3).png" alt="">
                 <a href="StatusAccept"><img src="images\list2.png" alt="">
-                    <a href="MyCase"><img src="images\transfer (3).png" alt="">
+                    <a href="MyCase"><span class="badge badge-light" style="background-color: #e23535"> 
+                            <%
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://34.87.6.230/TMEApp", "tmepro", "tme123456");
+                                    Statement st = con.createStatement();
+                                    String strQuery = "SELECT count(*) FROM `Emergency_Notify` WHERE Event_status = 1";
+                                    ResultSet rs = st.executeQuery(strQuery);
+                                    String Countrow = "";
+                                    while (rs.next()) {
+                                        Countrow = rs.getString(1);
+                                        out.println(Countrow);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %>   
+                        </span><img src="images\transfer (3).png" alt="">
                         <a href="UpdateStatus"><span class="badge badge-light" style="background-color: #e23535"> 
                             <%
                                 try {

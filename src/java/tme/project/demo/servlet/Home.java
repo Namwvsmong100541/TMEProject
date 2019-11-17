@@ -30,7 +30,7 @@ public class Home extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NullPointerException {
         response.setContentType("text/html;charset=UTF-8");
         String target = "/Home.jsp";
         String code = null;
@@ -40,11 +40,15 @@ public class Home extends HttpServlet {
         String position = (String) session.getAttribute("member_position");
         if (session != null) {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                String member = (String) session.getAttribute("member");
-                code = "Success";
-                alert = "Log In";
-                message = "... Success!!";
-                out.print("Hello, " + member + " Welcome to Profile");
+                try {
+                    String member = (String) session.getAttribute("member");
+                    code = "Success";
+                    alert = "Log In";
+                    message = "... Success!!";
+                    out.print("Hello, " + member + " Welcome to Profile");
+                } catch (NullPointerException ex) {
+                    System.err.println(ex);
+                }
             } else {
                 code = "Error";
                 alert = "Error!";

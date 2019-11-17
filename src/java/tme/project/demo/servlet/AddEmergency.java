@@ -30,7 +30,7 @@ import tme.project.demo.service.S3client;
 @MultipartConfig
 public class AddEmergency extends HttpServlet {
 
-    private ObjectMetadata getMetadata(Part filePart) throws IOException {
+    private ObjectMetadata getMetadata(Part filePart) throws IOException, NullPointerException {
         InputStream is = filePart.getInputStream();
         OutputStream ops = null;
         byte[] contentByte = IOUtils.toByteArray(is);
@@ -40,7 +40,7 @@ public class AddEmergency extends HttpServlet {
         metadata.setContentLength(contentLength);
         return metadata;
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,38 +61,38 @@ public class AddEmergency extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null) {
             if (session.getAttribute("member_id") != null && session.getAttribute("isLoged").equals("yes")) {
-                try{
-                String name = request.getParameter("name");
-                String desc = request.getParameter("desc");
-                String place = request.getParameter("place");
-                int id = Integer.parseInt((String)session.getAttribute("member_id"));
-                String lat = request.getParameter("lat_value");
-                String lon = request.getParameter("lon_value");
-                String catagory = request.getParameter("catagory");
-//                int officer_id = Integer.parseInt((String)session.getAttribute("officer_id"));
+                try {
+                   
+                    String name = request.getParameter("name");
+                    String desc = request.getParameter("desc");
+                    String place = request.getParameter("place");
+                    int id = Integer.parseInt((String) session.getAttribute("member_id"));
+                    String lat = request.getParameter("lat_value");
+                    String lon = request.getParameter("lon_value");
+                    String catagory = request.getParameter("catagory");
 
-                Part filePart = request.getPart("image");
-                String fileName = System.currentTimeMillis() + "-" + filePart.getSubmittedFileName();
-                ObjectMetadata metadata = this.getMetadata(filePart);
-                InputStream fileContent = filePart.getInputStream();
+                    Part filePart = request.getPart("image");
+                    String fileName = System.currentTimeMillis() + "-" + filePart.getSubmittedFileName();
+                    ObjectMetadata metadata = this.getMetadata(filePart);
+                    InputStream fileContent = filePart.getInputStream();
 
-                S3client s3client = new S3client();
-                String url = s3client.upload(fileName, fileContent, metadata);
+                    S3client s3client = new S3client();
+                    String url = s3client.upload(fileName, fileContent, metadata);
 
-                Ticket t = new Ticket(name, desc, place, id, lat, lon, catagory, url);
-                
-                if (t.addTicket()) {
-                    code = "success";
-                    alert = "Success!";
-                    message = "แจ้งเหตุเรียบร้อย";
-                  
-                } else {
-                    code = "warning";
-                    alert = "Warning!";
-                    message = "เกิดข้อผิดพลาด";
-                }
+                    Ticket t = new Ticket(name, desc, place, id, lat, lon, catagory, url);
+
+                    if (t.addTicket()) {
+                        code = "success";
+                        alert = "Success!";
+                        message = "แจ้งเหตุเรียบร้อย";
+
+                    } else {
+                        code = "warning";
+                        alert = "Warning!";
+                        message = "เกิดข้อผิดพลาด";
+                    }
                 } catch (Exception ex) {
-                    System.out.println("AddTicket.ex: "+ex.getMessage());
+                    System.out.println("AddTicket.ex: " + ex.getMessage());
                     ex.printStackTrace();
                 }
             } else {
@@ -106,7 +106,7 @@ public class AddEmergency extends HttpServlet {
             alert = "Error!";
             message = "Re-Login1 Pleased.";
         }
-        
+
         request.setAttribute("code", code);
         request.setAttribute("alert", alert);
         request.setAttribute("message", message);
